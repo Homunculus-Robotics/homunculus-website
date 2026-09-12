@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="styles.css">
+<style>
+  body { margin: 0; background: var(--void); }
+  a { color: var(--accent); }
+  a:hover { color: var(--signal); }
+</style>
+</helmet>
+<div data-hmc-theme="{{ theme }}" style="background:var(--void);color:var(--text-hi);font-family:var(--font-body);font-size:var(--fs-body);line-height:var(--lh-body)">
+
+  <header style="position:sticky;top:0;z-index:20;backdrop-filter:blur(12px);background:color-mix(in oklab,var(--void) 78%,transparent);border-bottom:1px solid var(--border-quiet)">
+    <div style="max-width:var(--maxw-wide);margin:0 auto;padding:0 var(--sp-6);display:flex;align-items:center;justify-content:space-between;height:68px;gap:var(--sp-6)">
+      <a href="Home.dc.html" style="display:flex;align-items:center;gap:12px;text-decoration:none">
+        <img src="assets/logo-mark-light.png" alt="" style="height:34px">
+        <span style="font-family:var(--font-display);font-size:22px;letter-spacing:.02em;color:var(--text-hi)">HOMUNCULUS</span>
+      </a>
+      <nav style="display:flex;gap:30px;align-items:center">
+        <a href="#top" style="color:var(--text-hi);font-size:var(--fs-sm);text-decoration:none;white-space:nowrap;border-bottom:1px solid var(--line-accent);padding-bottom:2px">Sandbox</a>
+        <a href="Design%20Challenge.dc.html" style="color:var(--text-mid);font-size:var(--fs-sm);text-decoration:none;white-space:nowrap" style-hover="color:var(--accent)">Design Challenge</a>
+        <a href="#" style="color:var(--text-mid);font-size:var(--fs-sm);text-decoration:none;white-space:nowrap" style-hover="color:var(--accent)">Knowledge</a>
+        <a href="About.dc.html" style="color:var(--text-mid);font-size:var(--fs-sm);text-decoration:none;white-space:nowrap" style-hover="color:var(--accent)">About</a>
+      </nav>
+      <div style="display:flex;align-items:center;gap:16px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="display:flex;gap:5px">
+            <button onClick="{{ setPhosphor }}" aria-label="Phosphor theme" style="width:15px;height:15px;padding:0;border-radius:50%;cursor:pointer;border:1px solid var(--line-mid);background:linear-gradient(135deg,var(--green-300) 0 50%,var(--violet-400) 50% 100%)" style-hover="border-color:var(--paper)"></button>
+            <button onClick="{{ setUltraviolet }}" aria-label="Ultraviolet theme" style="width:15px;height:15px;padding:0;border-radius:50%;cursor:pointer;border:1px solid var(--line-mid);background:linear-gradient(135deg,var(--violet-300) 0 50%,var(--chroma-magenta) 50% 100%)" style-hover="border-color:var(--paper)"></button>
+            <button onClick="{{ setVerdant }}" aria-label="Verdant theme" style="width:15px;height:15px;padding:0;border-radius:50%;cursor:pointer;border:1px solid var(--line-mid);background:linear-gradient(135deg,var(--green-200) 0 50%,var(--green-700) 50% 100%)" style-hover="border-color:var(--paper)"></button>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:11px;letter-spacing:.16em">
+          <span style="color:var(--accent)">EN</span>
+          <span style="color:var(--text-faint)">/</span>
+          <span style="color:var(--text-faint)">DE</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="top" style="position:relative;overflow:hidden;background:var(--void)">
+    <div style="position:absolute;inset:0;background-image:var(--chroma-band);background-size:300% 100%;animation:hmc-chroma-drift 26s linear infinite;opacity:.55"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,color-mix(in oklab,var(--void) 34%,transparent) 0%,color-mix(in oklab,var(--void) 72%,transparent) 46%,var(--void) 100%)"></div>
+    <sc-if value="{{ triMosaic }}" hint-placeholder-val="{{ true }}">
+      <div aria-hidden="true" style="position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden">
+        <sc-for list="{{ triangles }}" as="t" hint-placeholder-count="0">
+          <span style="position:absolute;left:50%;top:0;margin-left:{{ t.x }};transform:translateY({{ t.y }});width:{{ t.w }};height:{{ t.h }};background:var(--void);clip-path:{{ t.clip }};animation:hmc-tile-out .5s var(--ease-out) forwards;animation-delay:{{ t.d }}"></span>
+        </sc-for>
+      </div>
+    </sc-if>
+    <sc-if value="{{ squareMosaic }}" hint-placeholder-val="{{ false }}">
+      <div aria-hidden="true" style="position:absolute;inset:0;z-index:3;pointer-events:none;display:grid;grid-template-columns:repeat(18,1fr);grid-auto-rows:1fr">
+        <sc-for list="{{ tiles }}" as="t" hint-placeholder-count="0">
+          <span style="background:var(--void);animation:hmc-tile-out .5s var(--ease-out) forwards;animation-delay:{{ t.d }}"></span>
+        </sc-for>
+      </div>
+    </sc-if>
+    <div style="position:relative;z-index:2;max-width:var(--maxw-wide);margin:0 auto;padding:var(--sp-10) var(--sp-6) var(--sp-9)">
+      <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:var(--sp-5)">
+        <span style="width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);animation:hmc-flicker 2.4s infinite"></span>
+        <span style="font-family:var(--font-mono);font-size:var(--fs-xs);font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)">Homunculus Robotics — Physical AI</span>
+      </div>
+      <h1 style="font-family:var(--font-display);font-size:var(--fs-hero);line-height:.9;letter-spacing:-.01em;color:var(--text-hi);max-width:17ch;margin:0;transition:text-shadow var(--dur) var(--ease-out)" style-hover="text-shadow:3px 0 var(--gold-400),-3px 0 var(--status-info)">The human form is one solution. <span style="color:var(--accent)">We build the others.</span></h1>
+      <p style="font-family:var(--font-serif);font-size:clamp(1.35rem,2.2vw,1.9rem);line-height:1.32;color:var(--text-mid);max-width:46ch;margin:var(--sp-6) 0 0">The bottleneck in robotics is not motors. It's access. Homunculus is a low-friction sandbox — <span style="font-style:italic;color:var(--signal)">snap parts together, hit go, and watch your invention teach itself to move.</span></p>
+      <div style="display:flex;gap:14px;margin-top:var(--sp-7);flex-wrap:wrap">
+        <a href="Design%20Challenge.dc.html#entries" style="font-family:var(--font-body);font-weight:500;color:var(--text-on-accent);background:var(--accent);padding:15px 28px;border-radius:var(--radius-sm);box-shadow:var(--glow-accent);text-decoration:none;transition:transform var(--dur) var(--ease-out)" style-hover="transform:translateY(-1px)">Browse the Design Challenge</a>
+        <a href="About.dc.html" style="font-family:var(--font-body);font-weight:500;color:var(--text-hi);border:1px solid var(--line-signal);padding:15px 28px;border-radius:var(--radius-sm);text-decoration:none;transition:all var(--dur) var(--ease-out)" style-hover="box-shadow:var(--glow-signal)">Meet the founder</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="embodiments" style="position:relative;overflow:hidden">
+    <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none">
+      <div style="position:absolute;left:-1%;top:8%;width:19%;aspect-ratio:3/2;background-image:url(assets/sketch-actuator-exploded.png);background-size:contain;background-position:center;background-repeat:no-repeat;opacity:.22"></div>
+      <div style="position:absolute;right:-3%;top:0;height:100%;aspect-ratio:1/2;background-image:url(assets/sketch-unicycle-exploded.png);background-size:contain;background-position:center;background-repeat:no-repeat;filter:invert(1) hue-rotate(180deg);opacity:.2"></div>
+      <div style="position:absolute;left:29%;bottom:2%;width:15%;aspect-ratio:3/2;background-image:url(assets/sketch-actuator-exploded.png);background-size:contain;background-position:center;background-repeat:no-repeat;opacity:.13"></div>
+    </div>
+    <div style="position:relative;z-index:1;max-width:var(--maxw-wide);margin:0 auto;padding:var(--sp-8) var(--sp-6) var(--sp-9)">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:var(--sp-6);flex-wrap:wrap;margin-bottom:var(--sp-7)">
+      <div>
+        <div style="font-family:var(--font-mono);font-size:var(--fs-xs);font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px">01 — Five ways to build a body</div>
+        <h2 style="font-family:var(--font-display);font-size:var(--fs-h2);line-height:1;color:var(--text-hi);max-width:18ch;margin:0;transition:text-shadow var(--dur) var(--ease-out)" style-hover="text-shadow:3px 0 var(--gold-400),-3px 0 var(--status-info)">Robots designed around the task, not the mirror.</h2>
+      </div>
+      <p style="margin:0;color:var(--text-mid);max-width:34ch;font-size:var(--fs-sm)">Every submission to the Design Challenge gets filed into one of five embodiment classes.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-8) var(--sp-8);max-width:96ch">
+      <sc-for list="{{ embList }}" as="e" hint-placeholder-count="3">
+        <div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--sp-4);align-items:start">
+          <span style="font-family:var(--font-mono);font-size:12px;line-height:1.6;color:var(--text-faint)">{{ e.num }}</span>
+          <div>
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:{{ e.color }}">{{ e.cls }}</div>
+            <h3 style="font-family:var(--font-serif);font-size:clamp(1.7rem,2.4vw,2.1rem);color:var(--text-hi);line-height:1.08;margin:10px 0 0">{{ e.title }}</h3>
+            <p style="color:var(--text-mid);font-size:var(--fs-body-lg);margin:12px 0 0;max-width:42ch;text-wrap:pretty">{{ e.blurb }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="margin-top:var(--sp-8)">
+      <a href="Design%20Challenge.dc.html#entries" style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);text-decoration:none" style-hover="color:var(--signal)">Browse the full catalogue →</a>
+    </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ showThesis }}" hint-placeholder-val="{{ true }}">
+  <section id="thesis" style="background:var(--surface-0);position:relative;overflow:hidden">
+    <div style="position:relative;max-width:var(--maxw-wide);margin:0 auto;padding:var(--sp-10) var(--sp-6);display:grid;grid-template-columns:1fr 1.4fr;gap:var(--sp-8);align-items:center">
+      <div style="display:flex;justify-content:center">
+        <img src="assets/logo-mark-light.png" alt="" style="width:min(28vw,320px);opacity:.92">
+      </div>
+      <div>
+        <div style="font-family:var(--font-mono);font-size:var(--fs-xs);font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:var(--sp-4)">02 — Why Homunculus exists</div>
+        <p style="margin:0;font-family:var(--font-serif);font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.28;color:var(--text-hi)">Robotics is gated. <span style="font-style:italic;color:var(--accent)">We deleted the gate.</span></p>
+        <p style="margin:var(--sp-5) 0 0;color:var(--text-mid);font-size:var(--fs-body-lg);max-width:52ch">The bottleneck is not motors. It's the software overhead, the integration cost, and the fact that every new task needs an engineer who already has a six-month waiting list.</p>
+        <a href="About.dc.html#top" style="display:inline-block;margin-top:var(--sp-5);font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);text-decoration:none" style-hover="color:var(--signal)">Read the full story on the About page →</a>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <section id="specs" style="max-width:var(--maxw-wide);margin:0 auto;padding:var(--sp-9) var(--sp-6)">
+    <div style="font-family:var(--font-mono);font-size:var(--fs-xs);font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px">03 — Where the sandbox is headed</div>
+    <h2 style="font-family:var(--font-display);font-size:var(--fs-h2);line-height:1;color:var(--text-hi);max-width:20ch;margin:0 0 var(--sp-7);transition:text-shadow var(--dur) var(--ease-out)" style-hover="text-shadow:3px 0 var(--gold-400),-3px 0 var(--status-info)">Idealized modules today. Real arms next.</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-6)">
+      <div style="border-top:1px solid var(--line-accent);padding-top:var(--sp-4)">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-faint);margin-bottom:10px">01</div>
+        <h4 style="font-family:var(--font-body);font-weight:600;color:var(--text-hi);font-size:var(--fs-h4);margin:0 0 10px">Snap-together assembly</h4>
+        <p style="margin:0;color:var(--text-mid);font-size:var(--fs-sm)">Pick parts, snap them into a body. No CAD experience required.</p>
+      </div>
+      <div style="border-top:1px solid var(--line-signal);padding-top:var(--sp-4)">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-faint);margin-bottom:10px">02</div>
+        <h4 style="font-family:var(--font-body);font-weight:600;color:var(--text-hi);font-size:var(--fs-h4);margin:0 0 10px">Simulation first</h4>
+        <p style="margin:0;color:var(--text-mid);font-size:var(--fs-sm)">Watch your invention teach itself to walk, crawl, roll or flail, in a browser tab, before any hardware is involved.</p>
+      </div>
+      <div style="border-top:1px solid var(--line-accent);padding-top:var(--sp-4)">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-faint);margin-bottom:10px">03</div>
+        <h4 style="font-family:var(--font-body);font-weight:600;color:var(--text-hi);font-size:var(--fs-h4);margin:0 0 10px">Real hardware, later</h4>
+        <p style="margin:0;color:var(--text-mid);font-size:var(--fs-sm)">Real arms and imported 3D models are next on the roadmap.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="careers" style="position:relative;overflow:hidden;background:var(--surface-0)">
+    <div style="position:absolute;inset:0;background-image:var(--chroma-band);background-size:300% 100%;animation:hmc-chroma-drift 34s linear infinite;opacity:.3"></div>
+    <div style="position:absolute;inset:0;background:radial-gradient(120% 120% at 50% 50%,transparent 0%,var(--void) 78%)"></div>
+    <div style="position:relative;max-width:var(--maxw-wide);margin:0 auto;padding:var(--sp-10) var(--sp-6);text-align:center">
+      <div style="font-family:var(--font-mono);font-size:var(--fs-xs);font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:var(--sp-4)">Now assembling the founding team</div>
+      <h2 style="font-family:var(--font-display);font-size:var(--fs-h2);line-height:.95;color:var(--text-hi);max-width:20ch;margin:0 auto var(--sp-6);transition:text-shadow var(--dur) var(--ease-out)" style-hover="text-shadow:3px 0 var(--gold-400),-3px 0 var(--status-info)">Build the bodies the future actually needs.</h2>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <a href="About.dc.html#roles" style="font-family:var(--font-body);font-weight:500;color:var(--text-on-accent);background:var(--accent);padding:15px 30px;border-radius:var(--radius-sm);box-shadow:var(--glow-accent);text-decoration:none;transition:transform var(--dur) var(--ease-out)" style-hover="transform:translateY(-1px)">See open roles</a>
+        <a href="Design%20Challenge.dc.html#entries" style="font-family:var(--font-body);font-weight:500;color:var(--signal);border:1px solid var(--line-signal);padding:15px 30px;border-radius:var(--radius-sm);text-decoration:none;transition:all var(--dur) var(--ease-out)" style-hover="box-shadow:var(--glow-signal);color:var(--text-hi)">Vote on an entry</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:var(--void)">
+    <div style="max-width:var(--maxw-wide);margin:0 auto;padding:var(--sp-6);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--sp-5)">
+      <div style="display:flex;align-items:center;gap:10px">
+        <img src="assets/logo-mark-light.png" alt="" style="height:26px">
+        <span style="font-family:var(--font-mono);font-size:12px;letter-spacing:.16em;color:var(--text-low)">HOMUNCULUS ROBOTICS · © 2026</span>
+      </div>
+      <nav style="display:flex;gap:22px;flex-wrap:wrap">
+        <a href="#top" style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-low);text-decoration:none" style-hover="color:var(--accent)">Sandbox</a>
+        <a href="Design%20Challenge.dc.html" style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-low);text-decoration:none" style-hover="color:var(--accent)">Design Challenge</a>
+        <a href="#" style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-low);text-decoration:none" style-hover="color:var(--accent)">Knowledge</a>
+        <a href="About.dc.html" style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-low);text-decoration:none" style-hover="color:var(--accent)">About</a>
+      </nav>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;embCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:3,&quot;min&quot;:2,&quot;max&quot;:5,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Embodiments&quot;},&quot;showThesis&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;mosaicIntro&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;mosaicShape&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;triangles&quot;,&quot;squares&quot;],&quot;default&quot;:&quot;triangles&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+const EMB = [
+  { num: 'Ⅰ', cls: 'Swarm', color: 'var(--signal)', title: 'Pollen', blurb: 'Forty palm-sized units that only make sense as a weather system.' },
+  { num: 'Ⅱ', cls: 'Continuum', color: 'var(--accent)', title: 'Tidepool', blurb: 'A boneless arm for the intertidal zone, built to be hit by waves.' },
+  { num: 'Ⅲ', cls: 'Symbiotic', color: 'var(--signal)', title: 'Der Mantelträger', blurb: 'A shoulder-worn third arm for people who already have two good ones.' },
+  { num: 'Ⅳ', cls: 'Ambient', color: 'var(--accent)', title: 'Nachtschicht', blurb: 'A ceiling-dwelling maintenance body that only exists between 1am and 5am.' },
+  { num: 'Ⅴ', cls: 'Terrain', color: 'var(--accent)', title: 'Sechsbein', blurb: 'A table that walks itself to the next patient and then stops being a robot.' }
+];
+
+const THEMES = { phosphor: 'Phosphor', ultraviolet: 'Ultraviolet', verdant: 'Verdant' };
+
+const rd = () => (Math.random() * 0.85 + 0.05).toFixed(2) + 's';
+
+// Equilateral mosaic: rows of 60° triangles alternating point-up / point-down,
+// side s, row height s·√3/2. Each row is offset half a side so the tiling
+// interlocks. Delays mirror about the vertical centre line.
+const SIDE = 104;
+const ROW_H = SIDE * Math.sqrt(3) / 2;
+const UP = 'polygon(50% -2%,102% 102%,-2% 102%)';
+const DOWN = 'polygon(-2% -2%,102% -2%,50% 102%)';
+const TRI_COLS = 46;   // half-steps across — overshoots wide viewports
+const TRI_ROWS = 10;
+const TRIANGLES = [];
+{
+  const delays = {};
+  for (let row = 0; row < TRI_ROWS; row++) {
+    for (let i = 0; i < TRI_COLS; i++) {
+      const m = i < TRI_COLS / 2 ? i : TRI_COLS - 1 - i;   // mirrored key
+      const k = row + ':' + m;
+      if (!delays[k]) delays[k] = rd();
+      TRIANGLES.push({
+        x: ((i - TRI_COLS / 2) * SIDE / 2).toFixed(1) + 'px',
+        y: (row * ROW_H).toFixed(1) + 'px',
+        w: SIDE + 'px',
+        h: ROW_H.toFixed(1) + 'px',
+        clip: (i + row) % 2 === 0 ? UP : DOWN,
+        d: delays[k]
+      });
+    }
+  }
+}
+
+// square variant kept for the Tweaks toggle
+const COLS = 18;
+const TILES = Array.from({ length: COLS * 10 }, (_, i) => {
+  const col = i % COLS, row = Math.floor(i / COLS);
+  const m = col < COLS / 2 ? col : COLS - 1 - col;
+  return { key: row + ':' + m };
+});
+{
+  const delays = {};
+  for (const t of TILES) {
+    if (!delays[t.key]) delays[t.key] = rd();
+    t.d = delays[t.key];
+  }
+}
+
+class Component extends DCLogic {
+  state = { theme: 'phosphor' };
+
+  componentDidMount() {
+    try {
+      const saved = localStorage.getItem('hmc-theme');
+      if (saved && THEMES[saved]) this.setState({ theme: saved });
+    } catch (e) {}
+  }
+
+  pick(theme) {
+    this.setState({ theme });
+    try { localStorage.setItem('hmc-theme', theme); } catch (e) {}
+  }
+
+  renderVals() {
+    const n = Math.min(5, Math.max(2, this.props.embCount ?? 3));
+    const theme = this.state.theme;
+    return {
+      embList: EMB.slice(0, n),
+      showThesis: this.props.showThesis ?? true,
+      tiles: (this.props.mosaicIntro ?? true) ? TILES : [],
+      triangles: (this.props.mosaicIntro ?? true) ? TRIANGLES : [],
+      triMosaic: (this.props.mosaicShape ?? 'triangles') === 'triangles',
+      squareMosaic: (this.props.mosaicShape ?? 'triangles') === 'squares',
+      theme,
+      themeLabel: THEMES[theme],
+      setPhosphor: () => this.pick('phosphor'),
+      setUltraviolet: () => this.pick('ultraviolet'),
+      setVerdant: () => this.pick('verdant')
+    };
+  }
+}
+
+</script>
+</body>
+</html>

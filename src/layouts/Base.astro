@@ -1,0 +1,83 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import '../styles/global.css';
+import { localePath } from '../lib/site';
+// The two faces the hero paints with. Without the preload the browser only
+// discovers them after the CSS parses, swaps mid-paint, and reflows the hero
+// (measured: CLS 0.26 → see the 0.3 FINDINGS).
+import iceland from '../../design-system/assets/fonts/iceland-400.woff2?url';
+import body400 from '../../design-system/assets/fonts/chakra-petch-400.woff2?url';
+import body400i from '../../design-system/assets/fonts/chakra-petch-400-italic.woff2?url';
+import body500 from '../../design-system/assets/fonts/chakra-petch-500.woff2?url';
+
+interface Props {
+  title: string;
+  description: string;
+  /** og:image, relative to the site root. */
+  image?: string;
+  /** Keep the page out of search results (the design-system parity route). */
+  noindex?: boolean;
+}
+
+const { title, description, image, noindex = false } = Astro.props;
+const lang = Astro.currentLocale ?? 'en';
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+const path = localePath(Astro.url.pathname);
+---
+<!doctype html>
+<html lang={lang} data-hmc-theme="phosphor">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href={canonical} />
+    {[iceland, body400, body400i, body500].map((href) => (
+      <link rel="preload" as="font" type="font/woff2" href={href} crossorigin />
+    ))}
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {/* Both locales are the same page in two languages — say so, once, here. */}
+    {!noindex && ['en', 'de', 'x-default'].map((l) => (
+      <link
+        rel="alternate"
+        hreflang={l}
+        href={new URL(getRelativeLocaleUrl(l === 'de' ? 'de' : 'en', path), canonical).href}
+      />
+    ))}
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    {image && <meta property="og:image" content={new URL(image, canonical)} />}
+    <meta property="og:locale" content={lang === 'de' ? 'de_DE' : 'en_US'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    {/* D3: blocking + inline. Any deferred script paints the default theme first. */}
+    <script is:inline>
+      try {
+        var t = localStorage.getItem('hmc-theme');
+        document.documentElement.dataset.hmcTheme =
+          t === 'ultraviolet' || t === 'verdant' ? t : 'phosphor';
+      } catch (e) {
+        document.documentElement.dataset.hmcTheme = 'phosphor';
+      }
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  /* The prototype sets these on its own wrapper div; the site has a real body. */
+  body {
+    background: var(--void);
+    color: var(--text-hi);
+    font-family: var(--font-body);
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
+  }
+  a { color: var(--accent); }
+  a:hover { color: var(--signal); }
+</style>

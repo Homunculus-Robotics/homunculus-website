@@ -1,0 +1,43 @@
+<!-- @dsCard group="Components" viewport="760x460" name="Brand — GlitchText / StatReadout / ThemeSwitcher / PortraitFrame / MosaicLoader" subtitle="Signature brand primitives" -->
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+</head>
+<body style="margin:0;background:var(--void);padding:26px;background-image:var(--field-glow)">
+<div id="root"></div>
+<script type="text/babel">
+const NS = window.HumunculusRobotics || window.Humunculus || Object.values(window).find(v => v && v.GlitchText && v.StatReadout) || {};
+const { GlitchText, StatReadout, ThemeSwitcher, PortraitFrame, MosaicLoader } = NS;
+
+function Demo(){
+  const [theme, setTheme] = React.useState('phosphor');
+  return (
+    <div style={{display:'flex',flexDirection:'column',gap:26}}>
+      <GlitchText as="div" always style={{fontSize:60,lineHeight:.9}}>BEYOND HUMANOID</GlitchText>
+      <div style={{display:'flex',gap:44}}>
+        <StatReadout value="24" unit="DOF" label="Degrees of freedom" />
+        <StatReadout value="0.8" unit="ms" label="Control loop" tone="gold" />
+        <StatReadout value="∞" label="Form factors" tone="plain" />
+      </div>
+      <div data-hmc-theme={theme} style={{display:'flex',alignItems:'center',gap:16}}>
+        <ThemeSwitcher value={theme} onChange={setTheme} />
+        <span style={{fontFamily:'var(--font-mono)',fontSize:11,letterSpacing:'.16em',textTransform:'uppercase',color:'var(--accent)'}}>{theme}</span>
+      </div>
+      <div style={{display:'flex',gap:20}}>
+        <PortraitFrame src="../../assets/founder-marcus-roeper.jpg" name="Marcus Röper" role="Founder" treatment="plain" style={{width:150}} />
+        <PortraitFrame src="../../assets/founder-marcus-roeper.jpg" name="Marcus Röper" role="Founder" treatment="twin" style={{width:150}} />
+        <PortraitFrame src="../../assets/founder-marcus-roeper.jpg" name="Marcus Röper" role="Founder" treatment="sim-viewport" style={{width:150}} />
+      </div>
+      <div style={{position:'relative',height:120,border:'1px solid var(--border)',borderRadius:'var(--radius-md)',overflow:'hidden',background:'var(--surface-1)',display:'flex',alignItems:'center',justifyContent:'center'}}>
+        <span style={{fontFamily:'var(--font-mono)',fontSize:11,letterSpacing:'.2em',textTransform:'uppercase',color:'var(--text-low)'}}>MosaicLoader — reload card to replay</span>
+        <MosaicLoader side={40} rows={4} cols={20} color="var(--surface-1)" />
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script>
+</body></html>

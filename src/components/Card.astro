@@ -1,0 +1,49 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'div'> {
+  /** Blueprint grid behind the surface. */
+  grid?: boolean;
+  glow?: boolean;
+  corners?: boolean;
+}
+
+const { grid = false, glow = false, corners = true, class: className, ...rest } = Astro.props;
+---
+<div
+  class:list={['hmc-card', grid && 'grid', glow && 'glow', className]}
+  {...rest}>
+  {corners && (
+    <>
+      <span class="tick tl" aria-hidden="true" />
+      <span class="tick tr" aria-hidden="true" />
+      <span class="tick bl" aria-hidden="true" />
+      <span class="tick br" aria-hidden="true" />
+    </>
+  )}
+  <slot />
+</div>
+
+<style>
+  .hmc-card {
+    position: relative;
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--sp-6);
+    box-shadow: var(--shadow-1);
+  }
+  .hmc-card.grid { background: var(--blueprint-grid), var(--surface-1); }
+  .hmc-card.glow { box-shadow: var(--glow-accent); }
+
+  .tick {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border: 0 solid var(--line-accent);
+  }
+  .tl { top: 8px;    left: 8px;  border-top-width: 1px;    border-left-width: 1px; }
+  .tr { top: 8px;    right: 8px; border-top-width: 1px;    border-right-width: 1px; }
+  .bl { bottom: 8px; left: 8px;  border-bottom-width: 1px; border-left-width: 1px; }
+  .br { bottom: 8px; right: 8px; border-bottom-width: 1px; border-right-width: 1px; }
+</style>

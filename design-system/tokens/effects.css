@@ -1,0 +1,79 @@
+/* ── Humunculus Robotics — Effects & motifs ─────────────────────
+   The signature look: blueprint linework, phosphor glow, scanlines,
+   and a restrained glitch. Shadows are low + tinted, never soft gray
+   drop-shadows. Depth reads as light emission, not elevation.
+------------------------------------------------------------------ */
+:root {
+  /* Elevation — tinted, tight */
+  --shadow-1: 0 1px 0 var(--line-soft), 0 8px 24px -12px rgba(0,0,0,0.8);
+  --shadow-2: 0 1px 0 var(--line-soft), 0 24px 48px -20px rgba(0,0,0,0.85);
+  --shadow-inset: inset 0 1px 0 var(--line-soft);
+
+  /* Blueprint grid background (drop onto any dark surface) */
+  --blueprint-grid:
+    linear-gradient(var(--line-soft) 1px, transparent 1px) 0 0 / 32px 32px,
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px) 0 0 / 32px 32px;
+
+  /* Scanline overlay */
+  --scanlines: repeating-linear-gradient(
+    to bottom,
+    transparent 0 2px,
+    rgba(0,0,0,0.22) 2px 3px);
+
+  /* Drifting spectrum band — the signature hero motion.
+     First and last stop match so background-position loops seamlessly. */
+  --chroma-band: linear-gradient(90deg,
+    var(--violet-950) 0%,
+    var(--violet-700) 9%,
+    var(--chroma-magenta) 20%,
+    var(--violet-300) 30%,
+    var(--green-300) 44%,
+    var(--chroma-cyan) 56%,
+    var(--violet-400) 70%,
+    var(--violet-800) 85%,
+    var(--violet-950) 100%);
+
+  /* Radial phosphor vignette for hero surfaces */
+  --field-glow: radial-gradient(120% 90% at 50% 0%,
+    color-mix(in oklab, var(--green-800) 55%, transparent) 0%,
+    transparent 60%);
+
+  --focus-ring: 0 0 0 2px var(--void), 0 0 0 4px var(--green-300);
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-snap: cubic-bezier(0.5, 0, 0, 1);
+  --dur-fast: 120ms;
+  --dur: 220ms;
+  --dur-slow: 480ms;
+}
+
+/* Glitch keyframes — used sparingly on display type / hover */
+@keyframes hmc-glitch {
+  0%, 92%, 100% { transform: translate(0,0); clip-path: none; }
+  93% { transform: translate(-2px, 1px); }
+  95% { transform: translate(2px, -1px); }
+  97% { transform: translate(-1px, 0); }
+}
+@keyframes hmc-flicker {
+  0%, 100% { opacity: 1; }
+  48% { opacity: 1; }
+  50% { opacity: 0.72; }
+  52% { opacity: 1; }
+}
+@keyframes hmc-scan {
+  from { background-position-y: 0; }
+  to   { background-position-y: 100%; }
+}
+/* Spectrum band drift */
+@keyframes hmc-chroma-drift {
+  from { background-position: 0% 50%; }
+  to   { background-position: -200% 50%; }
+}
+/* Mosaic tile dissolve — random per-tile delay reveals what is underneath */
+@keyframes hmc-tile-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+@keyframes hmc-pulse {
+  0%, 100% { box-shadow: var(--glow-green); }
+  50% { box-shadow: 0 0 8px color-mix(in oklab, var(--green-300) 30%, transparent); }
+}

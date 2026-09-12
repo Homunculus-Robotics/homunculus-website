@@ -1,0 +1,112 @@
+/* ── Humunculus Robotics — Color System ─────────────────────────
+   Dark-first. Brand seeds: green #006818, gold #FCC454.
+   The deep brand green is too dark to read on near-black, so an
+   OKLCH-lifted "phosphor" ramp carries interactive + accent use.
+   Neutrals are warm-green-tinted, never pure gray — the world of
+   Humunculus is alive, not clinical.
+------------------------------------------------------------------ */
+:root {
+  /* ── Brand seeds (exact values from brand) ── */
+  --hmc-green: #006818;
+  --hmc-gold:  #fcc454;
+
+  /* ── Green ramp — phosphor / bio-luminous ── */
+  --green-950: #021a08;
+  --green-900: #012c0b;
+  --green-800: #004a12;
+  --green-700: #005a15;
+  --green-600: #006818; /* brand seed */
+  --green-500: #0a8a2b;
+  --green-400: #17a83c;
+  --green-300: #2fbf5e; /* primary interactive on dark */
+  --green-200: #6ee39a;
+  --green-100: #a9f2c4;
+  --green-050: #dcfbe7;
+
+  /* ── Gold / amber ramp — warm signal ── */
+  --gold-700: #8a5e14;
+  --gold-600: #b9861f;
+  --gold-500: #d9a233;
+  --gold-400: #fcc454; /* brand seed */
+  --gold-300: #ffd77e;
+  --gold-200: #ffe7ac;
+  --gold-100: #fff3d4;
+
+  /* ── Violet ramp — cyberpunk / ultraviolet signal ── */
+  --violet-950: #0b0416;
+  --violet-900: #140727;
+  --violet-800: #1e0a3d;
+  --violet-700: #2e0f5e;
+  --violet-600: #44138f;
+  --violet-500: #6a1fd0;
+  --violet-400: #8b3cf7;
+  --violet-300: #a866ff; /* primary violet on dark */
+  --violet-200: #c79aff;
+  --violet-100: #e3ccff;
+  --violet-050: #f4ebff;
+
+  /* Chroma poles — only for the drifting spectrum band */
+  --chroma-magenta: #f0197f;
+  --chroma-cyan:    #22d3ee;
+
+  /* ── Warm near-black surfaces (green undertone) ── */
+  --void:      #050705;
+  --surface-0: #090c09;
+  --surface-1: #0f130e;
+  --surface-2: #161b14;
+  --surface-3: #1f251b;
+  --surface-4: #2a3125;
+
+  /* ── Warm off-white text ── */
+  --paper:     #eef3ea;
+  --text-hi:   #eaf1e6;
+  --text-mid:  #aab5a4;
+  --text-low:  #79856f;
+  --text-faint:#4c5645;
+
+  /* ── Hairlines / borders (blueprint linework) ── */
+  --line-soft:   color-mix(in oklab, var(--paper) 8%, transparent);
+  --line-mid:    color-mix(in oklab, var(--paper) 16%, transparent);
+  --line-strong: color-mix(in oklab, var(--paper) 30%, transparent);
+  --line-green:  color-mix(in oklab, var(--green-300) 40%, transparent);
+  --line-gold:   color-mix(in oklab, var(--gold-400) 45%, transparent);
+  --line-violet: color-mix(in oklab, var(--violet-300) 42%, transparent);
+
+  /* ── Semantic status ── */
+  --status-live:  var(--green-300);
+  --status-warn:  var(--gold-400);
+  --status-error: #ff5a4d;
+  --status-info:  #52b9ff;
+
+  /* ── Semantic aliases (use these in product code) ── */
+  --bg-page:        var(--void);
+  --bg-surface:     var(--surface-1);
+  --bg-surface-alt: var(--surface-2);
+  --bg-raised:      var(--surface-3);
+
+  --text-primary:   var(--text-hi);
+  --text-secondary: var(--text-mid);
+  --text-tertiary:  var(--text-low);
+  --text-on-accent: #041007;
+
+  --accent:         var(--green-300);
+  --accent-strong:  var(--green-600);
+  --accent-quiet:   var(--green-900);
+  --signal:         var(--violet-300);
+  --signal-quiet:   var(--violet-700);
+
+  /* themeable line + glow aliases — use these, not the ramp names */
+  --line-accent:    var(--line-green);
+  --line-signal:    var(--line-violet);
+
+  --border:         var(--line-mid);
+  --border-quiet:   var(--line-soft);
+  --border-loud:    var(--line-strong);
+
+  /* glows */
+  --glow-green:  0 0 24px color-mix(in oklab, var(--green-300) 55%, transparent);
+  --glow-gold:   0 0 24px color-mix(in oklab, var(--gold-400) 45%, transparent);
+  --glow-violet: 0 0 28px color-mix(in oklab, var(--violet-400) 60%, transparent);
+  --glow-accent: var(--glow-green);
+  --glow-signal: var(--glow-violet);
+}

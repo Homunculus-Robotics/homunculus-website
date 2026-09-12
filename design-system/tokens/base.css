@@ -1,0 +1,38 @@
+/* ── Humunculus Robotics — Base resets & primitives ─────────────
+   Opinionated global defaults. Dark-first. */
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,h2,h3,h4 { margin: 0; font-weight: 400; line-height: var(--lh-heading); }
+
+/* Eyebrow / kicker label — the recurring "instrument readout" motif */
+.hmc-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+a { color: var(--green-300); text-decoration: none; transition: color var(--dur) var(--ease-out); }
+a:hover { color: var(--gold-400); }
+
+::selection { background: var(--green-600); color: var(--paper); }
+
+:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: var(--radius-sm); }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: var(--surface-4); border-radius: 999px; }
+::-webkit-scrollbar-track { background: var(--surface-0); }

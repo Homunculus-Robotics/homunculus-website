@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Button from '../components/Button.astro';
+import GlitchText from '../components/GlitchText.astro';
+
+// Bilingual on one page: GitHub Pages serves this file for every unbuilt path,
+// including /de/*, and a static 404 cannot know which language was wanted.
+// It is also the page every nav link points at until 2.1 and 4.2 ship.
+---
+<Base
+  noindex
+  title="Not built yet — Homunculus Robotics"
+  description="This page does not exist yet. The Design Challenge, Knowledge and About pages are still being built.">
+  <Nav />
+  <main class="wrap">
+    <div class="hmc-label">404 — nothing here yet</div>
+    <GlitchText as="h1" class="h1">Not built yet.<br />Noch nicht gebaut.</GlitchText>
+    <p class="body">
+      The Design Challenge, Knowledge and About pages are still under
+      construction. The rest of the site is one click away.
+    </p>
+    <p class="body de" lang="de">
+      Die Design Challenge sowie die Seiten Wissen und Über uns sind noch im
+      Bau. Der Rest der Seite ist einen Klick entfernt.
+    </p>
+    <div class="actions">
+      <Button href="/" size="lg">Home</Button>
+      <Button href="/de/" size="lg" variant="outline">Startseite</Button>
+    </div>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .wrap { max-width: var(--maxw-wide); margin: 0 auto; padding: var(--sp-10) var(--sp-6); }
+  .hmc-label { margin-bottom: var(--sp-4); }
+  .h1 { font-size: var(--fs-h2); line-height: 1; letter-spacing: var(--tracking-tight); }
+  .body { margin: var(--sp-5) 0 0; color: var(--text-mid); font-size: var(--fs-body-lg); max-width: 52ch; }
+  .body.de { color: var(--text-low); }
+  .actions { display: flex; gap: 14px; margin-top: var(--sp-7); flex-wrap: wrap; }
+  @media (max-width: 760px) {
+    .wrap { padding-left: var(--sp-4); padding-right: var(--sp-4); }
+  }
+</style>

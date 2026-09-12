@@ -1,0 +1,57 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'input'> {
+  label?: string;
+  hint?: string;
+  /** Mono is the default — the brand's fields read like instrument entry. */
+  mono?: boolean;
+}
+
+const { label, hint, mono = true, id, class: className, ...rest } = Astro.props;
+const inputId = id ?? `hmc-${Math.random().toString(36).slice(2, 8)}`;
+const hintId = hint ? `${inputId}-hint` : undefined;
+---
+<div class="hmc-field">
+  {label && <label for={inputId}>{label}</label>}
+  <input
+    id={inputId}
+    class:list={[mono && 'mono', className]}
+    aria-describedby={hintId}
+    {...rest}
+  />
+  {hint && <span class="hint" id={hintId}>{hint}</span>}
+</div>
+
+<style>
+  .hmc-field { display: flex; flex-direction: column; gap: 8px; }
+
+  label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-low);
+    transition: color var(--dur) var(--ease-out);
+  }
+  /* The .jsx tracked focus in React state purely to recolour the label.
+     :has does it with no island and no hydration. */
+  .hmc-field:has(input:focus) label { color: var(--accent); }
+
+  input {
+    width: 100%;
+    padding: 12px 14px;
+    background: var(--surface-0);
+    color: var(--text-hi);
+    font-family: var(--font-body);
+    font-size: 15px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    outline: none;
+    transition: all var(--dur) var(--ease-out);
+  }
+  input.mono { font-family: var(--font-mono); }
+  input:focus { border-color: var(--accent); box-shadow: var(--glow-accent); }
+
+  .hint { font-size: 12px; color: var(--text-low); font-family: var(--font-body); }
+</style>

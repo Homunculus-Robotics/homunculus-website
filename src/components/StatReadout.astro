@@ -1,0 +1,49 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'div'> {
+  value: string | number;
+  unit?: string;
+  label: string;
+  tone?: 'green' | 'gold' | 'plain';
+  align?: 'left' | 'center';
+}
+
+const { value, unit, label, tone = 'green', align = 'left', class: className, ...rest } = Astro.props;
+---
+<div class:list={['hmc-stat', `t-${tone}`, `a-${align}`, className]} {...rest}>
+  <div class="row">
+    <span class="value">{value}</span>
+    {unit && <span class="unit">{unit}</span>}
+  </div>
+  <div class="label">{label}</div>
+</div>
+
+<style>
+  .a-left   { text-align: left; }
+  .a-center { text-align: center; }
+
+  .row { display: flex; align-items: baseline; gap: 4px; }
+  .a-center .row { justify-content: center; }
+
+  .value {
+    font-family: var(--font-display);
+    font-size: var(--fs-h1);
+    line-height: 0.9;
+    color: var(--stat-fg);
+  }
+  .t-green { --stat-fg: var(--accent); }
+  .t-gold  { --stat-fg: var(--gold-400); }
+  .t-plain { --stat-fg: var(--text-hi); }
+
+  .unit { font-family: var(--font-mono); font-size: 18px; color: var(--text-mid); }
+
+  .label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-low);
+    margin-top: 6px;
+  }
+</style>

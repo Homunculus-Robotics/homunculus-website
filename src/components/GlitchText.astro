@@ -1,0 +1,41 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'span'> {
+  as?: 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'div';
+  font?: 'display' | 'glitch' | 'serif';
+  /** Glitch continuously instead of only on hover. */
+  always?: boolean;
+}
+
+const { as: Tag = 'span', font = 'display', always = false, class: className, ...rest } = Astro.props;
+---
+<Tag class:list={['hmc-glitch', `f-${font}`, always && 'always', className]} {...rest}><slot /></Tag>
+
+<style>
+  .hmc-glitch {
+    position: relative;
+    color: var(--text-hi);
+    transition: text-shadow var(--dur) var(--ease-out);
+  }
+  /* Only the span form is inline — on a heading, inline-block would add the
+     parent's line-box leading underneath and push everything after it down. */
+  span.hmc-glitch { display: inline-block; }
+
+  .f-display { font-family: var(--font-display); }
+  .f-glitch  { font-family: var(--font-glitch); }
+  .f-serif   { font-family: var(--font-serif); }
+
+  .hmc-glitch:hover,
+  .hmc-glitch.always {
+    text-shadow: 2px 0 var(--gold-400), -2px 0 var(--status-info);
+    animation: hmc-glitch 1.6s steps(2) infinite;
+  }
+
+  /* Never glitch for readers who asked for stillness — the shadow stays,
+     the displacement does not. */
+  @media (prefers-reduced-motion: reduce) {
+    .hmc-glitch:hover,
+    .hmc-glitch.always { animation: none; }
+  }
+</style>

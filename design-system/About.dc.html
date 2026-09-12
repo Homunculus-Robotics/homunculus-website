@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="styles.css">
+<style>
+  body { margin: 0; background: var(--void); }
+  @keyframes hmc-flicker-2 { 0%,100%{opacity:1} 48%{opacity:1} 50%{opacity:.6} 52%{opacity:1} }
+  @keyframes hmc-twin-clip {
+    0%,38% { clip-path: polygon(52% 0,100% 0,100% 100%,52% 100%) }
+    56%    { clip-path: polygon(84% 0,100% 0,100% 100%,84% 100%) }
+    74%    { clip-path: polygon(21% 0,100% 0,100% 100%,21% 100%) }
+    92%,100%{ clip-path: polygon(52% 0,100% 0,100% 100%,52% 100%) }
+  }
+  @keyframes hmc-twin-line {
+    0%,38% { left: 52% }
+    56%    { left: 84% }
+    74%    { left: 21% }
+    92%,100%{ left: 52% }
+  }
+</style>
+</helmet>
+<div ref="{{ rootRef }}" data-hmc-theme="{{ theme }}" style="background:var(--void);background-image:repeating-linear-gradient(90deg,transparent 0 239px,color-mix(in oklab,var(--paper) 6%,transparent) 239px 240px);color:var(--text-hi);font-family:var(--font-body);font-size:var(--fs-body);line-height:var(--lh-body)">
+
+  <header style="position:sticky;top:0;z-index:20;backdrop-filter:blur(12px);background:color-mix(in oklab,var(--void) 78%,transparent);border-bottom:1px solid var(--border-quiet)">
+    <div style="max-width:var(--maxw-wide);margin:0 auto;padding:0 var(--sp-6);display:flex;align-items:center;justify-content:space-between;height:68px;gap:var(--sp-6)">
+      <a href="Home.dc.html" style="display:flex;align-items:center;gap:12px;text-decoration:none">
+        <img src="assets/logo-mark-light.png" alt="" style="height:34px">
+        <span style="font-family:var(--font-display);font-size:22px;letter-spacing:.02em;color:var(--text-hi)">HOMUNCULUS</span>
+      </a>
+      <nav style="display:flex;gap:30px;align-items:center">
+        <a href="Home.dc.html" style="color:var(--text-mid);font-size:var(--fs-sm);text-decoration:none;white-space:nowrap" style-hover="color:var(--accent)">Sandbox</a>
+        <a href="Design%20Challenge.dc.html" style="color:var(--text-mid);font-size:var(--fs-sm);text-decoration:none;white-space:nowrap" style-hover="color:var(--accent)">Design Challenge</a>
+        <a href="#" style="color:var(--text-mid);font-size:var(--fs-sm);text-decoration:none;white-space:nowrap" style-hover="color:var(--accent)">Knowledge</a>
+        <a href="#top" style="color:var(--text-hi);font-size:var(--fs-sm);text-decoration:none;white-space:nowrap;border-bottom:1px solid var(--line-accent);padding-bottom:2px">About</a>
+      </nav>
+      <div style="display:flex;align-items:center;gap:16px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="display:flex;gap:5px">
+            <button onClick="{{ setPhosphor }}" aria-label="Phosphor theme" style="width:15px;height:15px;padding:0;border-radius:50%;cursor:pointer;border:1px solid var(--line-mid);background:linear-gradient(135deg,var(--green-300) 0 50%,var(--violet-400) 50% 100%)" style-hover="border-color:var(--paper)"></button>
+            <button onClick="{{ setUltraviolet }}" aria-label="Ultraviolet theme" style="width:15px;height:15px;padding:0;border-radius:50%;cursor:pointer;border:1px solid var(--line-mid);background:linear-gradient(135deg,var(--violet-300) 0 50%,var(--chroma-magenta) 50% 100%)" style-hover="border-color:var(--paper)"></button>
+            <button onClick="{{ setVerdant }}" aria-label="Verdant theme" style="width:15px;height:15px;padding:0;border-radius:50%;cursor:pointer;border:1px solid var(--line-mid);background:linear-gradient(135deg,var(--green-200) 0 50%,var(--green-700) 50% 100%)" style-hover="border-color:var(--paper)"></button>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:11px;letter-spacing:.16em">
+          <span style="color:var(--accent)">EN</span>
+          <span style="color:var(--text-faint)">/</span>
+          <span title="German version pending" style="color:var(--text-faint)">DE</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="top" style="position:relative;overflow:hidden;background-image:var(--field-glow)">
+    <div aria-hidden="true" style="position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden">
+      <sc-for list="{{ triangles }}" as="t" hint-placeholder-count="0">
+        <span style="position:absolute;left:50%;top:0;margin-left:{{ t.x }};transform:translateY({{ t.y }});width:{{ t.w }};height:{{ t.h }};background:var(--void);clip-path:{{ t.clip }};animation:hmc-tile-out .5s var(--ease-out) forwards;animation-delay:{{ t.d }}"></span>
+      </sc-for>
+    </div>
+    <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none">
+      <div data-sketch=".28" style="position:absolute;left:-1%;top:11%;width:19%;aspect-ratio:3/2;background-color:color-mix(in oklab,var(--paper) 3%,transparent);border:1px solid var(--border-quiet);background-image:url(assets/sketch-actuator-exploded.png);background-size:contain;background-position:center;background-repeat:no-repeat;opacity:.28"></div>
+      <div data-sketch=".15" style="position:absolute;left:22%;bottom:3%;width:13%;aspect-ratio:3/2;background-image:url(assets/sketch-actuator-exploded.png);background-size:contain;background-position:center;background-repeat:no-repeat;opacity:.15"></div>
+      <div data-sketch=".26" style="position:absolute;right:-3%;top:0;height:100%;aspect-ratio:1/2;background-image:url(assets/sketch-unicycle-exploded.png);background-size:contain;background-position:center;background-repeat:no-repeat;filter:invert(1) hue-rotate(180deg);opacity:.26"></div>
+    </div>
+    <div style="position:relative;z-index:1;max-width:var(--maxw-wide);margin:0 auto;padding:var(--sp-10) var(--sp-6) var(--sp-9);display:grid;grid-template-columns:1.35fr .65fr;gap:var(--sp-8);align-items:center">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:var(--sp-5)">
+          <span style="width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);animation:hmc-flicker-2 2.4s infinite"></span>
+          <span style="font-family:var(--font-mono);font-size:var(--fs-xs);font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)">About — Founder &amp; partners</span>
+        </div>
+        <h1 style="font-family:var(--font-display);font-size:var(--fs-hero);line-height:.9;letter-spacing:-.01em;color:var(--text-hi);max-width:15ch;transition:text-shadow var(--dur) var(--ease-out)" style-hover="text-shadow:3px 0 var(--gold-400),-3px 0 var(--status-info)">I make it possible to invent a robot <span style="color:var(--accent)">before lunch.</span></h1>
+        <p style="font-family:var(--font-serif);font-size:clamp(1.35rem,2.2vw,1.9rem);line-height:1.32;color:var(--text-mid);max-width:40ch;margin:var(--sp-6) 0 0">I'm Marcus Röper. I build machines that learn. Award-winning AI engineer, ex-Head of AI R&amp;D, hackathon-winning roboticist — and now the person behind Homunculus Robotics, where <span style="font-style:italic;color:var(--violet-200)">inventing a robot should feel like snapping bricks together, not writing a PhD thesis.</span></p>
+      </div>
+      <figure style="margin:0;position:relative">
+        <div style="position:relative;border:1px solid var(--line-accent);border-radius:var(--radius-md);overflow:hidden;background:var(--surface-1)">
+          <img src="assets/founder-marcus-roeper.jpg" alt="Marcus Röper" style="display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 22%;filter:saturate(.8) contrast(1.04)">
+          <div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;pointer-events:none;animation:hmc-twin-clip 14s var(--ease-in-out,cubic-bezier(.65,0,.35,1)) infinite;clip-path:polygon(52% 0,100% 0,100% 100%,52% 100%)">
+            <img src="assets/founder-marcus-roeper.jpg" alt="" style="display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 22%;filter:grayscale(1) contrast(1.6) brightness(.8)">
+            <div style="position:absolute;inset:0;background-image:linear-gradient(color-mix(in oklab,var(--signal) 26%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in oklab,var(--signal) 26%,transparent) 1px,transparent 1px);background-size:18px 18px;mix-blend-mode:screen"></div>
+          </div>
+          <div aria-hidden="true" style="position:absolute;top:0;bottom:0;left:52%;width:1px;background:var(--signal);box-shadow:0 0 12px color-mix(in oklab,var(--signal) 60%,transparent);pointer-events:none;animation:hmc-twin-line 14s var(--ease-in-out,cubic-bezier(.65,0,.35,1)) infinite"></div>
+          <div style="position:absolute;left:14px;top:14px;font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-low)">real</div>
+          <div style="position:absolute;right:14px;top:14px;font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--signal)">sim</div>
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 58%,color-mix(in oklab,var(--void) 86%,transparent) 100%);pointer-events:none"></div>
+          <div style="position:absolute;left:14px;bottom:14px;right:14px;display:flex;justify-content:space-between;align-items:flex-end;gap:8px">
+            <span style="font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-hi)">Marcus Röper</span>
+            <span style="font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)">Founder</span>
+          </div>
+        </div>
+        <span style="position:absolute;top:-1px;left:-1px;width:14px;height:14px;border-top:1px solid var(--signal);border-left:1px solid var(--signal)"></span>
+        <span style="position:absolute;bottom:-1px;right:-1px;width:14px;height:14px;border-bottom:1px solid var(--signal);border-right:1px solid var(--signal)"></span>
+      </figure>
+    </div>
+  </section>
+
+  <section data-fact="1" style="background:var(--surface-1)">
+    <div style="max-width:var(--maxw-wide);margin:0 auto;padding:var(--sp-6);display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-6)">
+      <div>
+        <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-low);margin-bottom:10px">Based</div>
+        <div style="font-family:var(--font-display);font-size:1.7rem;line-height:1.05;color:var(--text-hi)">Cologne / Bonn</div>
+      </div>
+      <div>
+        <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-low);margin-bottom:10px">Education</div>
+        <div style="font-family:var(--font-display);font-size:1.7rem;line-height:1.05;color:var(--text-hi)">M.Sc. CS, Uni Bonn</div>
+      </div>
+      <div>
+        <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-low);margin-bottom:10px">Award</div>
+        <div style="font-family:var(--font-display);font-size:1.7rem;line-height:1.05;color:var(--signal)">German AI Innovation Prize</div>
+      </div>
+      <div>
+        <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-low);margin-bottom:10px">Hackathon</div>
+        <div style="font-family:var(--font-display);font-size:1.7rem;line-height:1.05;color:var(--accent)">1st overall, Zurich</div>
+      </div>
+    </div>
+  </section>
+
+  <section data-bio="full" style="max-width:var(--maxw-wide);margin:0 auto;padding:var(--sp-9) var(--sp-6)">
+    <div style="display:grid;grid-template-columns:.8fr 1.2fr;gap:var(--sp-8);align-items:start">
+      <div>
+        <div style="font-family:var(--font-mono);font-size:var(--fs-xs);font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px">01 — Where I come from</div>
+        <h2 style="font-family:var(--font-display);font-size:var(--fs-h2);line-height:1;color:var(--text-hi);max-width:16ch;transition:text-shadow var(--dur) var(--ease-out)" style-hover="text-shadow:3px 0 var(--gold-400),-3px 0 var(--status-info)">The moment a model has to survive contact with physics.</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--sp-5);max-width:66ch">
+        <p style="margin:0;color:var(--text-mid);font-size:var(--fs-body-lg)">I studied Computer Science at the <strong style="color:var(--text-hi);font-weight:600">University of Bonn</strong> (Excellence University) — Bachelor and Master, with the Master specialising in AI Ethics, NLP, Deep Learning and Quantum Computing. My bachelor thesis, <em style="font-family:var(--font-serif);color:var(--text-hi)">"Complex Time Series Forecasting in Public Flight Operations"</em>, was written at <strong style="color:var(--text-hi);font-weight:600">Fraunhofer IAIS</strong> inside the EU Horizon 2020 project <em style="font-family:var(--font-serif);color:var(--text-hi)">DatAcron</em>, predicting the behaviour of physical systems from messy multimodal telemetry.</p>
+        <p style="margin:0;color:var(--text-mid);font-size:var(--fs-body-lg)">That thesis set the pattern for everything since: I'm interested in the moment where a model stops being a benchmark number and has to survive contact with physics.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--surface-0)">
+    <div style="max-width:var(--maxw-wide);margin:0 auto;padding:var(--sp-9) var(--sp-6)">
+      <div style="font-family:var(--font-mono);font-size:var(--fs-xs);font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px">02 — What I've built</div>
+      <h2 style="font-family:var(--font-display);font-size:var(--fs-h2);line-height:1;color:var(--text-hi);max-width:22ch;margin-bottom:var(--sp-7);transition:text-shadow var(--dur) var(--ease-out)" style-hover="text-shadow:3px 0 var(--gold-400),-3px 0 var(--status-info)">Systems that had to work outdoors, on deadline, in front of auditors.</h2>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-4)">
+        <article style="position:relative;background:var(--surface-1);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--sp-6);transition:border-color var(--dur) var(--ease-out),box-shadow var(--dur) var(--ease-out),transform var(--dur) var(--ease-out)" style-hover="border-color:var(--line-accent);box-shadow:var(--glow-accent);transform:translateY(-3px)">
+          <span style="position:absolute;top:14px;right:16px;font-family:var(--font-mono);font-size:11px;color:var(--text-faint)">Ⅰ</span>
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)">Deutsche Bahn — Infrawatch</div>
+          <h3 style="font-family:var(--font-serif);font-size:28px;color:var(--text-hi);line-height:1.05;margin:14px 0 10px">Vegetation detection on live railway</h3>
+          <p style="margin:0;color:var(--text-mid);font-size:var(--fs-sm)">At Birds on Mars I led delivery of the first autonomous AI system for real-time vegetation detection on live railway infrastructure — prototype to certified production hardware, multimodal sensor fusion, safety-critical outdoor environments where the cameras get rained on and the lighting never cooperates. It won the <strong style="color:var(--violet-200);font-weight:600">German AI Innovation Prize</strong> (KI Bundesverband, 2023).</p>
+        </article>
+        <article style="position:relative;background:var(--surface-1);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--sp-6);transition:border-color var(--dur) var(--ease-out),box-shadow var(--dur) var(--ease-out),transform var(--dur) var(--ease-out)" style-hover="border-color:var(--line-accent);box-shadow:var(--glow-accent);transform:translateY(-3px)">
+          <span style="position:absolute;top:14px;right:16px;font-family:var(--font-mono);font-size:11px;color:var(--text-faint)">Ⅱ</span>
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--signal)">ASCon Systems — Head of AI R&amp;D</div>
+          <h3 style="font-family:var(--font-serif);font-size:28px;color:var(--text-hi);line-height:1.05;margin:14px 0 10px">Building an R&amp;D function from nothing</h3>
+          <p style="margin:0;color:var(--text-mid);font-size:var(--fs-sm)">I defined and executed the AI and robotics roadmap across every vertical of the company: architecture, delivery, DevOps and QA standards, certification and validation of AI systems for safety-critical industrial deployment. I ran the strategic partnerships with <strong style="color:var(--text-hi);font-weight:600">Microsoft</strong> and <strong style="color:var(--text-hi);font-weight:600">NVIDIA</strong> (Omniverse, edge compute) plus a set of research universities, and represented AI strategy to the board and investors.</p>
+        </article>
+        <article style="position:relative;background:var(--surface-1);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--sp-6);transition:border-color var(--dur) var(--ease-out),box-shadow var(--dur) var(--ease-out),transform var(--dur) var(--ease-out)" style-hover="border-color:var(--line-accent);box-shadow:var(--glow-accent);transform:translateY(-3px)">
+          <span style="position:absolute;top:14px;right:16px;font-family:var(--font-mono);font-size:11px;color:var(--text-faint)">Ⅲ</span>
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)">Black Carrot — CTO &amp; Co-Founder</div>
+          <h3 style="font-family:var(--font-serif);font-size:28px;color:var(--text-hi);line-height:1.05;margin:14px 0 10px">An AI automation platform, concept to production</h3>
+          <p style="margin:0;color:var(--text-mid);font-size:var(--fs-sm)">NLP, recommendation systems, and LLM integration before that was a thing people put on slides.</p>
+        </article>
+        <article style="position:relative;background:var(--surface-1);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--sp-6);transition:border-color var(--dur) var(--ease-out),box-shadow var(--dur) var(--ease-out),transform var(--dur) var(--ease-out)" style-hover="border-color:var(--line-accent);box-shadow:var(--glow-accent);transform:translateY(-3px)">
+          <span style="position:absolute;top:14px;right:16px;font-family:var(--font-mono);font-size:11px;color:var(--text-faint)">Ⅳ</span>
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--signal)">Interim CTO &amp; C-level advisor</div>
+          <h3 style="font-family:var(--font-serif);font-size:28px;color:var(--text-hi);line-height:1.05;margin:14px 0 10px">AI transformations for other people's companies</h3>
+          <p style="margin:0;color:var(--text-mid);font-size:var(--fs-sm)">Since November 2024 I've been scoping, pricing and delivering AI transformations — R&amp;D roadmaps for intelligent physical systems, data pipeline architecture, and the unglamorous work of making an AI strategy survive a real org chart.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--surface-0);position:relative;overflow:hidden">
+    <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none">
+      <div data-sketch=".22" style="position:absolute;left:-2%;top:9%;width:18%;aspect-ratio:3/2;background-color:color-mix(in oklab,var(--paper) 3%,transparent);border:1px solid var(--border-quiet);background-image:url(assets/sketch-actuator-exploded.png);background-size:contain;background-position:center;background-repeat:no-repeat;opacity:.22"></div>
+      <div data-sketch=".2" style="position:absolute;right:-2%;top:5%;height:90%;aspect-ratio:1/2;background-image:url(assets/sketch-unicycle-exploded.png);background-size:contain;background-position:center;background-repeat:no-repeat;filter:invert(1) hue-rotate(180deg);opacity:.2"></div>
+      <div data-sketch=".13" style="position:absolute;left:27%;bottom:1%;width:14%;aspect-ratio:3/2;background-image:url(assets/sketch-actuator-exploded.png);background-size:contain;background-position:center;background-repeat:no-repeat;opacity:.13"></div>
+    </div>
+    <div style="position:relative;z-index:1;max-width:var(--maxw-wide);margin:0 auto;padding:var(--sp-10) var(--sp-6);display:grid;grid-template-columns:1fr 1.5fr;gap:var(--sp-8);align-items:start">
+      <div>
+        <div style="font-family:var(--font-mono);font-size:var(--fs-xs);font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px">03 — Why Homunculus exists</div>
+        <h2 style="font-family:var(--font-display);font-size:var(--fs-h2);line-height:1;color:var(--text-hi);max-width:14ch;transition:text-shadow var(--dur) var(--ease-out)" style-hover="text-shadow:3px 0 var(--gold-400),-3px 0 var(--status-info)">Robotics is gated. We deleted the gate.</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--sp-5);max-width:62ch">
+        <p style="margin:0;color:var(--text-mid);font-size:var(--fs-body-lg)">For the last stretch I've been deep in the field: the <strong style="color:var(--text-hi);font-weight:600">KI-Schmiede</strong> accelerator, a robotics network spanning Cologne, Bonn, Berlin, Zurich and Munich, and a lot of hours on factory floors talking to German SMEs about why they <em style="font-family:var(--font-serif);color:var(--text-hi)">don't</em> buy robots.</p>
+        <p style="margin:0;font-family:var(--font-serif);font-size:clamp(1.5rem,2.6vw,2.2rem);line-height:1.28;color:var(--text-hi)">The answer is almost never "the robot can't do it." It's the software overhead, the integration cost, <span style="font-style:italic;color:var(--accent)">the fact that every new task needs an engineer who already has a six-month waiting list.</span></p>
+        <p style="margin:0;color:var(--text-mid);font-size:var(--fs-body-lg)">Meanwhile the models got good. VLAs and world models are solving single skills faster than anyone expected. What's missing isn't intelligence. It's a place to <em style="font-family:var(--font-serif);color:var(--text-hi)">play</em> — a low-friction surface where the first ten thousand people who could invent a useful machine actually get to try.</p>
+        <p style="margin:0;color:var(--text-mid);font-size:var(--fs-body-lg)">So: idealized modules today, real arms and imported 3D models next. Snap parts together, hit go, watch your invention teach itself to walk, crawl, roll or flail. <strong style="color:var(--violet-200);font-weight:600">The flailing is part of it.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section data-bio="full" style="max-width:var(--maxw-wide);margin:0 auto;padding:var(--sp-9) var(--sp-6)">
+    <div style="font-family:var(--font-mono);font-size:var(--fs-xs);font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px">04 — Things I keep doing</div>
+    <h2 style="font-family:var(--font-display);font-size:var(--fs-h2);line-height:1;color:var(--text-hi);max-width:20ch;margin-bottom:var(--sp-7);transition:text-shadow var(--dur) var(--ease-out)" style-hover="text-shadow:3px 0 var(--gold-400),-3px 0 var(--status-info)">Hackathons, happy hours, and teenagers with Arduinos.</h2>
+    <div style="display:grid;grid-template-columns:1fr;gap:0">
+      <div style="display:grid;grid-template-columns:minmax(200px,.42fr) 1.58fr;gap:var(--sp-6);padding:var(--sp-6) 0;border-top:1px solid var(--border)">
+        <h3 style="font-family:var(--font-display);font-size:1.9rem;line-height:1.05;color:var(--text-hi);margin:0">Winning hackathons on purpose</h3>
+        <p style="margin:0;color:var(--text-mid);max-width:70ch">At the FORGIS × Arke × IBM × Google DeepMind × {Tech: Europe} <strong style="color:var(--text-hi);font-weight:600">Physical AI Hackathon in Zurich</strong>, my team took <strong style="color:var(--violet-200);font-weight:600">1st place in the IBM track and 1st place overall</strong>. We built a document-to-action pipeline: IBM Docling parsed real production PDFs, a Gemini agent retrieved grounded evidence and composed executable sub-steps, and a 3D vision pipeline with camera localisation and inverse-kinematics planning drove an SO-ARM100 6-axis arm through a real industrial test — measuring the 5V rail on an Arduino board, purely from documentation it had read itself. One weekend, four people, 4am problem-solving.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(200px,.42fr) 1.58fr;gap:var(--sp-6);padding:var(--sp-6) 0;border-top:1px solid var(--border)">
+        <h3 style="font-family:var(--font-display);font-size:1.9rem;line-height:1.05;color:var(--text-hi);margin:0">Building the scene I want to be in</h3>
+        <p style="margin:0;color:var(--text-mid);max-width:70ch">I organise and run robotics community events — the Robotics Collective happy hours and BYOR ("bring your own robot") brunches, a robotics focus group with digitalHUB Aachen, hackathons with KI-Schmiede, a student robotics-startup event, and the <strong style="color:var(--text-hi);font-weight:600">Robotic Design Challenge</strong>: an open call to make robots something other than plain, grey and white, before the design language of an entire product category calcifies.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(200px,.42fr) 1.58fr;gap:var(--sp-6);padding:var(--sp-6) 0;border-top:1px solid var(--border)">
+        <h3 style="font-family:var(--font-display);font-size:1.9rem;line-height:1.05;color:var(--text-hi);margin:0">Teaching hardware to teenagers</h3>
+        <p style="margin:0;color:var(--text-mid);max-width:70ch">Mentor at <strong style="color:var(--text-hi);font-weight:600">Make Your School</strong> since 2021 — school hackathons, Arduino, sensors, motors, Python and C++. Kids build weirder robots than adults do. That's not a joke, it's a design input.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(200px,.42fr) 1.58fr;gap:var(--sp-6);padding:var(--sp-6) 0;border-block:1px solid var(--border)">
+        <h3 style="font-family:var(--font-display);font-size:1.9rem;line-height:1.05;color:var(--text-hi);margin:0">Fighting for the boring important stuff</h3>
+        <p style="margin:0;color:var(--text-mid);max-width:70ch">Youth Ambassador for <strong style="color:var(--text-hi);font-weight:600">The ONE Campaign</strong> since 2014 — lobbying and campaigning against extreme poverty. And founder of a <strong style="color:var(--text-hi);font-weight:600">Solarpunk Think &amp; Do Tank</strong>, because a future worth automating into has to be one people actually want to live in.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--surface-0);position:relative;overflow:hidden">
+    <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none">
+      <div data-sketch=".2" style="position:absolute;right:2%;top:6%;width:17%;aspect-ratio:3/2;background-color:color-mix(in oklab,var(--paper) 3%,transparent);border:1px solid var(--border-quiet);background-image:url(assets/sketch-actuator-exploded.png);background-size:contain;background-position:center;background-repeat:no-repeat;opacity:.2"></div>
+      <div data-sketch=".13" style="position:absolute;left:4%;bottom:2%;width:16%;aspect-ratio:3/2;background-image:url(assets/sketch-actuator-exploded.png);background-size:contain;background-position:center;background-repeat:no-repeat;opacity:.13"></div>
+    </div>
+    <div style="position:relative;z-index:1;max-width:var(--maxw-wide);margin:0 auto;padding:var(--sp-9) var(--sp-6)">
+      <div style="font-family:var(--font-mono);font-size:var(--fs-xs);font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:var(--sp-6)">05 — What I believe</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--sp-6)">
+        <div style="border-top:1px solid var(--line-accent);padding-top:var(--sp-4)">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-faint);margin-bottom:10px">01</div>
+          <h4 style="font-family:var(--font-body);font-weight:600;color:var(--text-hi);font-size:var(--fs-h4);margin:0 0 10px">Robots should be inventable, not just purchasable.</h4>
+          <p style="margin:0;color:var(--text-mid);font-size:var(--fs-sm)">The bottleneck in robotics is not motors. It's access.</p>
+        </div>
+        <div style="border-top:1px solid var(--line-signal);padding-top:var(--sp-4)">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-faint);margin-bottom:10px">02</div>
+          <h4 style="font-family:var(--font-body);font-weight:600;color:var(--text-hi);font-size:var(--fs-h4);margin:0 0 10px">Simulation is the cheapest place to be wrong.</h4>
+          <p style="margin:0;color:var(--text-mid);font-size:var(--fs-sm)">Ten thousand failed designs in a browser tab beat one expensive prototype.</p>
+        </div>
+        <div style="border-top:1px solid var(--line-accent);padding-top:var(--sp-4)">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-faint);margin-bottom:10px">03</div>
+          <h4 style="font-family:var(--font-body);font-weight:600;color:var(--text-hi);font-size:var(--fs-h4);margin:0 0 10px">The hard part is orchestration.</h4>
+          <p style="margin:0;color:var(--text-mid);font-size:var(--fs-sm)">Individual skills are getting solved. Chaining them into something that finishes a job is where the value sits.</p>
+        </div>
+        <div style="border-top:1px solid var(--line-accent);padding-top:var(--sp-4)">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-faint);margin-bottom:10px">04</div>
+          <h4 style="font-family:var(--font-body);font-weight:600;color:var(--text-hi);font-size:var(--fs-h4);margin:0 0 10px">Hardware never matches the datasheet.</h4>
+          <p style="margin:0;color:var(--text-mid);font-size:var(--fs-sm)">Sensors drift, actuators run a few percent fast. Anything I build leaves room for calibration, because the physical world doesn't care about your clean abstraction.</p>
+        </div>
+        <div style="border-top:1px solid var(--line-signal);padding-top:var(--sp-4)">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-faint);margin-bottom:10px">05</div>
+          <h4 style="font-family:var(--font-body);font-weight:600;color:var(--text-hi);font-size:var(--fs-h4);margin:0 0 10px">Design matters early.</h4>
+          <p style="margin:0;color:var(--text-mid);font-size:var(--fs-sm)">We're about to fill the world with a whole new category of object. Grey boxes are a choice, and a bad one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-bio="full" style="background-image:var(--field-glow);position:relative;overflow:hidden">
+    <div style="position:relative;max-width:var(--maxw-content);margin:0 auto;padding:var(--sp-9) var(--sp-6);display:grid;grid-template-columns:auto 1fr;gap:var(--sp-8);align-items:center">
+      <img src="assets/logo-mark-light.png" alt="" style="width:min(22vw,190px);opacity:.9">
+      <div>
+        <div style="font-family:var(--font-mono);font-size:var(--fs-xs);font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--signal);margin-bottom:var(--sp-4)">06 — The name</div>
+        <p style="margin:0;font-family:var(--font-serif);font-size:clamp(1.4rem,2.4vw,2rem);line-height:1.3;color:var(--text-hi);max-width:52ch">A homunculus is the little artificial being alchemists claimed to grow in a flask — an entire creature, assembled from parts, brought to life by someone patient enough to try. Also: the <span style="font-style:italic;color:var(--accent)">cortical homunculus</span>, the distorted map of the body in your motor cortex, all giant hands and lips, drawn in proportion to how much brain it takes to move each part.</p>
+        <p style="margin:var(--sp-5) 0 0;color:var(--text-mid);font-size:var(--fs-body-lg);max-width:52ch">Both meanings are the product. Assemble a body from parts. Let it grow its own motor map.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="partners" style="max-width:var(--maxw-wide);margin:0 auto;padding:var(--sp-9) var(--sp-6)">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:var(--sp-6);flex-wrap:wrap;margin-bottom:var(--sp-7)">
+      <div>
+        <div style="font-family:var(--font-mono);font-size:var(--fs-xs);font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px">07 — Partners</div>
+        <h2 style="font-family:var(--font-display);font-size:var(--fs-h2);line-height:1;color:var(--text-hi);max-width:18ch;transition:text-shadow var(--dur) var(--ease-out)" style-hover="text-shadow:3px 0 var(--gold-400),-3px 0 var(--status-info)">The people this is being built with.</h2>
+      </div>
+      <p style="margin:0;color:var(--text-mid);max-width:34ch;font-size:var(--fs-body-lg)">Communities, labs and companies working on the same gate from a different side.</p>
+    </div>
+    <div id="partner-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:var(--sp-4)">
+      <a data-partner="real" href="#" style="position:relative;display:flex;flex-direction:column;gap:var(--sp-5);background:var(--surface-1);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--sp-6);text-decoration:none;transition:border-color var(--dur) var(--ease-out),box-shadow var(--dur) var(--ease-out),transform var(--dur) var(--ease-out)" style-hover="border-color:var(--line-accent);box-shadow:var(--glow-accent);transform:translateY(-3px)">
+        <div data-partner-logo="1" style="height:44px;display:flex;align-items:center">
+          <img src="assets/partner-robotics-collective.png" alt="Robotics Collective" style="max-height:38px;max-width:210px;object-fit:contain">
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Community</div>
+          <h3 style="font-family:var(--font-body);font-weight:600;font-size:var(--fs-h4);color:var(--text-hi);margin:0 0 8px">Robotics Collective</h3>
+          <p style="margin:0;color:var(--text-mid);font-size:var(--fs-sm)">Happy hours and BYOR brunches across Cologne, Bonn, Berlin, Zurich and Munich — where the first Homunculus builds get argued about in person.</p>
+        </div>
+        <span style="font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-low);margin-top:auto">Visit →</span>
+      </a>
+
+      <div data-partner="slot" style="position:relative;display:flex;flex-direction:column;gap:var(--sp-5);background:transparent;border:1px dashed var(--line-mid);border-radius:var(--radius-md);padding:var(--sp-6);min-height:230px">
+        <div style="height:44px;display:flex;align-items:center">
+          <span style="font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint)">Logo</span>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:10px">Category</div>
+          <h3 style="font-family:var(--font-body);font-weight:600;font-size:var(--fs-h4);color:var(--text-low);margin:0 0 8px">Partner slot</h3>
+          <p style="margin:0;color:var(--text-faint);font-size:var(--fs-sm)">Send me the name, the category, one sentence on what we do together, and a link — I'll fill this in.</p>
+        </div>
+      </div>
+
+      <div data-partner="slot" style="position:relative;display:flex;flex-direction:column;gap:var(--sp-5);background:transparent;border:1px dashed var(--line-mid);border-radius:var(--radius-md);padding:var(--sp-6);min-height:230px">
+        <div style="height:44px;display:flex;align-items:center">
+          <span style="font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint)">Logo</span>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:10px">Category</div>
+          <h3 style="font-family:var(--font-body);font-weight:600;font-size:var(--fs-h4);color:var(--text-low);margin:0 0 8px">Partner slot</h3>
+          <p style="margin:0;color:var(--text-faint);font-size:var(--fs-sm)">Same card, same rhythm. The grid holds 4–8 without looking thin.</p>
+        </div>
+      </div>
+
+      <div data-partner="slot" style="position:relative;display:flex;flex-direction:column;gap:var(--sp-5);background:transparent;border:1px dashed var(--line-mid);border-radius:var(--radius-md);padding:var(--sp-6);min-height:230px">
+        <div style="height:44px;display:flex;align-items:center">
+          <span style="font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint)">Logo</span>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:10px">Category</div>
+          <h3 style="font-family:var(--font-body);font-weight:600;font-size:var(--fs-h4);color:var(--text-low);margin:0 0 8px">Partner slot</h3>
+          <p style="margin:0;color:var(--text-faint);font-size:var(--fs-sm)">Categories I'd suggest: Community · Research · Hardware · Accelerator · Education.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="roles" style="background:var(--surface-0)">
+    <div style="max-width:var(--maxw-wide);margin:0 auto;padding:var(--sp-9) var(--sp-6)">
+      <div style="font-family:var(--font-mono);font-size:var(--fs-xs);font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px">08 — Open roles</div>
+      <h2 style="font-family:var(--font-display);font-size:var(--fs-h2);line-height:1;color:var(--text-hi);max-width:20ch;margin-bottom:var(--sp-6);transition:text-shadow var(--dur) var(--ease-out)" style-hover="text-shadow:3px 0 var(--gold-400),-3px 0 var(--status-info)">Small team. Absurd surface area.</h2>
+      <div style="display:flex;flex-direction:column">
+        <a href="#contact" style="display:grid;grid-template-columns:1fr auto;align-items:center;gap:var(--sp-6);padding:var(--sp-5) 0;border-top:1px solid var(--border);text-decoration:none;transition:padding-left var(--dur) var(--ease-out)" style-hover="padding-left:10px">
+          <div>
+            <h3 style="font-family:var(--font-body);font-weight:600;font-size:var(--fs-h4);color:var(--text-hi);margin:0 0 6px">Simulation Engineer</h3>
+            <p style="margin:0;color:var(--text-mid);font-size:var(--fs-sm);max-width:64ch">Make ten thousand robots fall over per second, in a browser tab, at a framerate people will tolerate.</p>
+          </div>
+          <span style="font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)">Apply →</span>
+        </a>
+        <a href="#contact" style="display:grid;grid-template-columns:1fr auto;align-items:center;gap:var(--sp-6);padding:var(--sp-5) 0;border-top:1px solid var(--border);text-decoration:none;transition:padding-left var(--dur) var(--ease-out)" style-hover="padding-left:10px">
+          <div>
+            <h3 style="font-family:var(--font-body);font-weight:600;font-size:var(--fs-h4);color:var(--text-hi);margin:0 0 6px">RL / Locomotion Researcher</h3>
+            <p style="margin:0;color:var(--text-mid);font-size:var(--fs-sm);max-width:64ch">Teach arbitrary morphologies to move without hand-tuning a reward function for every new body.</p>
+          </div>
+          <span style="font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)">Apply →</span>
+        </a>
+        <a href="#contact" style="display:grid;grid-template-columns:1fr auto;align-items:center;gap:var(--sp-6);padding:var(--sp-5) 0;border-block:1px solid var(--border);text-decoration:none;transition:padding-left var(--dur) var(--ease-out)" style-hover="padding-left:10px">
+          <div>
+            <h3 style="font-family:var(--font-body);font-weight:600;font-size:var(--fs-h4);color:var(--text-hi);margin:0 0 6px">Founding Product Engineer</h3>
+            <p style="margin:0;color:var(--text-mid);font-size:var(--fs-sm);max-width:64ch">The snap-together editor is the product. Own how it feels in the hand.</p>
+          </div>
+          <span style="font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)">Apply →</span>
+        </a>
+      </div>
+      <p style="margin:var(--sp-5) 0 0;color:var(--text-faint);font-size:var(--fs-sm)">Placeholder role titles — send me the real ones and I'll swap them in.</p>
+    </div>
+  </section>
+
+  <section id="newsletter" style="background-image:var(--field-glow);position:relative;overflow:hidden">
+    <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none">
+      <div data-sketch=".14" style="position:absolute;left:50%;top:0;transform:translateX(-50%);height:100%;aspect-ratio:1/2;background-image:url(assets/sketch-unicycle-exploded.png);background-size:contain;background-position:center;background-repeat:no-repeat;filter:invert(1) hue-rotate(180deg);opacity:.14"></div>
+    </div>
+    <div style="position:relative;z-index:1;max-width:var(--maxw-content);margin:0 auto;padding:var(--sp-9) var(--sp-6);text-align:center">
+      <div style="font-family:var(--font-mono);font-size:var(--fs-xs);font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:var(--sp-4)">Knowledge bites, every other week</div>
+      <h2 style="font-family:var(--font-display);font-size:var(--fs-h1);line-height:.95;color:var(--text-hi);max-width:20ch;margin:0 auto var(--sp-5);transition:text-shadow var(--dur) var(--ease-out)" style-hover="text-shadow:3px 0 var(--gold-400),-3px 0 var(--status-info)">What we learn, while we're learning it.</h2>
+      <p style="margin:0 auto var(--sp-6);color:var(--text-mid);font-size:var(--fs-body-lg);max-width:52ch">Build logs, failed gaits, papers worth your time, and the occasional teardown. No launch hype.</p>
+      <form style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;max-width:520px;margin:0 auto">
+        <input type="email" placeholder="you@example.com" style="flex:1 1 260px;min-width:0;background:var(--surface-1);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-hi);font-family:var(--font-body);font-size:var(--fs-body);padding:14px 16px" style-focus="border-color:var(--accent);outline:none">
+        <button type="button" style="font-family:var(--font-body);font-weight:500;font-size:var(--fs-body);color:var(--text-on-accent);background:var(--accent);border:none;padding:14px 26px;border-radius:var(--radius-sm);cursor:pointer;box-shadow:var(--glow-accent);transition:transform var(--dur) var(--ease-out)" style-hover="transform:translateY(-1px)">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="contact" style="max-width:var(--maxw-wide);margin:0 auto;padding:var(--sp-9) var(--sp-6)">
+    <div style="display:grid;grid-template-columns:.8fr 1.2fr;gap:var(--sp-8);align-items:start">
+      <div>
+        <div style="font-family:var(--font-mono);font-size:var(--fs-xs);font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px">09 — Elsewhere</div>
+        <h2 style="font-family:var(--font-display);font-size:var(--fs-h2);line-height:1;color:var(--text-hi);max-width:14ch;transition:text-shadow var(--dur) var(--ease-out)" style-hover="text-shadow:3px 0 var(--gold-400),-3px 0 var(--status-info)">Come say hello.</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--sp-6)">
+        <div>
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-low);margin-bottom:10px">Location</div>
+          <p style="margin:0;color:var(--text-hi)">Cologne / Bonn, Germany — regularly in Berlin, Zurich, Munich</p>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-low);margin-bottom:10px">LinkedIn</div>
+          <a href="https://www.linkedin.com/in/marcus-roeper/" style="color:var(--accent);text-decoration:none" style-hover="color:var(--signal)">marcus-roeper</a>
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-low);margin:var(--sp-5) 0 10px">Web</div>
+          <p style="margin:0;color:var(--text-mid);font-size:var(--fs-sm)">captainarrcus.github.io · marcusroeper.github.io</p>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-low);margin-bottom:10px">Talks &amp; workshops</div>
+          <p style="margin:0;color:var(--text-mid);font-size:var(--fs-sm)">Building LLM Agents From Scratch · Quantum Machine Learning 101 · Greentech AI Solutions Lab · <em style="font-family:var(--font-serif);color:var(--text-hi)">Künstliche Intelligenz in der Kunst</em> (HKW)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:var(--void)">
+    <div style="max-width:var(--maxw-wide);margin:0 auto;padding:var(--sp-6);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--sp-5)">
+      <div style="display:flex;align-items:center;gap:10px">
+        <img src="assets/logo-mark-light.png" alt="" style="height:26px">
+        <span style="font-family:var(--font-mono);font-size:12px;letter-spacing:.16em;color:var(--text-low)">HOMUNCULUS ROBOTICS · © 2026</span>
+      </div>
+      <nav style="display:flex;gap:22px;flex-wrap:wrap">
+        <a href="Home.dc.html" style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-low);text-decoration:none" style-hover="color:var(--accent)">Sandbox</a>
+        <a href="Design%20Challenge.dc.html" style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-low);text-decoration:none" style-hover="color:var(--accent)">Design Challenge</a>
+        <a href="#" style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-low);text-decoration:none" style-hover="color:var(--accent)">Knowledge</a>
+        <a href="#top" style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-low);text-decoration:none" style-hover="color:var(--accent)">About</a>
+      </nav>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;bioDepth&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;full&quot;,&quot;essential&quot;],&quot;default&quot;:&quot;full&quot;,&quot;tsType&quot;:&quot;'full' | 'essential'&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;showFactSheet&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;partnerStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;cards&quot;,&quot;logos&quot;],&quot;default&quot;:&quot;cards&quot;,&quot;tsType&quot;:&quot;'full' | 'essential'&quot;,&quot;section&quot;:&quot;Partners&quot;},&quot;mosaicIntro&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;sketchLayer&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sketch background&quot;},&quot;sketchIntensity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0.3,&quot;max&quot;:2,&quot;step&quot;:0.1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Sketch background&quot;}}">
+
+// Equilateral triangle mosaic intro — matches the Home page loader.
+const rd = () => (Math.random() * 0.85 + 0.05).toFixed(2) + 's';
+const SIDE = 104;
+const ROW_H = SIDE * Math.sqrt(3) / 2;
+const UP = 'polygon(50% -2%,102% 102%,-2% 102%)';
+const DOWN = 'polygon(-2% -2%,102% -2%,50% 102%)';
+const TRI_COLS = 46;
+const TRI_ROWS = 10;
+const TRIANGLES = [];
+{
+  const delays = {};
+  for (let row = 0; row < TRI_ROWS; row++) {
+    for (let i = 0; i < TRI_COLS; i++) {
+      const m = i < TRI_COLS / 2 ? i : TRI_COLS - 1 - i;
+      const k = row + ':' + m;
+      if (!delays[k]) delays[k] = rd();
+      TRIANGLES.push({
+        x: ((i - TRI_COLS / 2) * SIDE / 2).toFixed(1) + 'px',
+        y: (row * ROW_H).toFixed(1) + 'px',
+        w: SIDE + 'px',
+        h: ROW_H.toFixed(1) + 'px',
+        clip: (i + row) % 2 === 0 ? UP : DOWN,
+        d: delays[k]
+      });
+    }
+  }
+}
+
+class Component extends DCLogic {
+  constructor(props) { super(props); this.rootRef = React.createRef(); this.state = { theme: 'phosphor' }; }
+  pickTheme(theme) {
+    this.setState({ theme });
+    try { localStorage.setItem('hmc-theme', theme); } catch (e) {}
+  }
+  componentDidMount() {
+    this.sync();
+    try {
+      const saved = localStorage.getItem('hmc-theme');
+      if (saved && ['phosphor','ultraviolet','verdant'].includes(saved)) this.setState({ theme: saved });
+    } catch (e) {}
+  }
+  componentDidUpdate() { this.sync(); }
+  sync() {
+    const r = this.rootRef.current;
+    if (!r) return;
+    const depth = this.props.bioDepth ?? 'full';
+    r.querySelectorAll('[data-bio]').forEach(el => {
+      el.style.display = (depth === 'full' || el.dataset.bio !== 'full') ? '' : 'none';
+    });
+    const sketchOn = this.props.sketchLayer ?? true;
+    const k = this.props.sketchIntensity ?? 1;
+    r.querySelectorAll('[data-sketch]').forEach(el => {
+      el.style.opacity = sketchOn ? String((parseFloat(el.dataset.sketch) * k).toFixed(3)) : '0';
+    });
+    const fact = this.props.showFactSheet ?? true;
+    r.querySelectorAll('[data-fact]').forEach(el => { el.style.display = fact ? '' : 'none'; });
+    const style = this.props.partnerStyle ?? 'cards';
+    const grid = r.querySelector('#partner-grid');
+    if (grid) {
+      const logos = style === 'logos';
+      grid.style.gridTemplateColumns = logos
+        ? 'repeat(auto-fill,minmax(210px,1fr))'
+        : 'repeat(auto-fill,minmax(320px,1fr))';
+      grid.querySelectorAll('[data-partner]').forEach(card => {
+        card.style.minHeight = logos ? '120px' : '';
+        card.querySelectorAll('div:not([data-partner-logo]) > h3, div > p, div > div').forEach(el => {
+          if (el.closest('[data-partner-logo]')) return;
+          el.style.display = logos ? 'none' : '';
+        });
+      });
+    }
+  }
+  renderVals() {
+    const theme = this.state.theme;
+    return {
+      rootRef: this.rootRef,
+      triangles: (this.props.mosaicIntro ?? true) ? TRIANGLES : [],
+      theme,
+      themeLabel: { phosphor:'Phosphor', ultraviolet:'Ultraviolet', verdant:'Verdant' }[theme],
+      setPhosphor: () => this.pickTheme('phosphor'),
+      setUltraviolet: () => this.pickTheme('ultraviolet'),
+      setVerdant: () => this.pickTheme('verdant')
+    };
+  }
+}
+</script>
+</body>
+</html>

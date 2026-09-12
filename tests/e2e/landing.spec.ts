@@ -1,0 +1,64 @@
+import { expect, test } from '@playwright/test';
+
+const SITE = 'https://homunculusrobotics.com';
+
+test('the German page keeps every internal link on /de/', async ({ page }) => {
+  await page.goto('/de/');
+  const hrefs = await page.locator('header nav a, footer nav a').evaluateAll((as) =>
+    as.map((a) => a.getAttribute('href') ?? ''),
+  );
+  expect(hrefs.length).toBeGreaterThan(0);
+  for (const href of hrefs) expect(href).toMatch(/^\/de(\/|$)/);
+  await expect(page.locator('header nav a').first()).toHaveText('Sandkasten');
+});
+
+test('each locale renders its own copy, all four sections, and links to the other', async ({
+  page,
+}) => {
+  for (const [path, lang, headline, contact, sibling] of [
+    ['/', 'en', 'The human form is one solution. We build the others.', 'Talk to us', 'DE'],
+    ['/de/', 'de', 'Die menschliche Form ist eine Lösung. Wir bauen die anderen.', 'Kontakt', 'EN'],
+  ]) {
+    await page.goto(path);
+    await expect(page.locator('html')).toHaveAttribute('lang', lang);
+    await expect(page.locator('#top h1')).toHaveText(headline);
+    await expect(page.locator('#products li')).toHaveCount(3);
+    await expect(page.locator('#products')).toContainText('BuilderLayer');
+    await expect(page.locator('#challenge')).toBeVisible();
+    await expect(page.locator('#contact')).toContainText(contact);
+    await expect(page.locator('#contact a[href^="mailto:"]')).toHaveCount(1);
+    // Exact: "Design Challenge" also contains "DE".
+    await page.getByRole('link', { name: sibling, exact: true }).click();
+    await expect(page).toHaveURL(path === '/' ? /\/de\/$/ : /localhost:4321\/$/);
+  }
+});
+
+test('canonical, alternates and og:image are absolute and locale-correct', async ({ page }) => {
+  await page.goto('/de/');
+  await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href', `${SITE}/de/`);
+  await expect(page.locator('link[hreflang=en]')).toHaveAttribute('href', `${SITE}/`);
+  await expect(page.locator('link[hreflang=de]')).toHaveAttribute('href', `${SITE}/de/`);
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+    'content',
+    `${SITE}/assets/og-cover.png`,
+  );
+  await expect(page.locator('meta[property="og:locale"]')).toHaveAttribute('content', 'de_DE');
+});
+
+test('the theme switcher persists across a reload on /de/', async ({ page }) => {
+  await page.goto('/de/');
+  await page.getByRole('button', { name: /verdant/i }).click();
+  await page.reload();
+  await expect(page.locator('html')).toHaveAttribute('data-hmc-theme', 'verdant');
+});
+
+test('no horizontal overflow at 390 px, either locale', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  for (const path of ['/', '/de/']) {
+    await page.goto(path);
+    const overflow = await page.evaluate(
+      () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+    );
+    expect(overflow, path).toBeLessThanOrEqual(0);
+  }
+});

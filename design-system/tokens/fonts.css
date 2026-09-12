@@ -1,0 +1,62 @@
+/* ── Humunculus Robotics — Fonts ────────────────────────────────
+   Iceland        → techno display
+   Chakra Petch   → body, UI, and editorial (italic) text — two-font system
+   Rubik Glitch   → reserved glitch accent, NOT self-hosted (nothing renders
+                    --font-glitch yet; it falls back to Iceland)
+
+   NOTE: The brand mentioned "Glitch Goblin", which is NOT freely
+   web-hostable. Rubik Glitch is the nearest Google-Fonts glitch face
+   and is used as the glitch accent. Swap in Glitch Goblin webfont
+   files here if licensed.
+
+   Faces are the ones actually rendered: Chakra Petch 400/500/600 + 400 italic,
+   Iceland 400. Weight 300 and the bold italics are not shipped — add them back
+   from the Google CSS if a design starts using them.
+
+   Self-hosted since 2026-08-22 (site Feature 0.3). They were a
+   `@import url(https://fonts.googleapis.com/…)`, which cost the landing page
+   its Lighthouse budget (perf 86, CLS 0.26 — the font swap was the single
+   largest shift) and sent every visitor's IP to Google, which a German site
+   cannot do without consent. The files are the same Google-served woff2s,
+   latin subset, referenced relative to this file so the `.dc.html` prototypes
+   keep rendering from file:// exactly as they did. */
+
+@font-face {
+  font-family: 'Chakra Petch';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/chakra-petch-400-italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Chakra Petch';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/chakra-petch-400.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Chakra Petch';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/chakra-petch-500.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Chakra Petch';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../assets/fonts/chakra-petch-600.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Iceland';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/iceland-400.woff2') format('woff2');
+}

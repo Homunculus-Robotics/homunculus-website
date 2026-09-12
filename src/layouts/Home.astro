@@ -1,0 +1,275 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from './Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Button from '../components/Button.astro';
+import Badge from '../components/Badge.astro';
+import GlitchText from '../components/GlitchText.astro';
+import MosaicLoader from '../components/MosaicLoader.astro';
+import { navHref } from '../lib/site';
+import mark from '../../design-system/assets/logo-mark-light.png';
+
+// Both / and /de/ render this file; only the content entry differs (D1).
+const lang = Astro.currentLocale === 'de' ? 'de' : 'en';
+const entry = await getEntry('home', lang);
+if (!entry) throw new Error(`Missing src/content/home/${lang}.md`);
+const { hero, products, thesis, challenge, contact } = entry.data;
+const { Content } = await render(entry);
+const href = (h: string) => (h.startsWith('#') ? h : navHref(h, lang));
+---
+<Base title={entry.data.title} description={entry.data.description} image="/assets/og-cover.png">
+  <Nav />
+
+  <main>
+  <section id="top" class="hero">
+    <div class="chroma" aria-hidden="true"></div>
+    <div class="fade" aria-hidden="true"></div>
+    <MosaicLoader />
+    <div class="inner">
+      <div class="eyebrow-dot">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="hmc-label">{hero.eyebrow}</span>
+      </div>
+      <GlitchText as="h1" class="hero-h1">
+        {hero.headline}{' '}<span class="accent">{hero.headlineAccent}</span>
+      </GlitchText>
+      <p class="lede">{hero.lede} <em>{hero.ledeEm}</em></p>
+      <div class="actions">
+        {hero.ctas.map((c, i) => (
+          <Button href={href(c.href)} size="lg" variant={i === 0 ? 'primary' : 'outline'}>{c.label}</Button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="products" class="products">
+    <div class="inner">
+      <div class="section-head">
+        <div>
+          <div class="hmc-label">{products.eyebrow}</div>
+          <GlitchText as="h2" class="h2">{products.heading}</GlitchText>
+        </div>
+        <p class="aside">{products.aside}</p>
+      </div>
+      <ul class="prod-grid">
+        {products.items.map((p) => (
+          <li class={p.tone}>
+            <div class="head">
+              <span class="num">{p.num}</span>
+              <div class:list={['cls', p.tone]}>{p.kicker}</div>
+            </div>
+            <h3>{p.title}</h3>
+            <p>{p.body}</p>
+            <Badge tone={p.tone === 'signal' ? 'gold' : 'green'} live>{p.status}</Badge>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section id="thesis" class="thesis">
+    <div class="inner">
+      <div class="markwrap">
+        <img src={mark.src} width={mark.width} height={mark.height} alt="" />
+      </div>
+      <div>
+        <div class="hmc-label">{thesis.eyebrow}</div>
+        <p class="pull">{thesis.pull} <em>{thesis.pullAccent}</em></p>
+        <div class="prose"><Content /></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="challenge" class="challenge">
+    <div class="chroma slow" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="inner">
+      <div class="hmc-label">{challenge.eyebrow}</div>
+      <GlitchText as="h2" class="h2">{challenge.heading}</GlitchText>
+      <p class="body">{challenge.body}</p>
+      <div class="actions">
+        {challenge.ctas.map((c, i) => (
+          <Button href={href(c.href)} size="lg" variant={i === 0 ? 'primary' : 'outline-signal'}>{c.label}</Button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="inner">
+      <div class="hmc-label">{contact.eyebrow}</div>
+      <GlitchText as="h2" class="h2">{contact.heading}</GlitchText>
+      <p class="body">{contact.body}</p>
+      <a class="mail" href={`mailto:${contact.email}`}>{contact.email}</a>
+    </div>
+  </section>
+
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  .inner { max-width: var(--maxw-wide); margin: 0 auto; }
+  .hmc-label { margin-bottom: 14px; }
+  .thesis .hmc-label, .challenge .hmc-label, .contact .hmc-label { margin-bottom: var(--sp-4); }
+  .h2 { font-size: var(--fs-h2); line-height: 1; max-width: 20ch; }
+
+  /* ── hero ───────────────────────────────────────────────── */
+  .hero { position: relative; overflow: hidden; background: var(--void); }
+  .chroma {
+    position: absolute;
+    inset: 0;
+    background-image: var(--chroma-band);
+    background-size: 300% 100%;
+    animation: hmc-chroma-drift 26s linear infinite;
+    opacity: 0.55;
+  }
+  .chroma.slow { animation-duration: 34s; opacity: 0.3; }
+  .fade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+      color-mix(in oklab, var(--void) 34%, transparent) 0%,
+      color-mix(in oklab, var(--void) 72%, transparent) 46%,
+      var(--void) 100%);
+  }
+  .hero .inner { position: relative; z-index: 2; padding: var(--sp-10) var(--sp-6) var(--sp-9); }
+
+  .eyebrow-dot { display: inline-flex; align-items: center; gap: 8px; margin-bottom: var(--sp-5); }
+  .eyebrow-dot .hmc-label { margin-bottom: 0; }
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+    animation: hmc-flicker 2.4s infinite;
+  }
+
+  .hero-h1 {
+    font-size: var(--fs-hero);
+    line-height: 0.9;
+    letter-spacing: var(--tracking-tight);
+    max-width: 17ch;
+  }
+  .accent { color: var(--accent); }
+
+  .lede {
+    font-family: var(--font-serif);
+    font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+    line-height: 1.32;
+    color: var(--text-mid);
+    max-width: 46ch;
+    margin: var(--sp-6) 0 0;
+  }
+  .lede em { font-style: italic; color: var(--signal); }
+
+  .actions { display: flex; gap: 14px; margin-top: var(--sp-7); flex-wrap: wrap; }
+
+  /* ── products ───────────────────────────────────────────── */
+  .products .inner { padding: var(--sp-8) var(--sp-6) var(--sp-9); }
+  .section-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--sp-6);
+    flex-wrap: wrap;
+    margin-bottom: var(--sp-7);
+  }
+  .section-head .h2 { max-width: 18ch; }
+  .aside { margin: 0; color: var(--text-mid); max-width: 34ch; font-size: var(--fs-sm); }
+
+  .prod-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--sp-6);
+  }
+  .prod-grid li { padding-top: var(--sp-4); display: flex; flex-direction: column; align-items: flex-start; }
+  .prod-grid li.accent { border-top: 1px solid var(--line-accent); }
+  .prod-grid li.signal { border-top: 1px solid var(--line-signal); }
+  .head { display: flex; align-items: baseline; gap: 12px; }
+  .num { font-family: var(--font-mono); font-size: 12px; line-height: 1.6; color: var(--text-faint); }
+  .cls {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .cls.accent { color: var(--accent); }
+  .cls.signal { color: var(--signal); }
+  .prod-grid h3 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.7rem, 2.4vw, 2.1rem);
+    color: var(--text-hi);
+    line-height: 1.08;
+    margin: 10px 0 0;
+  }
+  .prod-grid p { color: var(--text-mid); font-size: var(--fs-sm); margin: 12px 0 var(--sp-5); text-wrap: pretty; }
+  .prod-grid :global(.hmc-badge) { margin-top: auto; }
+
+  /* ── thesis ─────────────────────────────────────────────── */
+  .thesis { background: var(--surface-0); position: relative; overflow: hidden; }
+  .thesis .inner {
+    padding: var(--sp-10) var(--sp-6);
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: var(--sp-8);
+    align-items: center;
+  }
+  .markwrap { display: flex; justify-content: center; }
+  .markwrap img { width: min(28vw, 320px); height: auto; opacity: 0.92; }
+
+  .pull {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    line-height: 1.28;
+    color: var(--text-hi);
+  }
+  .pull em { font-style: italic; color: var(--accent); }
+  .prose :global(p) { margin: var(--sp-5) 0 0; color: var(--text-mid); font-size: var(--fs-body-lg); max-width: 52ch; }
+  .prose :global(strong) { color: var(--text-hi); font-weight: 500; }
+
+  /* ── challenge ──────────────────────────────────────────── */
+  .challenge { position: relative; overflow: hidden; background: var(--surface-0); }
+  .vignette { position: absolute; inset: 0; background: radial-gradient(120% 120% at 50% 50%, transparent 0%, var(--void) 78%); }
+  .challenge .inner { position: relative; padding: var(--sp-10) var(--sp-6); text-align: center; }
+  .challenge .h2 { line-height: 0.95; margin: 0 auto var(--sp-5); max-width: 24ch; }
+  .challenge .body { margin: 0 auto; color: var(--text-mid); font-size: var(--fs-body-lg); max-width: 62ch; }
+  .challenge .actions { justify-content: center; }
+
+  /* ── contact ────────────────────────────────────────────── */
+  .contact .inner { padding: var(--sp-9) var(--sp-6); }
+  .contact .body { margin: 0 0 var(--sp-5); color: var(--text-mid); font-size: var(--fs-body-lg); max-width: 52ch; }
+  .contact .h2 { margin-bottom: var(--sp-4); max-width: 26ch; }
+  .mail {
+    font-family: var(--font-mono);
+    font-size: clamp(1.05rem, 2vw, 1.4rem);
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-accent);
+  }
+  .mail:hover { color: var(--signal); border-color: var(--line-signal); }
+
+  /* ── small viewports ────────────────────────────────────── */
+  @media (max-width: 760px) {
+    .prod-grid { grid-template-columns: 1fr; gap: var(--sp-7); }
+    .thesis .inner { grid-template-columns: 1fr; }
+    .markwrap img { width: min(52vw, 240px); }
+    .hero .inner, .thesis .inner, .challenge .inner, .contact .inner, .products .inner {
+      padding-left: var(--sp-4);
+      padding-right: var(--sp-4);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .chroma { animation: none; }
+    .dot { animation: none; }
+  }
+</style>

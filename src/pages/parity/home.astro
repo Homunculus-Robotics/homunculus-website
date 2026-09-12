@@ -1,0 +1,307 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import Button from '../../components/Button.astro';
+import GlitchText from '../../components/GlitchText.astro';
+import MosaicLoader from '../../components/MosaicLoader.astro';
+import mark from '../../../design-system/assets/logo-mark-light.png';
+
+// The frozen parity page: markup lifted verbatim from design-system/Home.dc.html
+// so npm run test:visual has something to diff the components against. It is NOT
+// the landing page (that is src/layouts/Home.astro) and it is noindex + robots
+// Disallow — it exists only so the components cannot drift from the brand.
+const EMBODIMENTS = [
+  { num: 'Ⅰ', cls: 'Swarm', tone: 'signal', title: 'Pollen', blurb: 'Forty palm-sized units that only make sense as a weather system.' },
+  { num: 'Ⅱ', cls: 'Continuum', tone: 'accent', title: 'Tidepool', blurb: 'A boneless arm for the intertidal zone, built to be hit by waves.' },
+  { num: 'Ⅲ', cls: 'Symbiotic', tone: 'signal', title: 'Der Mantelträger', blurb: 'A shoulder-worn third arm for people who already have two good ones.' },
+];
+
+const PILLARS = [
+  { n: '01', line: 'accent', title: 'Snap-together assembly', body: 'Pick parts, snap them into a body. No CAD experience required.' },
+  { n: '02', line: 'signal', title: 'Simulation first', body: 'Watch your invention teach itself to walk, crawl, roll or flail, in a browser tab, before any hardware is involved.' },
+  { n: '03', line: 'accent', title: 'Real hardware, later', body: 'Real arms and imported 3D models are next on the roadmap.' },
+];
+---
+<Base
+  noindex
+  title="Design-system parity — Homunculus Robotics"
+  description="Frozen copy of design-system/Home.dc.html, rendered from the site's own components. Not a public page.">
+  <Nav />
+
+  <main>
+  <section id="top" class="hero">
+    <div class="chroma" aria-hidden="true"></div>
+    <div class="fade" aria-hidden="true"></div>
+    <MosaicLoader />
+    <div class="inner">
+      <div class="eyebrow-dot">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="hmc-label">Homunculus Robotics — Physical AI</span>
+      </div>
+      <GlitchText as="h1" class="hero-h1">
+        The human form is one solution. <span class="accent">We build the others.</span>
+      </GlitchText>
+      <p class="lede">
+        The bottleneck in robotics is not motors. It's access. Homunculus is a low-friction
+        sandbox — <em>snap parts together, hit go, and watch your invention teach itself to move.</em>
+      </p>
+      <div class="actions">
+        <Button href="/challenge" size="lg">Browse the Design Challenge</Button>
+        <Button href="/about" size="lg" variant="outline">Meet the founder</Button>
+      </div>
+    </div>
+  </section>
+
+  <section id="embodiments" class="embodiments">
+    <div class="inner">
+      <div class="section-head">
+        <div>
+          <div class="hmc-label">01 — Five ways to build a body</div>
+          <GlitchText as="h2" class="h2">Robots designed around the task, not the mirror.</GlitchText>
+        </div>
+        <p class="aside">Every submission to the Design Challenge gets filed into one of five embodiment classes.</p>
+      </div>
+      <ul class="emb-grid">
+        {EMBODIMENTS.map((e) => (
+          <li>
+            <span class="num">{e.num}</span>
+            <div>
+              <div class:list={['cls', e.tone]}>{e.cls}</div>
+              <h3>{e.title}</h3>
+              <p>{e.blurb}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <div class="more-row"><a class="more" href="/challenge">Browse the full catalogue →</a></div>
+    </div>
+  </section>
+
+  <section id="thesis" class="thesis">
+    <div class="inner">
+      <div class="markwrap">
+        <img src={mark.src} width={mark.width} height={mark.height} alt="" />
+      </div>
+      <div>
+        <div class="hmc-label">02 — Why Homunculus exists</div>
+        <p class="pull">Robotics is gated. <em>We deleted the gate.</em></p>
+        <p class="body">
+          The bottleneck is not motors. It's the software overhead, the integration cost, and the
+          fact that every new task needs an engineer who already has a six-month waiting list.
+        </p>
+        <a class="more" href="/about">Read the full story on the About page →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="specs" class="specs">
+    <div class="hmc-label">03 — Where the sandbox is headed</div>
+    <GlitchText as="h2" class="h2">Idealized modules today. Real arms next.</GlitchText>
+    <ul class="pillars">
+      {PILLARS.map((p) => (
+        <li class={p.line}>
+          <div class="n">{p.n}</div>
+          <h4>{p.title}</h4>
+          <p>{p.body}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section id="careers" class="careers">
+    <div class="chroma slow" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="inner">
+      <div class="hmc-label">Now assembling the founding team</div>
+      <GlitchText as="h2" class="h2">Build the bodies the future actually needs.</GlitchText>
+      <div class="actions">
+        <Button href="/about#roles" size="lg">See open roles</Button>
+        <Button href="/challenge" size="lg" variant="outline-signal">Vote on an entry</Button>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  .inner { max-width: var(--maxw-wide); margin: 0 auto; }
+  .hmc-label { margin-bottom: 14px; }
+  .thesis .hmc-label, .careers .hmc-label { margin-bottom: var(--sp-4); }
+
+  /* ── hero ───────────────────────────────────────────────── */
+  .hero { position: relative; overflow: hidden; background: var(--void); }
+  .chroma {
+    position: absolute;
+    inset: 0;
+    background-image: var(--chroma-band);
+    background-size: 300% 100%;
+    animation: hmc-chroma-drift 26s linear infinite;
+    opacity: 0.55;
+  }
+  .chroma.slow { animation-duration: 34s; opacity: 0.3; }
+  .fade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+      color-mix(in oklab, var(--void) 34%, transparent) 0%,
+      color-mix(in oklab, var(--void) 72%, transparent) 46%,
+      var(--void) 100%);
+  }
+  .hero .inner { position: relative; z-index: 2; padding: var(--sp-10) var(--sp-6) var(--sp-9); }
+
+  .eyebrow-dot { display: inline-flex; align-items: center; gap: 8px; margin-bottom: var(--sp-5); }
+  .eyebrow-dot .hmc-label { margin-bottom: 0; }
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+    animation: hmc-flicker 2.4s infinite;
+  }
+
+  .hero-h1 {
+    font-size: var(--fs-hero);
+    line-height: 0.9;
+    letter-spacing: var(--tracking-tight);
+    max-width: 17ch;
+  }
+  .accent { color: var(--accent); }
+
+  .lede {
+    font-family: var(--font-serif);
+    font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+    line-height: 1.32;
+    color: var(--text-mid);
+    max-width: 46ch;
+    margin: var(--sp-6) 0 0;
+  }
+  .lede em { font-style: italic; color: var(--signal); }
+
+  .actions { display: flex; gap: 14px; margin-top: var(--sp-7); flex-wrap: wrap; }
+
+  /* ── embodiments ────────────────────────────────────────── */
+  .embodiments { position: relative; overflow: hidden; }
+  .embodiments .inner { position: relative; z-index: 1; padding: var(--sp-8) var(--sp-6) var(--sp-9); }
+
+  .section-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--sp-6);
+    flex-wrap: wrap;
+    margin-bottom: var(--sp-7);
+  }
+  .h2 { font-size: var(--fs-h2); line-height: 1; max-width: 20ch; }
+  .section-head .h2 { max-width: 18ch; }
+  .aside { margin: 0; color: var(--text-mid); max-width: 34ch; font-size: var(--fs-sm); }
+
+  .emb-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--sp-8);
+    max-width: 96ch;
+  }
+  .emb-grid li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--sp-4); align-items: start; }
+  .num { font-family: var(--font-mono); font-size: 12px; line-height: 1.6; color: var(--text-faint); }
+  .cls {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .cls.accent { color: var(--accent); }
+  .cls.signal { color: var(--signal); }
+  .emb-grid h3 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.7rem, 2.4vw, 2.1rem);
+    color: var(--text-hi);
+    line-height: 1.08;
+    margin: 10px 0 0;
+  }
+  .emb-grid p { color: var(--text-mid); font-size: var(--fs-body-lg); margin: 12px 0 0; max-width: 42ch; text-wrap: pretty; }
+
+  .more-row { margin-top: var(--sp-8); }
+  .more {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .more:hover { color: var(--signal); }
+
+  /* ── thesis ─────────────────────────────────────────────── */
+  .thesis { background: var(--surface-0); position: relative; overflow: hidden; }
+  .thesis .inner {
+    padding: var(--sp-10) var(--sp-6);
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: var(--sp-8);
+    align-items: center;
+  }
+  .markwrap { display: flex; justify-content: center; }
+  .markwrap img { width: min(28vw, 320px); height: auto; opacity: 0.92; }
+
+  .pull {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    line-height: 1.28;
+    color: var(--text-hi);
+  }
+  .pull em { font-style: italic; color: var(--accent); }
+  .thesis .body { margin: var(--sp-5) 0 0; color: var(--text-mid); font-size: var(--fs-body-lg); max-width: 52ch; }
+  .thesis .more { display: inline-block; margin-top: var(--sp-5); }
+
+  /* ── specs ──────────────────────────────────────────────── */
+  .specs { max-width: var(--maxw-wide); margin: 0 auto; padding: var(--sp-9) var(--sp-6); }
+  .specs .h2 { margin-bottom: var(--sp-7); }
+  .pillars {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-6);
+  }
+  .pillars li { padding-top: var(--sp-4); }
+  .pillars li.accent { border-top: 1px solid var(--line-accent); }
+  .pillars li.signal { border-top: 1px solid var(--line-signal); }
+  .n { font-family: var(--font-mono); font-size: 11px; color: var(--text-faint); margin-bottom: 10px; }
+  .pillars h4 { font-family: var(--font-body); font-weight: 600; color: var(--text-hi); font-size: var(--fs-h4); margin: 0 0 10px; }
+  .pillars p { margin: 0; color: var(--text-mid); font-size: var(--fs-sm); }
+
+  /* ── careers ────────────────────────────────────────────── */
+  .careers { position: relative; overflow: hidden; background: var(--surface-0); }
+  .vignette { position: absolute; inset: 0; background: radial-gradient(120% 120% at 50% 50%, transparent 0%, var(--void) 78%); }
+  .careers .inner { position: relative; padding: var(--sp-10) var(--sp-6); text-align: center; }
+  .careers .h2 { line-height: 0.95; margin: 0 auto var(--sp-6); }
+  /* The h2's own bottom margin is the gap here; .actions' margin-top would
+     collapse to the larger of the two and push the row 16px down. */
+  .careers .actions { justify-content: center; margin-top: 0; }
+
+  /* ── small viewports ────────────────────────────────────────
+     The prototype has no media queries; its grids overflow below ~760px.
+     One breakpoint collapses every multi-column block to one column. */
+  @media (max-width: 760px) {
+    .emb-grid, .pillars { grid-template-columns: 1fr; gap: var(--sp-7); }
+    .thesis .inner { grid-template-columns: 1fr; }
+    .markwrap img { width: min(52vw, 240px); }
+    .hero .inner, .careers .inner, .thesis .inner { padding-left: var(--sp-4); padding-right: var(--sp-4); }
+    .embodiments .inner, .specs { padding-left: var(--sp-4); padding-right: var(--sp-4); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .chroma { animation: none; }
+    .dot { animation: none; }
+  }
+</style>

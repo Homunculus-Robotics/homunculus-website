@@ -1,0 +1,93 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends Omit<HTMLAttributes<'a'>, 'size'> {
+  variant?: 'primary' | 'signal' | 'outline' | 'outline-signal' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  mono?: boolean;
+  glow?: boolean;
+  disabled?: boolean;
+  /** Present → renders an <a>. Absent → a <button>. */
+  href?: string;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  mono = false,
+  glow = true,
+  disabled = false,
+  href,
+  class: className,
+  ...rest
+} = Astro.props;
+
+// The <a>/<button> attribute unions do not overlap on `type`; the tag is
+// chosen here, not by the caller, so the cast is the whole fix.
+const Tag = (href ? 'a' : 'button') as any;
+---
+<Tag
+  class:list={['hmc-btn', `v-${variant}`, `s-${size}`, mono && 'mono', glow && 'glow', className]}
+  href={href}
+  disabled={href ? undefined : disabled}
+  aria-disabled={href && disabled ? 'true' : undefined}
+  {...rest}><slot /></Tag>
+
+<style>
+  .hmc-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    line-height: var(--lh-body);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all var(--dur) var(--ease-out);
+  }
+  .hmc-btn.mono {
+    font-family: var(--font-mono);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .s-sm { padding: 8px 14px; font-size: 13px; }
+  .s-md { padding: 12px 22px; font-size: 15px; }
+  .s-lg { padding: 15px 28px; font-size: var(--fs-body); }
+
+  /* Variants track the themeable aliases, not the ramp names, so the three
+     themes recolour buttons without touching this file. */
+  .v-primary { background: var(--accent); color: var(--text-on-accent); }
+  .v-signal  { background: var(--gold-400); color: #2a1c00; }
+  .v-ghost   { background: transparent; color: var(--text-mid); }
+
+  /* The two secondaries the shipped Home page actually uses: a signal-tinted
+     hairline, reading either as quiet (text-hi) or as accent (signal). Only
+     these carry a border — a transparent one on the filled variants would make
+     them 2px taller than the prototype's. */
+  .v-outline,
+  .v-outline-signal {
+    background: transparent;
+    border: 1px solid var(--line-signal);
+  }
+  .v-outline { color: var(--text-hi); }
+  .v-outline-signal { color: var(--signal); }
+
+  .v-primary.glow { box-shadow: var(--glow-accent); }
+  .v-signal.glow  { box-shadow: var(--glow-gold); }
+
+  .hmc-btn:hover:not(:disabled):not([aria-disabled='true']) { transform: translateY(-1px); }
+  .v-outline:hover:not(:disabled),
+  .v-outline-signal:hover:not(:disabled) { color: var(--text-hi); box-shadow: var(--glow-signal); }
+  .v-ghost:hover:not(:disabled) { color: var(--text-hi); }
+
+  .hmc-btn:disabled,
+  .hmc-btn[aria-disabled='true'] { opacity: 0.45; cursor: not-allowed; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hmc-btn { transition: none; }
+    .hmc-btn:hover { transform: none; }
+  }
+</style>

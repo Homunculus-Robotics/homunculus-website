@@ -1,0 +1,71 @@
+/* ── Humunculus Robotics — Color themes ─────────────────────────
+   Set data-hmc-theme on any wrapper. Unset = the :root default
+   (deep green base, violet signal). Themes only remap semantic
+   aliases — never component code.
+------------------------------------------------------------------ */
+
+/* Phosphor — green base, violet signal (same as :root) */
+[data-hmc-theme="phosphor"] {
+  --accent:        var(--green-300);
+  --accent-strong: var(--green-600);
+  --signal:        var(--violet-300);
+  --line-accent:   var(--line-green);
+  --line-signal:   var(--line-violet);
+  --glow-accent:   var(--glow-green);
+  --glow-signal:   var(--glow-violet);
+  --text-on-accent: #041007;
+}
+
+/* Ultraviolet — violet base and violet interaction, green as the trace signal */
+[data-hmc-theme="ultraviolet"] {
+  --void:      #070313;
+  --surface-0: #0b0519;
+  --surface-1: #120a26;
+  --surface-2: #1a0f34;
+  --surface-3: #241545;
+  --surface-4: #32205e;
+
+  --text-hi:   #efe9fb;
+  --text-mid:  #b0a5c6;
+  --text-low:  #7d729a;
+  --text-faint:#4e4568;
+
+  --accent:        var(--violet-300);
+  --accent-strong: var(--violet-600);
+  --accent-quiet:  var(--violet-900);
+  --signal:        var(--green-300);
+  --line-accent:   var(--line-violet);
+  --line-signal:   var(--line-green);
+  --glow-accent:   var(--glow-violet);
+  --glow-signal:   var(--glow-green);
+  --text-on-accent: #12042a;
+
+  --field-glow: radial-gradient(120% 90% at 50% 0%,
+    color-mix(in oklab, var(--violet-700) 62%, transparent) 0%,
+    transparent 62%);
+}
+
+/* Verdant — green forward, violet held back to hairlines */
+[data-hmc-theme="verdant"] {
+  --void:      #030803;
+  --surface-0: #061006;
+  --surface-1: #0b1a0b;
+  --surface-2: #112211;
+
+  --accent:        var(--green-200);
+  --accent-strong: var(--green-500);
+  --signal:        var(--violet-200);
+  --line-accent:   color-mix(in oklab, var(--green-200) 45%, transparent);
+  --line-signal:   var(--line-violet);
+  --glow-accent:   0 0 24px color-mix(in oklab, var(--green-200) 45%, transparent);
+  --glow-signal:   var(--glow-violet);
+  --text-on-accent: #04120a;
+
+  --field-glow: radial-gradient(120% 90% at 50% 0%,
+    color-mix(in oklab, var(--green-700) 70%, transparent) 0%,
+    transparent 60%);
+  --chroma-band: linear-gradient(90deg,
+    var(--green-950) 0%, var(--green-700) 12%, var(--green-300) 26%,
+    var(--chroma-cyan) 40%, var(--violet-300) 58%, var(--green-500) 78%,
+    var(--green-950) 100%);
+}

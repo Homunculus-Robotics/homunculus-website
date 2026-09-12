@@ -1,0 +1,24 @@
+<!-- @dsCard group="Components" viewport="700x220" name="Forms — Input" subtitle="Text field with phosphor focus" -->
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+</head>
+<body style="margin:0;background:var(--void);padding:26px">
+<div id="root"></div>
+<script type="text/babel">
+const NS = window.HumunculusRobotics || window.Humunculus || Object.values(window).find(v => v && v.Input) || {};
+const { Input } = NS;
+function Demo(){
+  return (
+    <div style={{display:'flex',gap:18,maxWidth:560}}>
+      <div style={{flex:1}}><Input label="Work email" placeholder="you@lab.org" hint="We reply within a day." /></div>
+      <div style={{flex:1}}><Input label="Organisation" placeholder="Institute / company" /></div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script>
+</body></html>

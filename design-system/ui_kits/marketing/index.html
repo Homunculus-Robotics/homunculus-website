@@ -1,0 +1,373 @@
+<!-- @dsCard group="Marketing Website" viewport="1400x900" name="Humunculus — Landing (legacy)" subtitle="LEGACY single-page concept, superseded by Home.dc.html / About.dc.html / Design Challenge.dc.html — kept for its tweak-panel patterns" -->
+<!-- @startingPoint section="Marketing" subtitle="LEGACY — see Home.dc.html for the current site" viewport="1400x900" -->
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Humunculus Robotics</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  .wrap { max-width: var(--maxw-wide); margin: 0 auto; padding: 0 var(--sp-6); }
+  .nav-link { color: var(--text-mid); font-size: var(--fs-sm); transition: color var(--dur) var(--ease-out); }
+  .nav-link:hover { color: var(--green-300); }
+  .emb-card { transition: transform var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out); }
+  .emb-card:hover { transform: translateY(-4px); border-color: var(--line-green); box-shadow: var(--glow-green); }
+  .cta-btn { transition: all var(--dur) var(--ease-out); }
+  .cta-btn:hover { box-shadow: 0 0 34px color-mix(in oklab, var(--green-300) 65%, transparent); transform: translateY(-1px); }
+  .glitch:hover { text-shadow: 3px 0 var(--gold-400), -3px 0 var(--status-info); }
+  .spin-slow { animation: spin 80s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ─────────── TWEAK VARIANTS ─────────── */
+  /* Density → rescale the vertical-rhythm tokens */
+  body[data-density="airy"]  { --sp-10: 11rem; --sp-9: 8rem; }
+  body[data-density="dense"] { --sp-10: 4.5rem; --sp-9: 3rem; --sp-7: 2rem; }
+
+  /* Glitch intensity (driven by --tw-gx set from JS) */
+  .glitch:hover { text-shadow: var(--tw-gx,3px) 0 var(--gold-400), calc(-1 * var(--tw-gx,3px)) 0 var(--status-info); }
+  body[data-glitch-always] h1.glitch { animation: hmc-glitch 2s steps(2) infinite; text-shadow: var(--tw-gx,3px) 0 var(--gold-400), calc(-1 * var(--tw-gx,3px)) 0 var(--status-info); }
+
+  /* Background motif — redefines the shared --blueprint-grid token everywhere */
+  body[data-texture="lattice"] { --blueprint-grid:
+    repeating-linear-gradient(45deg, var(--line-soft) 0 1px, transparent 1px 30px),
+    repeating-linear-gradient(-45deg, var(--line-soft) 0 1px, transparent 1px 30px); }
+  body[data-texture="dots"] { --blueprint-grid:
+    radial-gradient(var(--line-mid) 1.1px, transparent 1.6px) 0 0 / 26px 26px; }
+  body[data-texture="rings"] { --blueprint-grid:
+    repeating-radial-gradient(circle at 50% 42%, transparent 0 33px, var(--line-soft) 33px 34px); }
+  body[data-texture="circuit"] { --blueprint-grid:
+    linear-gradient(var(--line-soft) 1px, transparent 1px) 0 0 / 30px 30px,
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px) 0 0 / 30px 30px,
+    radial-gradient(var(--line-green) 1.6px, transparent 2.2px) 0 0 / 30px 30px; }
+  body[data-texture="none"] { --blueprint-grid: none; }
+  body[data-spin="off"] .spin-slow { animation: none !important; }
+
+  /* Palette — remap the phosphor tokens the whole page reads from.
+     "Green" is the signature; the rest dial green down toward gold / neutral. */
+  body[data-palette="balanced"] {
+    --green-300: #49a86f; --green-200: #8fd0a8;
+    --line-green: color-mix(in oklab, #49a86f 34%, transparent);
+    --glow-green: 0 0 20px color-mix(in oklab, #49a86f 42%, transparent);
+  }
+  body[data-palette="amber"] {
+    --green-300: var(--gold-400); --green-200: var(--gold-200);
+    --line-green: var(--line-gold); --glow-green: var(--glow-gold);
+  }
+  body[data-palette="slate"] {
+    --green-300: #b8c6bc; --green-200: #d8e1da;
+    --line-green: var(--line-mid); --glow-green: 0 0 0 transparent;
+    --void: #08090b; --surface-0: #0d0e11; --surface-1: #121317; --surface-2: #191a1f; --surface-3: #22242a;
+  }
+
+  /* Type richness — "simple" drops the serif so the page runs on 2 families */
+  body[data-type="simple"] [style*="--font-serif"] { font-family: var(--font-body) !important; font-style: normal !important; }
+
+  /* ── EMBODIMENTS: editorial-list layout (breaks the 3-up grid) ── */
+  body[data-emb="editorial"] #emb-grid { grid-template-columns: 1fr !important; gap: 0 !important; }
+  body[data-emb="editorial"] .emb-card {
+    flex-direction: row !important; align-items: center !important; min-height: 0 !important;
+    background: transparent !important; border-width: 0 0 1px 0 !important; border-radius: 0 !important;
+    padding: clamp(28px,4vw,52px) 4px !important; gap: clamp(20px,4vw,64px);
+  }
+  body[data-emb="editorial"] .emb-card:hover { transform: none !important; box-shadow: none !important; border-color: var(--line-green) !important; }
+  body[data-emb="editorial"] .emb-card > span:first-child {
+    position: static !important; font-family: var(--font-display); font-size: clamp(52px,7vw,104px) !important;
+    line-height: .8; color: var(--line-green) !important; width: 2ch; flex: none; margin-bottom: 0 !important;
+  }
+  body[data-emb="editorial"] .emb-card > div:nth-of-type(1) { margin: 0 !important; flex: none; width: 130px; }
+  body[data-emb="editorial"] .emb-card > div:last-child { margin: 0 0 0 auto !important; max-width: 56ch; }
+  body[data-emb="editorial"] .emb-card h3 { font-size: clamp(30px,3.6vw,48px) !important; }
+
+  /* ─────────── TWEAK PANEL ─────────── */
+  #tw-fab { position: fixed; right: 18px; bottom: 18px; z-index: 60; width: 48px; height: 48px;
+    border-radius: 50%; border: 1px solid var(--line-green); background: var(--surface-2);
+    color: var(--green-300); cursor: pointer; box-shadow: var(--glow-green); display: grid; place-items: center;
+    font-family: var(--font-mono); font-size: 18px; transition: transform var(--dur) var(--ease-out); }
+  #tw-fab:hover { transform: rotate(45deg) scale(1.06); }
+  #tw-panel { position: fixed; right: 18px; bottom: 78px; z-index: 60; width: 290px; max-height: 82vh; overflow-y: auto;
+    background: color-mix(in oklab, var(--surface-1) 92%, transparent); backdrop-filter: blur(14px);
+    border: 1px solid var(--border); border-radius: var(--radius-md); padding: 18px;
+    box-shadow: var(--shadow-2); transform-origin: bottom right;
+    transition: opacity var(--dur) var(--ease-out), transform var(--dur) var(--ease-snap); }
+  #tw-panel[hidden] { display: block !important; opacity: 0; transform: scale(.92) translateY(8px); pointer-events: none; }
+  .tw-h { font-family: var(--font-mono); font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--text-low); margin: 16px 0 8px; }
+  .tw-h:first-child { margin-top: 0; }
+  .tw-seg { display: flex; gap: 4px; }
+  .tw-seg button, .tw-tog { flex: 1; font-family: var(--font-mono); font-size: 11px; letter-spacing: .04em;
+    text-transform: uppercase; padding: 8px 4px; border: 1px solid var(--border); background: var(--surface-0);
+    color: var(--text-mid); border-radius: var(--radius-sm); cursor: pointer; transition: all var(--dur) var(--ease-out); }
+  .tw-seg button:hover, .tw-tog:hover { color: var(--text-hi); border-color: var(--line-mid); }
+  .tw-seg button[aria-pressed="true"], .tw-tog[aria-pressed="true"] {
+    background: var(--green-300); color: var(--text-on-accent); border-color: var(--green-300); box-shadow: var(--glow-green); }
+  .tw-row { display: flex; gap: 8px; }
+  #tw-glitch { width: 100%; accent-color: var(--green-300); }
+  #tw-reset { width: 100%; margin-top: 18px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase; padding: 9px; background: transparent; border: 1px solid var(--line-mid);
+    color: var(--text-low); border-radius: var(--radius-sm); cursor: pointer; }
+  #tw-reset:hover { color: var(--gold-300); border-color: var(--line-gold); }
+  @media print { #tw-fab, #tw-panel { display: none !important; } }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<header style="position:sticky;top:0;z-index:20;backdrop-filter:blur(12px);background:color-mix(in oklab,var(--void) 78%,transparent);border-bottom:1px solid var(--border-quiet)">
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;height:68px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <img src="../../assets/logo-mark-light.png" alt="" style="height:34px">
+      <span style="font-family:var(--font-display);font-size:22px;letter-spacing:.02em;color:var(--text-hi)">HUMUNCULUS</span>
+    </div>
+    <nav style="display:flex;gap:32px;align-items:center">
+      <a class="nav-link" href="#embodiments">Embodiments</a>
+      <a class="nav-link" href="#thesis">Thesis</a>
+      <a class="nav-link" href="#specs">Platform</a>
+      <a class="nav-link" href="#careers">Careers</a>
+    </nav>
+    <a href="#contact" class="cta-btn" style="font-family:var(--font-mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--text-on-accent);background:var(--green-300);padding:10px 18px;border-radius:var(--radius-sm)">Request access</a>
+  </div>
+</header>
+
+<!-- ── HERO ── -->
+<section style="position:relative;overflow:hidden;background-image:var(--field-glow)">
+  <div style="position:absolute;inset:0;background:var(--blueprint-grid);opacity:.5"></div>
+  <div style="position:absolute;top:50%;right:-6%;transform:translateY(-50%);opacity:.16;pointer-events:none">
+    <img src="../../assets/logo-mark-green.png" class="spin-slow" alt="" style="width:min(46vw,720px)">
+  </div>
+  <div class="wrap" style="position:relative;padding-top:var(--sp-10);padding-bottom:var(--sp-10);min-height:82vh;display:flex;flex-direction:column;justify-content:center">
+    <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:var(--sp-5)">
+      <span style="width:7px;height:7px;border-radius:50%;background:var(--green-300);box-shadow:0 0 10px var(--green-300);animation:hmc-flicker 2.4s infinite"></span>
+      <span class="hmc-label">Physical AI · Founded 2026 · Bilingual DE/EN</span>
+    </div>
+    <h1 class="glitch" style="font-family:var(--font-display);font-size:var(--fs-hero);line-height:.9;letter-spacing:-.01em;color:var(--text-hi);max-width:16ch;transition:text-shadow var(--dur)">
+      INTELLIGENCE FOR EVERY <span style="color:var(--green-300)">BODY.</span>
+    </h1>
+    <p style="font-family:var(--font-serif);font-size:clamp(1.4rem,2.4vw,2rem);line-height:1.3;color:var(--text-mid);max-width:34ch;margin:var(--sp-5) 0 0">
+      The human form is one solution among many. We build minds for the embodiments it can't be — <span style="font-style:italic;color:var(--gold-300)">and give them their own.</span>
+    </p>
+    <div style="display:flex;gap:14px;margin-top:var(--sp-7);flex-wrap:wrap">
+      <a href="#embodiments" class="cta-btn" style="font-family:var(--font-body);font-weight:500;color:var(--text-on-accent);background:var(--green-300);padding:15px 28px;border-radius:var(--radius-sm);box-shadow:var(--glow-green)">See the embodiments</a>
+      <a href="#thesis" style="font-family:var(--font-body);font-weight:500;color:var(--green-200);border:1px solid var(--line-green);padding:15px 28px;border-radius:var(--radius-sm)">Read our thesis</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── STAT STRIP ── -->
+<section style="border-block:1px solid var(--border);background:var(--surface-1)">
+  <div class="wrap" style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-6);padding-block:var(--sp-6)">
+    <div><div style="font-family:var(--font-display);font-size:var(--fs-h1);line-height:.9;color:var(--green-300)">∞</div><div class="hmc-label" style="color:var(--text-low);margin-top:8px">Form factors</div></div>
+    <div><div style="font-family:var(--font-display);font-size:var(--fs-h1);line-height:.9;color:var(--text-hi)">0.8<span style="font-family:var(--font-mono);font-size:20px;color:var(--text-mid)">ms</span></div><div class="hmc-label" style="color:var(--text-low);margin-top:8px">Control loop</div></div>
+    <div><div style="font-family:var(--font-display);font-size:var(--fs-h1);line-height:.9;color:var(--text-hi)">4→48<span style="font-family:var(--font-mono);font-size:20px;color:var(--text-mid)">DOF</span></div><div class="hmc-label" style="color:var(--text-low);margin-top:8px">Per embodiment</div></div>
+    <div><div style="font-family:var(--font-display);font-size:var(--fs-h1);line-height:.9;color:var(--gold-400)">1</div><div class="hmc-label" style="color:var(--text-low);margin-top:8px">Foundation model</div></div>
+  </div>
+</section>
+
+<!-- ── EMBODIMENTS ── -->
+<section id="embodiments" class="wrap" style="padding-block:var(--sp-10)">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:var(--sp-6);margin-bottom:var(--sp-7);flex-wrap:wrap">
+    <div>
+      <div class="hmc-label" style="margin-bottom:12px">01 — The catalogue</div>
+      <h2 style="font-family:var(--font-display);font-size:var(--fs-h1);line-height:1;color:var(--text-hi);max-width:18ch">Bodies designed around the task, not the mirror.</h2>
+    </div>
+    <p style="font-family:var(--font-body);color:var(--text-mid);max-width:36ch;font-size:var(--fs-body-lg)">A da Vinci surgical rig has four arms and none of them are human. Why teach a humanoid to drive it, when the rig itself can think?</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4)">
+    <!-- card -->
+    <article class="emb-card" style="position:relative;background:var(--blueprint-grid),var(--surface-1);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--sp-6);min-height:280px;display:flex;flex-direction:column">
+      <span style="position:absolute;top:14px;right:16px;font-family:var(--font-mono);font-size:11px;color:var(--text-faint)">Ⅰ</span>
+      <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--green-300);margin-bottom:auto">Surgical</div>
+      <div style="margin-top:var(--sp-6)">
+        <h3 style="font-family:var(--font-serif);font-size:28px;color:var(--text-hi);line-height:1.05">The Four-Arm Lattice</h3>
+        <p style="color:var(--text-mid);font-size:var(--fs-sm);margin:10px 0 0">Micron-scale coordination across four independent manipulators. No teleoperator in the loop.</p>
+      </div>
+    </article>
+    <article class="emb-card" style="position:relative;background:var(--blueprint-grid),var(--surface-1);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--sp-6);min-height:280px;display:flex;flex-direction:column">
+      <span style="position:absolute;top:14px;right:16px;font-family:var(--font-mono);font-size:11px;color:var(--text-faint)">Ⅱ</span>
+      <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-400);margin-bottom:auto">Distributed</div>
+      <div style="margin-top:var(--sp-6)">
+        <h3 style="font-family:var(--font-serif);font-size:28px;color:var(--text-hi);line-height:1.05">The Swarm Body</h3>
+        <p style="color:var(--text-mid);font-size:var(--fs-sm);margin:10px 0 0">One mind, many small bodies. A single intent expressed across a hundred coordinated units.</p>
+      </div>
+    </article>
+    <article class="emb-card" style="position:relative;background:var(--blueprint-grid),var(--surface-1);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--sp-6);min-height:280px;display:flex;flex-direction:column">
+      <span style="position:absolute;top:14px;right:16px;font-family:var(--font-mono);font-size:11px;color:var(--text-faint)">Ⅲ</span>
+      <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--green-300);margin-bottom:auto">Continuum</div>
+      <div style="margin-top:var(--sp-6)">
+        <h3 style="font-family:var(--font-serif);font-size:28px;color:var(--text-hi);line-height:1.05">The Serpent Coil</h3>
+        <p style="color:var(--text-mid);font-size:var(--fs-sm);margin:10px 0 0">Boneless, infinitely-articulated reach into spaces no rigid limb can enter.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ── THESIS (serif manifesto) ── -->
+<section id="thesis" style="border-block:1px solid var(--border);background:var(--surface-0);position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;background:var(--scanlines);opacity:.4;pointer-events:none"></div>
+  <div class="wrap" style="position:relative;padding-block:var(--sp-10);display:grid;grid-template-columns:1fr 1.4fr;gap:var(--sp-8);align-items:center">
+    <div style="display:flex;justify-content:center">
+      <img src="../../assets/logo-mark-light.png" alt="Vitruvian robot" style="width:min(30vw,340px);opacity:.92">
+    </div>
+    <div>
+      <div class="hmc-label" style="margin-bottom:var(--sp-4)">02 — The thesis</div>
+      <p style="font-family:var(--font-serif);font-size:clamp(1.6rem,3vw,2.6rem);line-height:1.25;color:var(--text-hi)">
+        For five hundred years we drew the machine in our own image. Humunculus asks the harder question:
+        <span style="font-style:italic;color:var(--green-300)"> what shape should the mind take, when the body is free to be anything?</span>
+      </p>
+      <p style="font-family:var(--font-body);color:var(--text-mid);font-size:var(--fs-body-lg);margin-top:var(--sp-5);max-width:52ch">
+        We are not building a better humanoid. We are building intelligence that is born into the body its work demands — and never has to pretend to be us.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── SPECS ── -->
+<section id="specs" class="wrap" style="padding-block:var(--sp-10)">
+  <div class="hmc-label" style="margin-bottom:12px">03 — One platform</div>
+  <h2 style="font-family:var(--font-display);font-size:var(--fs-h1);line-height:1;color:var(--text-hi);max-width:20ch;margin-bottom:var(--sp-7)">One foundation model. Every embodiment it wears.</h2>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4)">
+    <div style="border-top:1px solid var(--line-green);padding-top:var(--sp-4)">
+      <h4 style="font-family:var(--font-body);font-weight:600;color:var(--text-hi);font-size:var(--fs-h4)">Morphology-agnostic control</h4>
+      <p style="color:var(--text-mid);font-size:var(--fs-sm);margin-top:10px">The policy learns bodies as parameters, not presets. New morphologies plug in without retraining from zero.</p>
+    </div>
+    <div style="border-top:1px solid var(--line-gold);padding-top:var(--sp-4)">
+      <h4 style="font-family:var(--font-body);font-weight:600;color:var(--text-hi);font-size:var(--fs-h4)">Sub-millisecond loop</h4>
+      <p style="color:var(--text-mid);font-size:var(--fs-sm);margin-top:10px">On-device inference closes the sensorimotor loop faster than a human reflex arc.</p>
+    </div>
+    <div style="border-top:1px solid var(--line-green);padding-top:var(--sp-4)">
+      <h4 style="font-family:var(--font-body);font-weight:600;color:var(--text-hi);font-size:var(--fs-h4)">Built for the field</h4>
+      <p style="color:var(--text-mid);font-size:var(--fs-sm);margin-top:10px">Operating rooms, sea floors, reactor cores. The places a human body should never have to go.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section id="contact" style="border-top:1px solid var(--border);background-image:var(--field-glow);position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;background:var(--blueprint-grid);opacity:.4"></div>
+  <div class="wrap" style="position:relative;padding-block:var(--sp-10);text-align:center">
+    <div class="hmc-label" style="margin-bottom:var(--sp-4)">Now assembling the founding team</div>
+    <h2 class="glitch" style="font-family:var(--font-display);font-size:var(--fs-h1);line-height:.95;color:var(--text-hi);max-width:20ch;margin:0 auto var(--sp-6);transition:text-shadow var(--dur)">
+      Build the bodies the future actually needs.
+    </h2>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="#" class="cta-btn" style="font-family:var(--font-body);font-weight:500;color:var(--text-on-accent);background:var(--green-300);padding:15px 30px;border-radius:var(--radius-sm);box-shadow:var(--glow-green)">Request early access</a>
+      <a href="#careers" style="font-family:var(--font-body);font-weight:500;color:var(--gold-300);border:1px solid var(--line-gold);padding:15px 30px;border-radius:var(--radius-sm)">See open roles</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer style="background:var(--void);border-top:1px solid var(--border)">
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding-block:var(--sp-6);flex-wrap:wrap;gap:var(--sp-4)">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="../../assets/logo-mark-light.png" alt="" style="height:26px">
+      <span style="font-family:var(--font-mono);font-size:12px;letter-spacing:.16em;color:var(--text-low)">HUMUNCULUS ROBOTICS · © 2026</span>
+    </div>
+    <span style="font-family:var(--font-mono);font-size:12px;letter-spacing:.16em;color:var(--text-faint)">SUPER-HUMAN EMBODIMENT</span>
+  </div>
+</footer>
+
+<!-- ── TWEAK PANEL ── -->
+<button id="tw-fab" aria-label="Open design controls" title="Design controls">◈</button>
+<aside id="tw-panel" hidden aria-label="Design controls">
+  <div class="tw-h">Palette</div>
+  <div class="tw-seg" data-key="palette" style="flex-wrap:wrap">
+    <button data-val="phosphor" style="flex-basis:calc(50% - 2px)">Green</button>
+    <button data-val="balanced" style="flex-basis:calc(50% - 2px)">Balanced</button>
+    <button data-val="amber" style="flex-basis:calc(50% - 2px)">Amber</button>
+    <button data-val="slate" style="flex-basis:calc(50% - 2px)">Slate</button>
+  </div>
+
+  <div class="tw-h">Typography</div>
+  <div class="tw-seg" data-key="type">
+    <button data-val="full">3 fonts</button>
+    <button data-val="simple">2 fonts</button>
+  </div>
+
+  <div class="tw-h">Embodiments layout</div>
+  <div class="tw-seg" data-key="emb">
+    <button data-val="grid">Grid</button>
+    <button data-val="editorial">Editorial</button>
+  </div>
+
+  <div class="tw-h">Density</div>
+  <div class="tw-seg" data-key="density">
+    <button data-val="airy">Airy</button>
+    <button data-val="default">Default</button>
+    <button data-val="dense">Dense</button>
+  </div>
+
+  <div class="tw-h">Hover glitch</div>
+  <input id="tw-glitch" type="range" min="0" max="100" step="1">
+
+  <div class="tw-h">Background motif</div>
+  <div class="tw-seg" data-key="texture" style="flex-wrap:wrap">
+    <button data-val="grid" style="flex-basis:calc(33.333% - 3px)">Blueprint</button>
+    <button data-val="lattice" style="flex-basis:calc(33.333% - 3px)">Lattice</button>
+    <button data-val="rings" style="flex-basis:calc(33.333% - 3px)">Rings</button>
+    <button data-val="dots" style="flex-basis:calc(33.333% - 3px)">Dots</button>
+    <button data-val="circuit" style="flex-basis:calc(33.333% - 3px)">Circuit</button>
+    <button data-val="none" style="flex-basis:calc(33.333% - 3px)">None</button>
+  </div>
+
+  <div class="tw-h">Motion</div>
+  <div class="tw-row">
+    <button class="tw-tog" data-toggle="spin">Logo rotation</button>
+  </div>
+
+  <button id="tw-reset">Reset to defaults</button>
+</aside>
+
+<script>
+(function(){
+  var DEFAULTS = { palette:'amber', type:'full', emb:'grid', density:'airy', glitch:52, texture:'grid', spin:'on' };
+  var KEY = 'hmc-mkt-tweaks-v2';
+  var s = Object.assign({}, DEFAULTS);
+  try { var saved = JSON.parse(localStorage.getItem(KEY)); if (saved) s = Object.assign(s, saved); } catch(e){}
+
+  var body = document.body, root = document.documentElement;
+  function apply(){
+    body.dataset.palette = s.palette;
+    body.dataset.type = s.type;
+    body.dataset.emb = s.emb;
+    if (s.density === 'default') delete body.dataset.density; else body.dataset.density = s.density;
+    body.dataset.texture = s.texture;
+    body.dataset.spin = s.spin;
+    root.style.setProperty('--tw-gx', (s.glitch/22).toFixed(2) + 'px');
+    if (s.glitch > 66) body.setAttribute('data-glitch-always',''); else body.removeAttribute('data-glitch-always');
+    // reflect UI
+    document.querySelectorAll('.tw-seg').forEach(function(seg){
+      var k = seg.getAttribute('data-key');
+      seg.querySelectorAll('button').forEach(function(b){
+        b.setAttribute('aria-pressed', String(b.getAttribute('data-val') === String(s[k])));
+      });
+    });
+    document.querySelectorAll('.tw-tog').forEach(function(b){
+      var k = b.getAttribute('data-toggle');
+      b.setAttribute('aria-pressed', String(s[k] === 'on'));
+    });
+    var sl = document.getElementById('tw-glitch'); if (sl.value != s.glitch) sl.value = s.glitch;
+    try { localStorage.setItem(KEY, JSON.stringify(s)); } catch(e){}
+  }
+
+  document.querySelectorAll('.tw-seg').forEach(function(seg){
+    var k = seg.getAttribute('data-key');
+    seg.addEventListener('click', function(e){
+      var b = e.target.closest('button'); if (!b) return;
+      s[k] = b.getAttribute('data-val'); apply();
+    });
+  });
+  document.querySelectorAll('.tw-tog').forEach(function(b){
+    b.addEventListener('click', function(){
+      var k = b.getAttribute('data-toggle'); s[k] = (s[k] === 'on') ? 'off' : 'on'; apply();
+    });
+  });
+  document.getElementById('tw-glitch').addEventListener('input', function(e){ s.glitch = +e.target.value; apply(); });
+  document.getElementById('tw-reset').addEventListener('click', function(){ s = Object.assign({}, DEFAULTS); apply(); });
+
+  var fab = document.getElementById('tw-fab'), panel = document.getElementById('tw-panel');
+  fab.addEventListener('click', function(){ panel.hidden = !panel.hidden; });
+
+  apply();
+})();
+</script>
+
+</body></html>

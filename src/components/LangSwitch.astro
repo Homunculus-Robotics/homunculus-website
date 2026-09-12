@@ -1,0 +1,40 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { localePath } from '../lib/site';
+
+const current = Astro.currentLocale ?? 'en';
+const path = localePath(Astro.url.pathname);
+const LOCALES = [
+  { code: 'en', label: 'EN' },
+  { code: 'de', label: 'DE' },
+] as const;
+---
+<div class="hmc-lang">
+  {LOCALES.map((l, i) => (
+    <>
+      {i > 0 && <span class="sep" aria-hidden="true">/</span>}
+      {l.code === current ? (
+        <span class="on" aria-current="true">{l.label}</span>
+      ) : (
+        <a href={getRelativeLocaleUrl(l.code, path)} hreflang={l.code} lang={l.code}>{l.label}</a>
+      )}
+    </>
+  ))}
+</div>
+
+<style>
+  .hmc-lang {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+  }
+  .on { color: var(--accent); }
+  .sep { color: var(--text-faint); }
+  /* --text-faint is 2.62:1 on --void — below AA for 11px text. --text-low is
+     5.19:1 and is the darkest token that passes. The prototype uses faint here. */
+  a { color: var(--text-low); text-decoration: none; }
+  a:hover { color: var(--accent); }
+</style>

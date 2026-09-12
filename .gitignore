@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.astro/
+.env*
+!.env.example
+design-system/uploads/
+*.log
+
+# Playwright — the visual baseline is re-captured from the prototype every run
+test-results/
+playwright-report/
+tests/e2e/__screenshots__/

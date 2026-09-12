@@ -1,0 +1,3 @@
+User-agent: *
+# The design-system parity route is a test fixture, not a page.
+Disallow: /parity/

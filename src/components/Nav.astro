@@ -1,0 +1,80 @@
+---
+import logo from '../../design-system/assets/logo-mark-light.png';
+import ThemeSwitcher from './ThemeSwitcher.astro';
+import LangSwitch from './LangSwitch.astro';
+import { NAV_LINKS, localePath, navHref } from '../lib/site';
+
+const lang = Astro.currentLocale === 'de' ? 'de' : 'en';
+const path = localePath(Astro.url.pathname);
+const isCurrent = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+---
+<header>
+  <div class="bar">
+    <a class="brand" href={navHref('/', lang)}>
+      <img src={logo.src} width={logo.width} height={logo.height} alt="" />
+      <span>HOMUNCULUS</span>
+    </a>
+    <nav aria-label="Main">
+      {NAV_LINKS.map((l) => (
+        <a href={navHref(l.href, lang)} class:list={[isCurrent(l.href) && 'current']} aria-current={isCurrent(l.href) ? 'page' : undefined}>{l.label[lang]}</a>
+      ))}
+    </nav>
+    <div class="tools">
+      <ThemeSwitcher />
+      <LangSwitch />
+    </div>
+  </div>
+</header>
+
+<style>
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: blur(12px);
+    background: color-mix(in oklab, var(--void) 78%, transparent);
+    border-bottom: 1px solid var(--border-quiet);
+  }
+  .bar {
+    max-width: var(--maxw-wide);
+    margin: 0 auto;
+    padding: 0 var(--sp-6);
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-6);
+  }
+
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .brand img { height: 34px; width: auto; }
+  .brand span {
+    font-family: var(--font-display);
+    font-size: 22px;
+    letter-spacing: 0.02em;
+    color: var(--text-hi);
+  }
+
+  nav { display: flex; gap: 30px; align-items: center; }
+  nav a {
+    color: var(--text-mid);
+    font-size: var(--fs-sm);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  nav a:hover { color: var(--accent); }
+  nav a.current {
+    color: var(--text-hi);
+    border-bottom: 1px solid var(--line-accent);
+    padding-bottom: 2px;
+  }
+
+  .tools { display: flex; align-items: center; gap: 16px; }
+
+  /* The prototype has no small-viewport case; the bar simply overflows there.
+     Wrapping is the smallest honest fix — a drawer is 0.3's call if it needs one. */
+  @media (max-width: 900px) {
+    .bar { height: auto; flex-wrap: wrap; padding: var(--sp-3) var(--sp-4); row-gap: var(--sp-3); }
+    nav { order: 3; width: 100%; gap: var(--sp-5); overflow-x: auto; font-size: var(--fs-xs); }
+  }
+</style>

@@ -1,0 +1,3 @@
+/* D2: one source of truth. styles.css is the design system's own entry point
+   and owns the token import order — do not inline the token list here. */
+@import '../../design-system/styles.css';

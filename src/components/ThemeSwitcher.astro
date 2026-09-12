@@ -1,0 +1,50 @@
+---
+const THEMES = [
+  { id: 'phosphor', label: 'Phosphor' },
+  { id: 'ultraviolet', label: 'Ultraviolet' },
+  { id: 'verdant', label: 'Verdant' },
+] as const;
+---
+<hmc-theme-switcher role="group" aria-label="Color theme">
+  {THEMES.map((t) => (
+    <button type="button" data-theme={t.id} class={t.id} aria-label={`${t.label} theme`} aria-pressed="false" />
+  ))}
+</hmc-theme-switcher>
+
+<script>
+  import '../components/ThemeSwitcher.ts';
+</script>
+
+<style>
+  hmc-theme-switcher { display: flex; gap: 5px; }
+
+  /* The swatch is 15px; the button is 24px, which is the WCAG 2.2 minimum
+     target size. The dot is drawn by ::before so growing the hit area does not
+     grow the visual. */
+  button {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: 0;
+    background: none;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+  }
+  button::before {
+    content: '';
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid var(--line-mid);
+    background: var(--swatch);
+  }
+  button[aria-pressed='true']::before,
+  button:hover::before { border-color: var(--paper); }
+
+  /* Swatches are literal previews of each theme, so they name the ramps
+     directly — they must not follow the theme they are offering to switch to. */
+  .phosphor    { --swatch: linear-gradient(135deg, var(--green-300) 0 50%, var(--violet-400) 50% 100%); }
+  .ultraviolet { --swatch: linear-gradient(135deg, var(--violet-300) 0 50%, var(--chroma-magenta) 50% 100%); }
+  .verdant     { --swatch: linear-gradient(135deg, var(--green-200) 0 50%, var(--green-700) 50% 100%); }
+</style>
