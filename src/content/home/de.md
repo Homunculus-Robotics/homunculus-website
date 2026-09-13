@@ -1,15 +1,15 @@
 ---
-title: Homunculus Robotics — Die menschliche Form ist eine Lösung
-description: Physical AI für die Körper, die noch niemand gebaut hat — ein Web-Sandkasten, ein morphologie-agnostischer Lerner, ein physischer Modulbaukasten und eine öffentliche Design Challenge für alle.
+title: Homunculus Robotics — Baue den Körper. Bring ihn in Bewegung.
+description: Roboterkörper im Browser entwerfen, in der Simulation trainieren und auf dieselbe Maschine in Hardware hinarbeiten.
 hero:
-  eyebrow: Homunculus Robotics — Physical AI
-  headline: Die menschliche Form ist eine Lösung.
-  headlineAccent: Wir bauen die anderen.
-  lede: Der Engpass in der Robotik sind nicht die Motoren. Es ist der Zugang. Wir bauen die Werkzeuge, mit denen jede und jeder einen Roboterkörper erfinden kann —
-  ledeEm: und den Lerner, der ihm das Bewegen beibringt.
+  eyebrow: Homunculus Robotics — Offene Robotik
+  headline: Baue den Körper.
+  headlineAccent: Bring ihn in Bewegung.
+  lede: Entwirf einen Roboterkörper im Browser. Trainiere ihn in der Simulation. Arbeite auf dieselbe Maschine in Hardware hin —
+  ledeEm: eine Schleife von der Idee zur Bewegung.
   ctas:
     - { label: Zur Design Challenge, href: /challenge }
-    - { label: Zum Sandkasten, href: /sandbox }
+    - { label: Sandkasten erkunden, href: /sandbox }
 products:
   eyebrow: 01 — Drei Hälften eines Produkts
   heading: Ein Baukasten, ein Lerner, und das Metall darunter.
@@ -53,14 +53,14 @@ contact:
   email: hello@homunculusrobotics.com
 ---
 
-Der Engpass sind nicht die Motoren. Es ist der Software-Overhead, die
-Integrationskosten, und die Tatsache, dass jede neue Aufgabe eine Ingenieurin
-braucht, die schon ein halbes Jahr ausgebucht ist. Für einen Simulator
-existiert ein Roboter nur als XML — verschachtelte Körper, Trägheitstensoren,
-Gelenkkoordinatensysteme — und ein falsches Koordinatensystem ergibt eine
-Maschine, die sauber lädt und sich wie Unsinn verhält.
+Die meisten Robotersysteme beginnen mit einem Körper, der bereits feststeht.
+Damit wird der Körper zur Einschränkung, bevor die eigentliche Aufgabe beginnt.
+Für einen Simulator existiert ein Roboter nur als XML — verschachtelte Körper,
+Trägheitstensoren, Gelenkkoordinatensysteme — und ein falsches
+Koordinatensystem ergibt eine Maschine, die sauber lädt und sich wie Unsinn
+verhält.
 
-Ausgeschlossen sind damit ausgerechnet die Menschen, die am meisten Freude am
-Erfinden von Robotern hätten. Wir halten das für ein Werkzeugproblem, nicht für
-einen Talentmangel — und dafür, dass **Intelligenz in den Körper geboren werden
-sollte, den die Aufgabe verlangt**, nicht in den, der zufällig aussieht wie wir.
+Wir bauen die fehlende Schleife: einen Körper zusammensetzen, ihm eine
+Fähigkeit beibringen und lernen, was passiert, wenn der Entwurf auf die Welt
+trifft. **Intelligenz sollte in den Körper geboren werden, den die Aufgabe
+verlangt** — nicht in den, der zufällig aussieht wie wir.

@@ -1,15 +1,15 @@
 ---
-title: Homunculus Robotics — The human form is one solution
-description: Physical AI for the bodies nobody has built yet — a browser sandbox, a morphology-agnostic learner, a physical module kit, and a public Design Challenge anyone can enter.
+title: Homunculus Robotics — Build the body. Teach it to move.
+description: Design robot bodies in the browser, train them in simulation, and build toward the same machine in hardware.
 hero:
-  eyebrow: Homunculus Robotics — Physical AI
-  headline: The human form is one solution.
-  headlineAccent: We build the others.
-  lede: The bottleneck in robotics is not motors. It's access. We build the tools that let anyone invent a robot body —
-  ledeEm: and the learner that teaches it to move.
+  eyebrow: Homunculus Robotics — Open-ended robotics
+  headline: Build the body.
+  headlineAccent: Teach it to move.
+  lede: Design a robot body in the browser. Train it in simulation. Build toward the same machine in hardware —
+  ledeEm: one loop from idea to motion.
   ctas:
     - { label: Browse the Design Challenge, href: /challenge }
-    - { label: See the sandbox, href: /sandbox }
+    - { label: Explore the sandbox, href: /sandbox }
 products:
   eyebrow: 01 — Three halves of one product
   heading: A builder, a learner, and the metal underneath.
@@ -53,13 +53,12 @@ contact:
   email: hello@homunculusrobotics.com
 ---
 
-The bottleneck is not motors. It's the software overhead, the integration cost,
-and the fact that every new task needs an engineer who already has a six-month
-waiting list. A robot only exists to a simulator as XML — nested bodies, inertia
-tensors, joint frames — and getting one frame wrong yields a machine that loads
-fine and behaves like nonsense.
+Most robot software starts with a body that has already been chosen. That makes
+the body a constraint before the work has even begun. A robot only exists to a
+simulator as XML — nested bodies, inertia tensors, joint frames — and getting
+one frame wrong yields a machine that loads fine and behaves like nonsense.
 
-So the people who would most enjoy inventing robots are the ones excluded from
-it. We think that is a tooling failure, not a talent shortage, and that
-**intelligence should be born into whatever body the task demands** — not into
-the one that happens to look like us.
+We are building the missing loop: assemble a body, teach it a skill, and learn
+from what happens when the design meets the world. **Intelligence should be
+born into the body the task demands** — not into the one that happens to look
+like us.

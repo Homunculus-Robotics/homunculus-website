@@ -39,8 +39,8 @@ test('each locale renders its own copy, all four sections, and links to the othe
   page,
 }) => {
   for (const [path, lang, headline, contact, sibling] of [
-    ['/', 'en', 'The human form is one solution. We build the others.', 'Talk to us', 'DE'],
-    ['/de/', 'de', 'Die menschliche Form ist eine Lösung. Wir bauen die anderen.', 'Kontakt', 'EN'],
+    ['/', 'en', 'Build the body. Teach it to move.', 'Talk to us', 'DE'],
+    ['/de/', 'de', 'Baue den Körper. Bring ihn in Bewegung.', 'Kontakt', 'EN'],
   ]) {
     await page.goto(path);
     await expect(page.locator('html')).toHaveAttribute('lang', lang);
@@ -52,7 +52,8 @@ test('each locale renders its own copy, all four sections, and links to the othe
     await expect(page.locator('#contact a[href^="mailto:"]')).toHaveCount(1);
     // Exact: "Design Challenge" also contains "DE".
     await page.getByRole('link', { name: sibling, exact: true }).click();
-    await expect(page).toHaveURL(path === '/' ? /\/de\/$/ : /localhost:4321\/$/);
+    // The EN link off /de/ lands on the site root, whatever port it is on.
+    await expect(page).toHaveURL(path === '/' ? /\/de\/$/ : /^https?:\/\/[^/]+\/$/);
   }
 });
 
