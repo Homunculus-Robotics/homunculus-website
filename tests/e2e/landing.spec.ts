@@ -39,8 +39,8 @@ test('each locale renders its own copy, all four sections, and links to the othe
   page,
 }) => {
   for (const [path, lang, headline, contact, sibling] of [
-    ['/', 'en', 'Build the body. Teach it to move.', 'Talk to us', 'DE'],
-    ['/de/', 'de', 'Baue den Körper. Bring ihn in Bewegung.', 'Kontakt', 'EN'],
+    ['/', 'en', 'The next generation of robots starts here.', 'Talk to us', 'DE'],
+    ['/de/', 'de', 'Die nächste Generation von Robotern beginnt hier.', 'Kontakt', 'EN'],
   ]) {
     await page.goto(path);
     await expect(page.locator('html')).toHaveAttribute('lang', lang);

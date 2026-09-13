@@ -1,12 +1,12 @@
 ---
-title: Homunculus Robotics — Baue den Körper. Bring ihn in Bewegung.
-description: Roboterkörper im Browser entwerfen, in der Simulation trainieren und auf dieselbe Maschine in Hardware hinarbeiten.
+title: Homunculus Robotics — Die nächste Generation von Robotern beginnt hier.
+description: Wir bauen anpassungsfähige Maschinen, die erweitern, was Menschen in der realen Welt tun können.
 hero:
   eyebrow: Homunculus Robotics — Offene Robotik
-  headline: Baue den Körper.
-  headlineAccent: Bring ihn in Bewegung.
-  lede: Entwirf einen Roboterkörper im Browser. Trainiere ihn in der Simulation. Arbeite auf dieselbe Maschine in Hardware hin —
-  ledeEm: eine Schleife von der Idee zur Bewegung.
+  headline: Die nächste Generation von Robotern
+  headlineAccent: beginnt hier.
+  lede: Wir bauen anpassungsfähige Maschinen, die erweitern, was Menschen
+  ledeEm: in der realen Welt tun können.
   ctas:
     - { label: Zur Design Challenge, href: /designchallenge }
     - { label: Sandkasten erkunden, href: /sandbox }

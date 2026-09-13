@@ -1,12 +1,12 @@
 ---
-title: Homunculus Robotics — Build the body. Teach it to move.
-description: Design robot bodies in the browser, train them in simulation, and build toward the same machine in hardware.
+title: Homunculus Robotics — The next generation of robots starts here.
+description: We’re building adaptable machines that expand what humans can do in the real world.
 hero:
   eyebrow: Homunculus Robotics — Open-ended robotics
-  headline: Build the body.
-  headlineAccent: Teach it to move.
-  lede: Design a robot body in the browser. Train it in simulation. Build toward the same machine in hardware —
-  ledeEm: one loop from idea to motion.
+  headline: The next generation of robots
+  headlineAccent: starts here.
+  lede: We’re building adaptable machines that expand what humans can do
+  ledeEm: in the real world.
   ctas:
     - { label: Browse the Design Challenge, href: /designchallenge }
     - { label: Explore the sandbox, href: /sandbox }
