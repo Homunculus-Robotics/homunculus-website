@@ -286,9 +286,11 @@ This is the Mission's Phase 1 focus. Nothing in Phase 2 starts until it holds.
 ## PHASE 4 — Brand site depth (Weeks 13+, parallel-safe)
 
 ### Feature 4.1 — Product pages (owner: Marcus) — 12h
-`src/pages/products/{sandbox,learner,hardware}.astro`, DE+EN — the browser LEGO
-sandbox with MuJoCo-WASM validity, the morphology-agnostic PPO learner, the keyed
-DYNAMIXEL XL330 module kit. Content sourced from the product repos' Mission docs;
+`src/pages/{learner,hardware}.astro`, DE+EN — the morphology-agnostic PPO learner
+and the keyed DYNAMIXEL XL330 module kit. **The sandbox page shipped early** at
+`/sandbox` (+`/de/sandbox`), because the nav's "Sandbox" link pointed at the
+landing page and the landing page carried the sandbox's pitch; these two follow
+its shape (`layouts/Sandbox.astro` + a `src/content/<product>/{en,de}.md` pair). Content sourced from the product repos' Mission docs;
 **no claim ships that those docs don't support.**
 **Acceptance:** every technical number on the page cites a source doc and date.
 

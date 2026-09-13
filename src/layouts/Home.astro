@@ -59,7 +59,7 @@ const href = (h: string) => (h.startsWith('#') ? h : navHref(h, lang));
               <span class="num">{p.num}</span>
               <div class:list={['cls', p.tone]}>{p.kicker}</div>
             </div>
-            <h3>{p.title}</h3>
+            <h3>{p.href ? <a href={href(p.href)}>{p.title}</a> : p.title}</h3>
             <p>{p.body}</p>
             <Badge tone={p.tone === 'signal' ? 'gold' : 'green'} live>{p.status}</Badge>
           </li>
@@ -209,6 +209,8 @@ const href = (h: string) => (h.startsWith('#') ? h : navHref(h, lang));
     line-height: 1.08;
     margin: 10px 0 0;
   }
+  .prod-grid h3 a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--line-accent); }
+  .prod-grid h3 a:hover { color: var(--accent); }
   .prod-grid p { color: var(--text-mid); font-size: var(--fs-sm); margin: 12px 0 var(--sp-5); text-wrap: pretty; }
   .prod-grid :global(.hmc-badge) { margin-top: auto; }
 

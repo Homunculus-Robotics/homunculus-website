@@ -3,7 +3,7 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
 // ponytail: /challenge is built in 2.1, /knowledge and /about in 4.2. The paths
 // are the real ones so nothing has to be re-pathed when those land.
 export const NAV_LINKS = [
-  { href: '/', label: { en: 'Sandbox', de: 'Sandkasten' } },
+  { href: '/sandbox', label: { en: 'Sandbox', de: 'Sandkasten' } },
   { href: '/challenge', label: { en: 'Design Challenge', de: 'Design Challenge' } },
   { href: '/knowledge', label: { en: 'Knowledge', de: 'Wissen' } },
   { href: '/about', label: { en: 'About', de: 'Über uns' } },

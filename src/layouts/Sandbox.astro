@@ -1,0 +1,304 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from './Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Button from '../components/Button.astro';
+import Badge from '../components/Badge.astro';
+import Card from '../components/Card.astro';
+import StatReadout from '../components/StatReadout.astro';
+import GlitchText from '../components/GlitchText.astro';
+import { navHref } from '../lib/site';
+
+// Both /sandbox and /de/sandbox render this file; only the entry differs.
+const lang = Astro.currentLocale === 'de' ? 'de' : 'en';
+const entry = await getEntry('sandbox', lang);
+if (!entry) throw new Error(`Missing src/content/sandbox/${lang}.md`);
+const { hero, walls, loop, gate, contact } = entry.data;
+const { Content } = await render(entry);
+const href = (h: string) => (h.startsWith('#') ? h : navHref(h, lang));
+---
+<Base title={entry.data.title} description={entry.data.description} image="/assets/og-cover.png">
+  <Nav />
+
+  <main>
+  <section id="top" class="hero">
+    <div class="chroma" aria-hidden="true"></div>
+    <div class="fade" aria-hidden="true"></div>
+    <div class="inner">
+      <div class="hmc-label">{hero.eyebrow}</div>
+      <GlitchText as="h1" class="hero-h1">
+        {hero.headline}{' '}<span class="accent">{hero.headlineAccent}</span>
+      </GlitchText>
+      <p class="lede">{hero.lede} <em>{hero.ledeEm}</em></p>
+      <Badge tone="gold" live>{hero.status}</Badge>
+      <div class="actions">
+        {hero.ctas.map((c, i) => (
+          <Button href={href(c.href)} size="lg" variant={i === 0 ? 'primary' : 'outline'}>{c.label}</Button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="walls" class="walls">
+    <div class="inner">
+      <div class="section-head">
+        <div>
+          <div class="hmc-label">{walls.eyebrow}</div>
+          <GlitchText as="h2" class="h2">{walls.heading}</GlitchText>
+        </div>
+        <p class="aside">{walls.aside}</p>
+      </div>
+      <ol class="wall-grid">
+        {walls.items.map((w) => (
+          <li>
+            <Card grid>
+              <span class="num">{w.num}</span>
+              <h3>{w.title}</h3>
+              <p>{w.body}</p>
+            </Card>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section id="loop" class="loop">
+    <div class="inner">
+      <div class="section-head">
+        <div>
+          <div class="hmc-label">{loop.eyebrow}</div>
+          <GlitchText as="h2" class="h2">{loop.heading}</GlitchText>
+        </div>
+        <p class="aside">{loop.aside}</p>
+      </div>
+      <ol class="step-grid">
+        {loop.items.map((s) => (
+          <li class={s.tone}>
+            <div class="head">
+              <span class="num">{s.num}</span>
+              <div class:list={['cls', s.tone]}>{s.kicker}</div>
+            </div>
+            <h3>{s.title}</h3>
+            <p>{s.body}</p>
+            <Badge tone={s.tone === 'signal' ? 'gold' : 'green'} live>{s.status}</Badge>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section id="gate" class="gate">
+    <div class="chroma slow" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="inner">
+      <div class="hmc-label">{gate.eyebrow}</div>
+      <div class="cols">
+        <div>
+          <p class="pull">{gate.pull} <em>{gate.pullAccent}</em></p>
+          <div class="stats">
+            {gate.stats.map((s) => (
+              <StatReadout value={s.value} unit={s.unit} label={s.label} tone={s.tone} />
+            ))}
+          </div>
+        </div>
+        <div>
+          <div class="prose"><Content /></div>
+          {/* The measurement disagrees with the target; say so next to the
+              number rather than three screens away from it. */}
+          <p class="note">{gate.note}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="access" class="contact">
+    <div class="inner">
+      <div class="hmc-label">{contact.eyebrow}</div>
+      <GlitchText as="h2" class="h2">{contact.heading}</GlitchText>
+      <p class="body">{contact.body}</p>
+      <a class="mail" href={`mailto:${contact.email}`}>{contact.email}</a>
+    </div>
+  </section>
+
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  .inner { max-width: var(--maxw-wide); margin: 0 auto; }
+  .hmc-label { margin-bottom: 14px; }
+  .gate .hmc-label, .contact .hmc-label { margin-bottom: var(--sp-4); }
+  .h2 { font-size: var(--fs-h2); line-height: 1; max-width: 20ch; }
+
+  /* ── hero ───────────────────────────────────────────────── */
+  .hero { position: relative; overflow: hidden; background: var(--void); }
+  .chroma {
+    position: absolute;
+    inset: 0;
+    background-image: var(--chroma-band);
+    background-size: 300% 100%;
+    animation: hmc-chroma-drift 26s linear infinite;
+    opacity: 0.45;
+  }
+  .chroma.slow { animation-duration: 34s; opacity: 0.28; }
+  .fade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+      color-mix(in oklab, var(--void) 40%, transparent) 0%,
+      color-mix(in oklab, var(--void) 74%, transparent) 46%,
+      var(--void) 100%);
+  }
+  .hero .inner { position: relative; z-index: 2; padding: var(--sp-9) var(--sp-6) var(--sp-8); }
+
+  .hero-h1 {
+    font-size: var(--fs-hero);
+    line-height: 0.92;
+    letter-spacing: var(--tracking-tight);
+    max-width: 24ch;
+  }
+  .accent { color: var(--accent); }
+
+  .lede {
+    font-family: var(--font-serif);
+    font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+    line-height: 1.32;
+    color: var(--text-mid);
+    max-width: 46ch;
+    margin: var(--sp-6) 0 var(--sp-5);
+  }
+  .lede em { font-style: italic; color: var(--signal); }
+
+  .actions { display: flex; gap: 14px; margin-top: var(--sp-6); flex-wrap: wrap; }
+
+  /* ── shared section head ────────────────────────────────── */
+  .section-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--sp-6);
+    flex-wrap: wrap;
+    margin-bottom: var(--sp-7);
+  }
+  .section-head .h2 { max-width: 18ch; }
+  .aside { margin: 0; color: var(--text-mid); max-width: 34ch; font-size: var(--fs-sm); }
+  .num { font-family: var(--font-mono); font-size: 12px; line-height: 1.6; color: var(--text-faint); }
+
+  /* ── walls ──────────────────────────────────────────────── */
+  .walls { background: var(--surface-0); }
+  .walls .inner { padding: var(--sp-8) var(--sp-6); }
+  .wall-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--sp-5);
+  }
+  .wall-grid h3 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.4rem, 2vw, 1.75rem);
+    color: var(--text-hi);
+    line-height: 1.1;
+    margin: 8px 0 0;
+  }
+  .wall-grid p { color: var(--text-mid); font-size: var(--fs-sm); margin: 12px 0 0; text-wrap: pretty; }
+
+  /* ── loop ───────────────────────────────────────────────── */
+  .loop .inner { padding: var(--sp-8) var(--sp-6) var(--sp-9); }
+  .step-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--sp-6);
+  }
+  .step-grid li { padding-top: var(--sp-4); display: flex; flex-direction: column; align-items: flex-start; }
+  .step-grid li.accent { border-top: 1px solid var(--line-accent); }
+  .step-grid li.signal { border-top: 1px solid var(--line-signal); }
+  .head { display: flex; align-items: baseline; gap: 12px; }
+  .cls {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .cls.accent { color: var(--accent); }
+  .cls.signal { color: var(--signal); }
+  .step-grid h3 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.7rem, 2.4vw, 2.1rem);
+    color: var(--text-hi);
+    line-height: 1.08;
+    margin: 10px 0 0;
+  }
+  .step-grid p { color: var(--text-mid); font-size: var(--fs-sm); margin: 12px 0 var(--sp-5); text-wrap: pretty; }
+  .step-grid :global(.hmc-badge) { margin-top: auto; }
+
+  /* ── gate ───────────────────────────────────────────────── */
+  .gate { position: relative; overflow: hidden; background: var(--surface-0); }
+  .vignette { position: absolute; inset: 0; background: radial-gradient(120% 120% at 50% 50%, transparent 0%, var(--void) 80%); }
+  .gate .inner { position: relative; z-index: 2; padding: var(--sp-9) var(--sp-6); }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-8); align-items: start; }
+  .pull {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    line-height: 1.28;
+    color: var(--text-hi);
+    max-width: 26ch;
+  }
+  .pull em { font-style: italic; color: var(--accent); }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--sp-5);
+    margin: var(--sp-7) 0 0;
+  }
+  .prose :global(p) { margin: 0 0 var(--sp-5); color: var(--text-mid); font-size: var(--fs-body-lg); max-width: 52ch; }
+  .prose :global(strong) { color: var(--text-hi); font-weight: 500; }
+  .note {
+    margin: var(--sp-6) 0 0;
+    padding-block: 2px;
+    padding-left: var(--sp-4);
+    border-left: 1px solid var(--line-signal);
+    color: var(--text-low);
+    font-size: var(--fs-sm);
+    max-width: 62ch;
+  }
+
+  /* ── access ─────────────────────────────────────────────── */
+  .contact .inner { padding: var(--sp-9) var(--sp-6); }
+  .contact .body { margin: 0 0 var(--sp-5); color: var(--text-mid); font-size: var(--fs-body-lg); max-width: 52ch; }
+  .contact .h2 { margin-bottom: var(--sp-4); max-width: 26ch; }
+  .mail {
+    font-family: var(--font-mono);
+    font-size: clamp(1.05rem, 2vw, 1.4rem);
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-accent);
+  }
+  .mail:hover { color: var(--signal); border-color: var(--line-signal); }
+
+  /* ── small viewports ────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .cols { grid-template-columns: 1fr; gap: var(--sp-7); }
+    .stats { gap: var(--sp-4); }
+  }
+  @media (max-width: 760px) {
+    .wall-grid, .step-grid { grid-template-columns: 1fr; gap: var(--sp-6); }
+    .stats { grid-template-columns: 1fr; gap: var(--sp-5); }
+    .hero .inner, .walls .inner, .loop .inner, .gate .inner, .contact .inner {
+      padding-left: var(--sp-4);
+      padding-right: var(--sp-4);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .chroma { animation: none; }
+  }
+</style>

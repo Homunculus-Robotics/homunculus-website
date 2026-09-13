@@ -1,15 +1,15 @@
 ---
 title: Homunculus Robotics — The human form is one solution
-description: A low-friction sandbox for physical AI — snap parts together, hit go, and watch your invention teach itself to move. Plus a public Design Challenge for the bodies nobody has built yet.
+description: Physical AI for the bodies nobody has built yet — a browser sandbox, a morphology-agnostic learner, a physical module kit, and a public Design Challenge anyone can enter.
 hero:
   eyebrow: Homunculus Robotics — Physical AI
   headline: The human form is one solution.
   headlineAccent: We build the others.
-  lede: The bottleneck in robotics is not motors. It's access. Homunculus is a low-friction sandbox —
-  ledeEm: snap parts together, hit go, and watch your invention teach itself to move.
+  lede: The bottleneck in robotics is not motors. It's access. We build the tools that let anyone invent a robot body —
+  ledeEm: and the learner that teaches it to move.
   ctas:
     - { label: Browse the Design Challenge, href: /challenge }
-    - { label: Read the thesis, href: '#thesis' }
+    - { label: See the sandbox, href: /sandbox }
 products:
   eyebrow: 01 — Three halves of one product
   heading: A builder, a learner, and the metal underneath.
@@ -19,8 +19,9 @@ products:
       tone: accent
       kicker: Sandbox
       title: BuilderLayer
-      body: A web sandbox where you snap robot parts together like digital LEGO — idealized modules today, real arms and imported 3D models next — then watch the machine you invented teach itself to move in simulation. Every assembly it accepts is guaranteed to load, settle and actuate.
+      body: A browser sandbox where you snap robot parts together like digital LEGO, and the physics engine says yes or no from the first drag. Every assembly it accepts is guaranteed to load, settle and actuate.
       status: In development
+      href: /sandbox
     - num: Ⅱ
       tone: signal
       kicker: Learner

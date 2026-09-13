@@ -1,15 +1,15 @@
 ---
 title: Homunculus Robotics — Die menschliche Form ist eine Lösung
-description: Ein Sandkasten für Physical AI ohne Hürden — Teile zusammenstecken, starten, und der eigenen Erfindung beim Laufenlernen zusehen. Dazu eine öffentliche Design Challenge für die Körper, die noch niemand gebaut hat.
+description: Physical AI für die Körper, die noch niemand gebaut hat — ein Web-Sandkasten, ein morphologie-agnostischer Lerner, ein physischer Modulbaukasten und eine öffentliche Design Challenge für alle.
 hero:
   eyebrow: Homunculus Robotics — Physical AI
   headline: Die menschliche Form ist eine Lösung.
   headlineAccent: Wir bauen die anderen.
-  lede: Der Engpass in der Robotik sind nicht die Motoren. Es ist der Zugang. Homunculus ist ein Sandkasten ohne Hürden —
-  ledeEm: Teile zusammenstecken, starten, und der eigenen Erfindung beim Laufenlernen zusehen.
+  lede: Der Engpass in der Robotik sind nicht die Motoren. Es ist der Zugang. Wir bauen die Werkzeuge, mit denen jede und jeder einen Roboterkörper erfinden kann —
+  ledeEm: und den Lerner, der ihm das Bewegen beibringt.
   ctas:
     - { label: Zur Design Challenge, href: /challenge }
-    - { label: Die These lesen, href: '#thesis' }
+    - { label: Zum Sandkasten, href: /sandbox }
 products:
   eyebrow: 01 — Drei Hälften eines Produkts
   heading: Ein Baukasten, ein Lerner, und das Metall darunter.
@@ -19,8 +19,9 @@ products:
       tone: accent
       kicker: Sandkasten
       title: BuilderLayer
-      body: Ein Web-Sandkasten, in dem Roboterteile wie digitales LEGO zusammengesteckt werden — heute idealisierte Module, als Nächstes echte Arme und importierte 3D-Modelle — und die erfundene Maschine sich in der Simulation das Bewegen selbst beibringt. Jede akzeptierte Konstruktion lädt, steht stabil und ist ansteuerbar.
+      body: Ein Web-Sandkasten, in dem Roboterteile wie digitales LEGO zusammengesteckt werden — und die Physik-Engine sagt vom ersten Zug an Ja oder Nein. Jede akzeptierte Konstruktion lädt, steht stabil und ist ansteuerbar.
       status: In Entwicklung
+      href: /sandbox
     - num: Ⅱ
       tone: signal
       kicker: Lerner
