@@ -8,7 +8,7 @@ hero:
   lede: Design a robot body in the browser. Train it in simulation. Build toward the same machine in hardware —
   ledeEm: one loop from idea to motion.
   ctas:
-    - { label: Browse the Design Challenge, href: /challenge }
+    - { label: Browse the Design Challenge, href: /designchallenge }
     - { label: Explore the sandbox, href: /sandbox }
 products:
   eyebrow: 01 — Three halves of one product
@@ -44,8 +44,8 @@ challenge:
   body: >-
     Upload a robot embodiment you invented — images, a video, a 3D model you can rotate in the browser — and answer three questions: what your design is, why that specific body, and how it interacts with the world and makes it better. Every entry goes live immediately and anyone can vote. No account, no password, no fee.
   ctas:
-    - { label: See the entries, href: /challenge }
-    - { label: Submit a design, href: /challenge }
+    - { label: See the entries, href: /designchallenge }
+    - { label: Submit a design, href: /designchallenge }
 contact:
   eyebrow: 04 — Talk to us
   heading: Industry, research, or you just want to build the bodies.

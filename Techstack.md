@@ -16,10 +16,11 @@
                                 │ static                │ dynamic
                                 ▼                       ▼
                  GitHub Pages                    Fly.io  fra (Frankfurt)
-                 homunculus-website              Astro SSR (Node adapter)
-                 Home · About · Products         /challenge/*  ·  /api/*
+                 repo: homunculus-website        repo: Website (private)
+                 (public — this one)             Astro SSR (Node adapter)
+                 Home · Sandbox · About          /designchallenge/*
                  Knowledge · legal               auto start/stop machines
-                 (astro build --static)                  │
+                 (output: 'static')              (output: 'server')     │
                                                          │ service-role key
                                                          ▼
                         ┌────────────────────────────────────────────┐
@@ -60,7 +61,7 @@ an outage.
 | Data store | **Supabase Postgres (eu-central-1)** | Relational data (designs → media → votes) with row-level security enforced in the database, so an app bug cannot leak another user's draft. RLS is the reason this beats Firebase; EU region is the reason it beats most US-default hosts. |
 | File storage | Supabase Storage (S3-compatible), private buckets + signed URLs | Same vendor, same auth, same backup story. Public reads go through a CDN-cached signed proxy route so cost doesn't scale with popularity. |
 | Dynamic hosting | **Fly.io, `fra` region**, machines auto start/stop | EU region, scale-to-zero when idle (~€0 nights), scales out under a spike, one `fly deploy`. Vercel would cost more per GB of video egress and adds a US processor. |
-| Static hosting | **GitHub Pages** from the same repo | The user asked for the landing page to live with the GitHub project. Free, CDN-backed, zero ops. |
+| Static hosting | **GitHub Pages** from this public repo | The user asked for the landing page to live with the GitHub project, and Pages is free only from a public repo — which is why the Design Challenge is a second, private repo rather than a folder here. This one owns the apex domain; Cloudflare routes `/designchallenge/*` to the other. |
 | Edge / WAF / bot check | **Cloudflare free plan + Turnstile** | Caching, rate-limit rules and a bot check that isn't reCAPTCHA (better DSGVO story, no Google consent banner). Public media only through cache — never a PII response. |
 | PII encryption | `node:crypto` AES-256-GCM + HMAC-SHA256 pepper | Stdlib. libsodium/`pgsodium` would add a dependency and a build step for a 40-line module. Key lives in Fly secrets, **never** in Postgres. |
 | Email | **Resend** (EU region) or Postmark, via Supabase SMTP | Magic links and challenge notifications need real deliverability; Supabase's built-in sender is rate-limited and not for production. |

@@ -12,16 +12,31 @@ feature without asking a question first.
 > 99/100/100/100 on both `/` and `/de/`, and the components still match
 > `design-system/Home.dc.html` to 0.079% of pixels. Open: GitHub Pages has to be
 > pointed at Actions and the apex DNS records set before the site is actually
-> live (0.3 FINDINGS, Open items); CI has never run. Feature 1.1 is next.
+> live (0.3 FINDINGS, Open items); CI has never run.
+>
+> **The repo split (2026-09-13):** Phase 1 and everything after it — the Design
+> Challenge — is built in the **private** repo, not here. This repo's remaining
+> roadmap is the Sandbox page, Knowledge and About. The phases below are kept
+> whole so one document still describes the whole product; each one says which
+> repo owns it.
 
 ## Quick conventions used below
 
-- **Repo:** `homunculus-website` — single repo. Landing pages → GitHub Pages;
-  `/challenge/*` + `/api/*` → Fly.io `fra`. Layout:
+- **Repos:** two, split by path on one domain.
+  - `homunculus-website` (**public**, this repo) — `/`, `/sandbox`,
+    `/knowledge`, `/about`. Static → GitHub Pages, owns the apex
+    `homunculusrobotics.com`. Live.
+  - `Website` (**private**) — everything under `/designchallenge`, its API
+    included: login, the participant account, uploads, Supabase, the PII vault.
+    Node adapter → Fly.io `fra`, behind a Cloudflare route on the same apex.
+    Not deployed yet.
+
+  No route exists in both. Nothing that needs a login, a database or a secret
+  belongs in this repo — it builds to static files and has no server to keep
+  one. Layout here:
   ```
-  src/{pages,components,layouts,lib,content,styles}   ← the website
-  supabase/migrations/  infra/  scripts/  public/
-  tests/{e2e,load,security}/   specs/
+  src/{pages,components,layouts,lib,content,styles}   ← the brand site
+  public/   tests/e2e/   specs/
   design-system/     ← the portable brand skill, wrapped verbatim: SKILL.md,
                        readme.md, tokens/, assets/, guidelines/, components/,
                        ui_kits/ and the four frozen *.dc.html prototypes.

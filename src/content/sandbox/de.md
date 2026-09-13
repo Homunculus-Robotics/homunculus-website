@@ -10,7 +10,7 @@ hero:
   status: In Entwicklung — noch nicht öffentlich
   ctas:
     - { label: Bescheid geben, wenn es öffnet, href: '#access' }
-    - { label: Solange einen Körper erfinden, href: /challenge }
+    - { label: Solange einen Körper erfinden, href: /designchallenge }
 walls:
   eyebrow: 01 — Warum es das noch nicht gibt
   heading: Drei Mauern, und alle drei stehen vor dem ersten Feedback.

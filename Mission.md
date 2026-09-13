@@ -159,13 +159,19 @@ Secondary metrics:
 
 | Repository | Purpose |
 |---|---|
-| **homunculus-website** (this repo) | Brand site + Design Challenge platform + `design-system/` (the portable brand skill — invocable from other projects, and the tokens the site imports) + infra scripts + these specs. Landing pages deploy to GitHub Pages; the challenge app deploys to Fly.io Frankfurt. |
+| **homunculus-website** (public — this repo) | The brand site: Landing page, Sandbox, Knowledge, About. Deploys to GitHub Pages and owns `homunculusrobotics.com`. Holds the authoritative copy of `design-system/` (the portable brand skill — invocable from other projects, and the tokens both sites import). |
+| **Website** (private) | The Design Challenge platform: everything under `/designchallenge`, its API, the Supabase schema and the PII vault. Deploys to Fly.io Frankfurt, behind this repo's apex domain. Not deployed yet. |
 | **Homunculus_Robotics/BuilderLayer** | The sandbox product. This site links to it and embeds nothing from it. |
 | **Homunculus_Robotics/Homunculus_AI** | The learner. Source of the training-montage clips the site may show. |
 | **Homunculus_Robotics_Hardware** | The physical kit. Source of CAD renders and specs for the hardware product page. |
 
 The website never imports code from the product repos and the product repos never
 import from the website. Assets cross as files, copied deliberately.
+
+The same rule holds between the two website repos: **no route exists in both.**
+They meet only on the domain, split by path — `/designchallenge/*` private,
+everything else here. `design-system/` is the one file tree kept in both, and
+this repo is the copy to edit.
 
 ---
 

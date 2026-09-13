@@ -8,7 +8,7 @@ hero:
   lede: Entwirf einen Roboterkörper im Browser. Trainiere ihn in der Simulation. Arbeite auf dieselbe Maschine in Hardware hin —
   ledeEm: eine Schleife von der Idee zur Bewegung.
   ctas:
-    - { label: Zur Design Challenge, href: /challenge }
+    - { label: Zur Design Challenge, href: /designchallenge }
     - { label: Sandkasten erkunden, href: /sandbox }
 products:
   eyebrow: 01 — Drei Hälften eines Produkts
@@ -44,8 +44,8 @@ challenge:
   body: >-
     Lade eine selbst erfundene Roboter-Verkörperung hoch — Bilder, ein Video, ein 3D-Modell zum Drehen im Browser — und beantworte drei Fragen: was dein Entwurf ist, warum genau dieser Körper, und wie er mit der Welt interagiert und sie besser macht. Jeder Beitrag geht sofort live, abstimmen darf jede und jeder. Kein Konto, kein Passwort, keine Gebühr.
   ctas:
-    - { label: Beiträge ansehen, href: /challenge }
-    - { label: Entwurf einreichen, href: /challenge }
+    - { label: Beiträge ansehen, href: /designchallenge }
+    - { label: Entwurf einreichen, href: /designchallenge }
 contact:
   eyebrow: 04 — Kontakt
   heading: Industrie, Forschung, oder einfach Lust, die Körper zu bauen.

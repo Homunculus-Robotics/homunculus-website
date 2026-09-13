@@ -1,10 +1,12 @@
 import { getRelativeLocaleUrl } from 'astro:i18n';
 
-// ponytail: /challenge is built in 2.1, /knowledge and /about in 4.2. The paths
-// are the real ones so nothing has to be re-pathed when those land.
+// ponytail: /knowledge and /about are built in 4.2 and belong to this repo.
+// /designchallenge is the *other* repo (private, `Website.git`) and only
+// answers once that app is deployed behind this domain — the path is the real
+// one either way, so nothing has to be re-pathed when it lands.
 export const NAV_LINKS = [
   { href: '/sandbox', label: { en: 'Sandbox', de: 'Sandkasten' } },
-  { href: '/challenge', label: { en: 'Design Challenge', de: 'Design Challenge' } },
+  { href: '/designchallenge', label: { en: 'Design Challenge', de: 'Design Challenge' } },
   { href: '/knowledge', label: { en: 'Knowledge', de: 'Wissen' } },
   { href: '/about', label: { en: 'About', de: 'Über uns' } },
 ];

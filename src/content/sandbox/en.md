@@ -10,7 +10,7 @@ hero:
   status: In development — not public yet
   ctas:
     - { label: Tell us when it opens, href: '#access' }
-    - { label: Invent a body instead, href: /challenge }
+    - { label: Invent a body instead, href: /designchallenge }
 walls:
   eyebrow: 01 — Why this does not already exist
   heading: Three walls, and you climb all three before any feedback.
