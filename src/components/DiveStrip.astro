@@ -1,0 +1,72 @@
+---
+// About v2's marquee strips between sections. Decorative HUD text, so it is
+// aria-hidden and not localised. Default: two thin mono lines running opposite
+// ways. `big`: one display-size line over a ruler — text, `accent` in cyan, tail.
+interface Props {
+  text: string;
+  accent?: string;
+  tail?: string;
+  big?: boolean;
+}
+const { text, accent, tail, big = false } = Astro.props;
+const HEX = '0x1A4F · 0x0B22 · 0xFFC1 · 0x3D90 · 0x7E04 · 0x22AB · 0x5F13 · 0x91C8 · 0x0447 · 0xDE2F · 0x6A05 · 0x1188 · 0xC3E7 · 0x2050';
+---
+<div class:list={['strip', big && 'big']} aria-hidden="true">
+  {big ? (
+    <>
+      <div class="ruler"></div>
+      <div class="run display">
+        {[0, 1].map(() => <span>{text} <span class="cyan">{accent}</span> · {tail} ·&nbsp;</span>)}
+      </div>
+    </>
+  ) : (
+    <>
+      <div class="run top">{[0, 1].map(() => <span>{text}</span>)}</div>
+      <div class="run bottom">{[0, 1].map(() => <span>{HEX}</span>)}</div>
+      <div class="edges"></div>
+    </>
+  )}
+</div>
+
+<style>
+  .strip {
+    position: relative;
+    overflow: hidden;
+    height: 108px;
+    border-block: 1px solid var(--line-mid);
+    background: var(--void) var(--scanlines);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+  }
+  .run { display: flex; width: max-content; white-space: nowrap; font-family: var(--font-mono); }
+  .run > span { padding-right: 40px; }
+  .top { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--chroma-cyan); opacity: 0.7; animation: ds-left 46s linear infinite; }
+  .bottom { font-size: 9px; letter-spacing: 0.3em; color: var(--text-faint); animation: ds-right 78s linear infinite; }
+  .edges { position: absolute; inset: 0; background: linear-gradient(90deg, var(--void) 0, transparent 12%, transparent 88%, var(--void) 100%); }
+
+  .big { height: 132px; background: var(--void); }
+  .ruler {
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(90deg, color-mix(in oklab, var(--chroma-cyan) 22%, transparent) 0 1px, transparent 1px 9px), var(--scanlines);
+    mask-image: linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent);
+  }
+  .display {
+    position: relative;
+    font-family: var(--font-display);
+    font-size: 54px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-hi);
+    opacity: 0.9;
+    animation: ds-left 32s linear infinite;
+  }
+  .display > span { padding-right: 52px; }
+  .cyan { color: var(--chroma-cyan); }
+
+  @keyframes ds-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes ds-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+  @media (prefers-reduced-motion: reduce) { .run { animation: none; } }
+</style>

@@ -8,6 +8,9 @@ import Badge from '../components/Badge.astro';
 import Card from '../components/Card.astro';
 import StatReadout from '../components/StatReadout.astro';
 import GlitchText from '../components/GlitchText.astro';
+import Backdrop from '../components/Backdrop.astro';
+import Dossier from '../components/Dossier.astro';
+import DiveStrip from '../components/DiveStrip.astro';
 import { navHref } from '../lib/site';
 
 // Both /sandbox and /de/sandbox render this file; only the entry differs.
@@ -23,11 +26,10 @@ const href = (h: string) => (h.startsWith('#') ? h : navHref(h, lang));
 
   <main>
   <section id="top" class="hero">
-    <div class="chroma" aria-hidden="true"></div>
-    <div class="fade" aria-hidden="true"></div>
+    <Backdrop />
     <div class="inner">
-      <div class="hmc-label">{hero.eyebrow}</div>
-      <GlitchText as="h1" class="hero-h1">
+      <Dossier num="01">{hero.eyebrow}</Dossier>
+      <GlitchText as="h1" class="hero-h1 hmc-jitter">
         {hero.headline}{' '}<span class="accent">{hero.headlineAccent}</span>
       </GlitchText>
       <p class="lede">{hero.lede} <em>{hero.ledeEm}</em></p>
@@ -39,6 +41,8 @@ const href = (h: string) => (h.startsWith('#') ? h : navHref(h, lang));
       </div>
     </div>
   </section>
+
+  <DiveStrip text="SEG.01 // WÄNDE — WALLS · SNAP · SIMULATE · VALIDATE · DIE ENGINE SAGT JA ODER NEIN" />
 
   <section id="walls" class="walls">
     <div class="inner">
@@ -88,9 +92,10 @@ const href = (h: string) => (h.startsWith('#') ? h : navHref(h, lang));
     </div>
   </section>
 
+  <DiveStrip big text="TAUCHGANG · SEG.03" accent="GÜLTIGKEITSGARANTIE" tail="KEIN UNGÜLTIGER ROBOTER" />
+
   <section id="gate" class="gate">
-    <div class="chroma slow" aria-hidden="true"></div>
-    <div class="vignette" aria-hidden="true"></div>
+    <Backdrop variant="center" />
     <div class="inner">
       <div class="hmc-label">{gate.eyebrow}</div>
       <div class="cols">
@@ -133,24 +138,7 @@ const href = (h: string) => (h.startsWith('#') ? h : navHref(h, lang));
   .h2 { font-size: var(--fs-h2); line-height: 1; max-width: 20ch; }
 
   /* ── hero ───────────────────────────────────────────────── */
-  .hero { position: relative; overflow: hidden; background: var(--void); }
-  .chroma {
-    position: absolute;
-    inset: 0;
-    background-image: var(--chroma-band);
-    background-size: 300% 100%;
-    animation: hmc-chroma-drift 26s linear infinite;
-    opacity: 0.45;
-  }
-  .chroma.slow { animation-duration: 34s; opacity: 0.28; }
-  .fade {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg,
-      color-mix(in oklab, var(--void) 40%, transparent) 0%,
-      color-mix(in oklab, var(--void) 74%, transparent) 46%,
-      var(--void) 100%);
-  }
+  .hero { position: relative; overflow: hidden; background: var(--field-glow), var(--void); }
   .hero .inner { position: relative; z-index: 2; padding: var(--sp-9) var(--sp-6) var(--sp-8); }
 
   .hero-h1 {
@@ -163,13 +151,15 @@ const href = (h: string) => (h.startsWith('#') ? h : navHref(h, lang));
 
   .lede {
     font-family: var(--font-serif);
+    border-left: 1px solid var(--line-accent);
+    padding-left: 10px;
     font-size: clamp(1.35rem, 2.2vw, 1.9rem);
     line-height: 1.32;
     color: var(--text-mid);
     max-width: 46ch;
     margin: var(--sp-6) 0 var(--sp-5);
   }
-  .lede em { font-style: italic; color: var(--signal); }
+  .lede em { font-style: italic; color: var(--violet-200); }
 
   .actions { display: flex; gap: 14px; margin-top: var(--sp-6); flex-wrap: wrap; }
 
@@ -239,8 +229,7 @@ const href = (h: string) => (h.startsWith('#') ? h : navHref(h, lang));
   .step-grid :global(.hmc-badge) { margin-top: auto; }
 
   /* ── gate ───────────────────────────────────────────────── */
-  .gate { position: relative; overflow: hidden; background: var(--surface-0); }
-  .vignette { position: absolute; inset: 0; background: radial-gradient(120% 120% at 50% 50%, transparent 0%, var(--void) 80%); }
+  .gate { position: relative; overflow: hidden; background: var(--field-glow), var(--void); }
   .gate .inner { position: relative; z-index: 2; padding: var(--sp-9) var(--sp-6); }
   .cols { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-8); align-items: start; }
   .pull {
@@ -296,9 +285,5 @@ const href = (h: string) => (h.startsWith('#') ? h : navHref(h, lang));
       padding-left: var(--sp-4);
       padding-right: var(--sp-4);
     }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .chroma { animation: none; }
   }
 </style>

@@ -18,7 +18,7 @@ const THEMES = [
 <style>
   hmc-theme-switcher { display: flex; gap: 5px; }
 
-  /* The swatch is 15px; the button is 24px, which is the WCAG 2.2 minimum
+  /* The swatch is 13px; the button is 24px, which is the WCAG 2.2 minimum
      target size. The dot is drawn by ::before so growing the hit area does not
      grow the visual. */
   button {
@@ -33,9 +33,8 @@ const THEMES = [
   }
   button::before {
     content: '';
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
+    width: 13px;
+    height: 13px;
     border: 1px solid var(--line-mid);
     background: var(--swatch);
   }

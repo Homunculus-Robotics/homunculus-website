@@ -12,6 +12,10 @@ export default defineConfig({
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
   webServer: {
     command: 'npm run build && npm run preview',
+    // Astro 7 detaches `astro preview` when it detects a coding agent, and
+    // Playwright reads the exit as a crashed server. This variable is what its
+    // own detached child runs under: it keeps the server in the foreground.
+    env: { ASTRO_PREVIEW_BACKGROUND: '1' },
     url: 'http://localhost:4321',
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,

@@ -7,6 +7,9 @@ import Button from '../components/Button.astro';
 import Badge from '../components/Badge.astro';
 import GlitchText from '../components/GlitchText.astro';
 import MosaicLoader from '../components/MosaicLoader.astro';
+import Backdrop from '../components/Backdrop.astro';
+import Dossier from '../components/Dossier.astro';
+import DiveStrip from '../components/DiveStrip.astro';
 import { navHref } from '../lib/site';
 import mark from '../../design-system/assets/logo-mark-light.png';
 
@@ -23,15 +26,11 @@ const href = (h: string) => (h.startsWith('#') ? h : navHref(h, lang));
 
   <main>
   <section id="top" class="hero">
-    <div class="chroma" aria-hidden="true"></div>
-    <div class="fade" aria-hidden="true"></div>
+    <Backdrop />
     <MosaicLoader />
     <div class="inner">
-      <div class="eyebrow-dot">
-        <span class="dot" aria-hidden="true"></span>
-        <span class="hmc-label">{hero.eyebrow}</span>
-      </div>
-      <GlitchText as="h1" class="hero-h1">
+      <Dossier num="00">{hero.eyebrow}</Dossier>
+      <GlitchText as="h1" class="hero-h1 hmc-jitter">
         {hero.headline}{' '}<span class="accent">{hero.headlineAccent}</span>
       </GlitchText>
       <p class="lede">{hero.lede} <em>{hero.ledeEm}</em></p>
@@ -42,6 +41,8 @@ const href = (h: string) => (h.startsWith('#') ? h : navHref(h, lang));
       </div>
     </div>
   </section>
+
+  <DiveStrip text="SEG.01 // PRODUKTE — PRODUCTS · BUILDERLAYER · SIMULATION ZUERST · MODELL TRIFFT PHYSIK · OFFENE ROBOTIK" />
 
   <section id="products" class="products">
     <div class="inner">
@@ -81,9 +82,10 @@ const href = (h: string) => (h.startsWith('#') ? h : navHref(h, lang));
     </div>
   </section>
 
+  <DiveStrip big text="TAUCHGANG · SEG.03" accent="DESIGN CHALLENGE" tail="GRAUE KISTEN SIND EINE ENTSCHEIDUNG" />
+
   <section id="challenge" class="challenge">
-    <div class="chroma slow" aria-hidden="true"></div>
-    <div class="vignette" aria-hidden="true"></div>
+    <Backdrop variant="center" />
     <div class="inner">
       <div class="hmc-label">{challenge.eyebrow}</div>
       <GlitchText as="h2" class="h2">{challenge.heading}</GlitchText>
@@ -117,40 +119,12 @@ const href = (h: string) => (h.startsWith('#') ? h : navHref(h, lang));
   .h2 { font-size: var(--fs-h2); line-height: 1; max-width: 20ch; }
 
   /* ── hero ───────────────────────────────────────────────── */
-  .hero { position: relative; overflow: hidden; background: var(--void); }
-  .chroma {
-    position: absolute;
-    inset: 0;
-    background-image: var(--chroma-band);
-    background-size: 300% 100%;
-    animation: hmc-chroma-drift 26s linear infinite;
-    opacity: 0.55;
-  }
-  .chroma.slow { animation-duration: 34s; opacity: 0.3; }
-  .fade {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg,
-      color-mix(in oklab, var(--void) 34%, transparent) 0%,
-      color-mix(in oklab, var(--void) 72%, transparent) 46%,
-      var(--void) 100%);
-  }
+  .hero { position: relative; overflow: hidden; background: var(--field-glow), var(--void); }
   .hero .inner { position: relative; z-index: 2; padding: var(--sp-10) var(--sp-6) var(--sp-9); }
-
-  .eyebrow-dot { display: inline-flex; align-items: center; gap: 8px; margin-bottom: var(--sp-5); }
-  .eyebrow-dot .hmc-label { margin-bottom: 0; }
-  .dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 10px var(--accent);
-    animation: hmc-flicker 2.4s infinite;
-  }
 
   .hero-h1 {
     font-size: var(--fs-hero);
-    line-height: 0.9;
+    line-height: 0.86;
     letter-spacing: var(--tracking-tight);
     max-width: 17ch;
   }
@@ -158,13 +132,15 @@ const href = (h: string) => (h.startsWith('#') ? h : navHref(h, lang));
 
   .lede {
     font-family: var(--font-serif);
+    border-left: 1px solid var(--line-accent);
+    padding-left: 10px;
     font-size: clamp(1.35rem, 2.2vw, 1.9rem);
     line-height: 1.32;
     color: var(--text-mid);
     max-width: 46ch;
     margin: var(--sp-6) 0 0;
   }
-  .lede em { font-style: italic; color: var(--signal); }
+  .lede em { font-style: italic; color: var(--violet-200); }
 
   .actions { display: flex; gap: 14px; margin-top: var(--sp-7); flex-wrap: wrap; }
 
@@ -238,9 +214,8 @@ const href = (h: string) => (h.startsWith('#') ? h : navHref(h, lang));
   .prose :global(strong) { color: var(--text-hi); font-weight: 500; }
 
   /* ── challenge ──────────────────────────────────────────── */
-  .challenge { position: relative; overflow: hidden; background: var(--surface-0); }
-  .vignette { position: absolute; inset: 0; background: radial-gradient(120% 120% at 50% 50%, transparent 0%, var(--void) 78%); }
-  .challenge .inner { position: relative; padding: var(--sp-10) var(--sp-6); text-align: center; }
+  .challenge { position: relative; overflow: hidden; background: var(--field-glow), var(--void); }
+  .challenge .inner { position: relative; z-index: 1; padding: var(--sp-10) var(--sp-6); text-align: center; }
   .challenge .h2 { line-height: 0.95; margin: 0 auto var(--sp-5); max-width: 24ch; }
   .challenge .body { margin: 0 auto; color: var(--text-mid); font-size: var(--fs-body-lg); max-width: 62ch; }
   .challenge .actions { justify-content: center; }
@@ -270,8 +245,4 @@ const href = (h: string) => (h.startsWith('#') ? h : navHref(h, lang));
     }
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .chroma { animation: none; }
-    .dot { animation: none; }
-  }
 </style>

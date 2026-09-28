@@ -2,6 +2,7 @@
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import '../styles/global.css';
 import { localePath } from '../lib/site';
+import Hud from '../components/Hud.astro';
 // The two faces the hero paints with. Without the preload the browser only
 // discovers them after the CSS parses, swaps mid-paint, and reflows the hero
 // (measured: CLS 0.26 → see the 0.3 FINDINGS).
@@ -65,6 +66,7 @@ const path = localePath(Astro.url.pathname);
     </script>
   </head>
   <body>
+    <Hud />
     <slot />
   </body>
 </html>
@@ -79,5 +81,20 @@ const path = localePath(Astro.url.pathname);
     line-height: var(--lh-body);
   }
   a { color: var(--accent); }
-  a:hover { color: var(--signal); }
+  a:hover { color: var(--chroma-cyan); }
+
+  /* About v2's section rhythm, applied site-wide: hairline between sections,
+     cyan instrument eyebrows. */
+  main > section + section { border-top: 1px solid var(--line-mid); }
+  main section .hmc-label { font-size: 10px; letter-spacing: 0.28em; color: var(--chroma-cyan); }
+
+  /* About v2's hero headline: a chromatic twitch every nine seconds. */
+  .hmc-jitter { animation: hmc-jitter 9s steps(1, end) infinite; }
+  @keyframes hmc-jitter {
+    0%, 88%, 100% { text-shadow: none; transform: translate(0, 0); }
+    89% { text-shadow: 2px 0 var(--chroma-magenta), -2px 0 var(--chroma-cyan); transform: translate(-1px, 0); }
+    91% { text-shadow: -3px 0 var(--chroma-magenta), 3px 0 var(--chroma-cyan); transform: translate(1px, 0); }
+    93% { text-shadow: 1px 0 var(--chroma-cyan); transform: translate(0, 1px); }
+  }
+  @media (prefers-reduced-motion: reduce) { .hmc-jitter { animation: none; } }
 </style>

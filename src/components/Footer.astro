@@ -14,15 +14,17 @@ const year = new Date().getFullYear();
     <nav aria-label="Footer">
       {NAV_LINKS.map((l) => <a href={navHref(l.href, lang)}>{l.label[lang]}</a>)}
     </nav>
+    {/* Hud.astro ticks the timecode. */}
+    <span class="tc" aria-hidden="true">LINK STABIL · <span data-hud-tc>00:00:00:00</span></span>
   </div>
 </footer>
 
 <style>
-  footer { background: var(--void); }
+  footer { background: var(--void); border-top: 1px solid var(--line-mid); }
   .bar {
     max-width: var(--maxw-wide);
     margin: 0 auto;
-    padding: var(--sp-6);
+    padding: var(--sp-5);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -31,22 +33,30 @@ const year = new Date().getFullYear();
   }
 
   .brand { display: flex; align-items: center; gap: 10px; }
-  .brand img { height: 26px; width: auto; }
+  .brand img { height: 24px; width: auto; }
   .brand span {
     font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.16em;
+    font-size: 11px;
+    letter-spacing: 0.2em;
     color: var(--text-low);
   }
 
-  nav { display: flex; gap: 22px; flex-wrap: wrap; }
+  nav { display: flex; gap: 20px; flex-wrap: wrap; }
   nav a {
     font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.14em;
+    font-size: 11px;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--text-low);
     text-decoration: none;
   }
-  nav a:hover { color: var(--accent); }
+  nav a:hover { color: var(--chroma-cyan); }
+
+  .tc {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--text-faint);
+    font-variant-numeric: tabular-nums;
+  }
 </style>

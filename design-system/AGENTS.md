@@ -26,3 +26,16 @@ Rules for anything touching this repo:
   git-ignored.
 
 See `../specs/2026-08-20_1808_feature_0.1_repo_and_ci/requirements.md` D1–D3.
+
+## Canvas is truth for layout, not for copy
+
+The `.dc.html` prototypes own **visual outline**: structure, spacing, section
+order, composition. Re-port them into `src/pages/` whenever they change.
+
+They do **not** own text. Copy lives in `src/` (and `src/lib/site.ts` for nav
+labels), because the site is de/en and the canvas is not. Canvas text is
+placeholder — never port it back over site copy, never chase it when site copy
+changes. That drift is expected and is not a sync failure.
+
+Porting is manual and one-way (canvas -> Astro). Nothing automates it: tokens
+and `assets/` are already live-linked, so a port only moves structure.

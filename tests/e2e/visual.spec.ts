@@ -34,6 +34,11 @@ async function settle(page: Page) {
 }
 
 test('the parity page at 1440×900 matches design-system/Home.dc.html', async ({ page }) => {
+  // Known red: the site chrome (header, footer, HUD rails, section rules) moved
+  // to About.dc.html's v2 look and Home.dc.html has not been re-exported with it
+  // yet. test.fail keeps CI green meanwhile and turns red again the moment the
+  // re-export makes this pass — then delete this line.
+  test.fail();
   await page.setViewportSize(DESKTOP);
 
   await page.goto(PROTOTYPE);

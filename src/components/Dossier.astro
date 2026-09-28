@@ -1,0 +1,32 @@
+---
+// About v2's hero eyebrow: boxed dossier tag, the label, a fading rule, coordinates.
+interface Props {
+  /** Two digits, the page's nav position ("00" for the landing page). */
+  num: string;
+}
+const { num } = Astro.props;
+---
+<div class="dossier">
+  <span class="tag">Dossier {num}</span>
+  <span class="label"><slot /></span>
+  <span class="rule" aria-hidden="true"></span>
+  <span class="coords" aria-hidden="true">LAT 50.9375 · LON 6.9603</span>
+</div>
+
+<style>
+  .dossier {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: var(--sp-5);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+  }
+  .tag { color: var(--chroma-cyan); border: 1px solid color-mix(in oklab, var(--chroma-cyan) 40%, transparent); padding: 4px 8px; white-space: nowrap; }
+  .label { color: var(--text-low); }
+  .rule { flex: 1; min-width: 24px; height: 1px; background: linear-gradient(90deg, var(--line-mid), transparent); }
+  .coords { color: var(--text-faint); white-space: nowrap; }
+  @media (max-width: 760px) { .coords { display: none; } }
+</style>
