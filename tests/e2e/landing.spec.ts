@@ -86,3 +86,17 @@ test('no horizontal overflow at 390 px, either locale', async ({ page }) => {
     expect(overflow, path).toBeLessThanOrEqual(0);
   }
 });
+
+test('the About page is the company page, in both locales', async ({ page }) => {
+  for (const [path, lang, headline] of [
+    ['/about', 'en', "Robotics is gated. We're deleting the gate."],
+    ['/de/about', 'de', 'Robotik hat ein Tor. Wir reißen es ab.'],
+  ]) {
+    await page.goto(path);
+    await expect(page.locator('html')).toHaveAttribute('lang', lang);
+    await expect(page.locator('#top h1')).toHaveText(headline);
+    await expect(page.locator('#top img[alt="Marcus Röper"]')).toBeVisible();
+    await expect(page.locator('#partners a[href="https://roboticscollective.org/"] img')).toHaveCount(1);
+    await expect(page.locator('#contact a[href^="mailto:"]')).toHaveCount(1);
+  }
+});

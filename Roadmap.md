@@ -311,6 +311,10 @@ its shape (`layouts/Sandbox.astro` + a `src/content/<product>/{en,de}.md` pair).
 
 ### Feature 4.2 — About + Knowledge (owner: Marcus) — 10h
 Founder/team, partners, contact; Markdown-driven Knowledge index with RSS.
+**About shipped 2026-09-29** at `/about` (+`/de/about`): `layouts/About.astro` +
+`src/content/about/{en,de}.md` — deliberately compact (company line, two-line
+founder note, partners, contact), not the full founder biography in
+`About.dc.html`. Knowledge is open.
 **Acceptance:** a new post is one `.md` file, no code change.
 
 ### Feature 4.3 — GitHub integration (owner: Marcus) — 4h

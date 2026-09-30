@@ -117,4 +117,46 @@ const sandbox = defineCollection({
   }),
 });
 
-export const collections = { home, sandbox };
+// The About page: the company in one line, the founder in two, partners, contact.
+const heading = { eyebrow: z.string(), heading: z.string() };
+const about = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/about' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    hero: z.object({
+      eyebrow: z.string(),
+      headline: z.string(),
+      headlineAccent: z.string(),
+      lede: z.string(),
+      ledeEm: z.string(),
+      role: z.string(),
+    }),
+    founder: z.object({ label: z.string(), body: z.string() }),
+    partners: z.object({
+      ...heading,
+      aside: z.string(),
+      items: z
+        .object({
+          name: z.string(),
+          category: z.string(),
+          body: z.string(),
+          href: z.url(),
+          /** File in design-system/assets/; absent → the name stands in for it. */
+          logo: z.string().optional(),
+        })
+        .array()
+        .min(1),
+      visit: z.string(),
+    }),
+    contact: z.object({
+      ...heading,
+      locationLabel: z.string(),
+      location: z.string(),
+      email: z.email(),
+      linkedin: z.url(),
+    }),
+  }),
+});
+
+export const collections = { home, sandbox, about };
