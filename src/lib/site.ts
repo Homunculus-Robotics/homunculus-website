@@ -1,13 +1,13 @@
 import { getRelativeLocaleUrl } from 'astro:i18n';
 
-// ponytail: /knowledge and /about are built in 4.2 and belong to this repo.
+// ponytail: /knowledge (Knowledge Bits) and /about belong to this repo.
 // /designchallenge is the *other* repo (private, `Website.git`) and only
 // answers once that app is deployed behind this domain — the path is the real
 // one either way, so nothing has to be re-pathed when it lands.
 export const NAV_LINKS = [
   { href: '/sandbox', label: { en: 'Sandbox', de: 'Sandkasten' } },
   { href: '/designchallenge', label: { en: 'Design Challenge', de: 'Design Challenge' } },
-  { href: '/knowledge', label: { en: 'Knowledge', de: 'Wissen' } },
+  { href: '/knowledge', label: { en: 'Knowledge Bits', de: 'Wissensbits' } },
   { href: '/about', label: { en: 'About', de: 'Über uns' } },
 ];
 

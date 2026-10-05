@@ -1,0 +1,2781 @@
+{
+ "robots": [
+  {
+   "id": "threehalves",
+   "name": "Threehalves",
+   "maker": "Satyress",
+   "images": [
+    1
+   ],
+   "form": "hybrid",
+   "style": "character",
+   "close": 1,
+   "status": "prototype",
+   "scope": "boundary",
+   "role": "Hazardous work",
+   "description": "A centaur-like body combines four legs, two arms and a goat head. A striking example of deliberately moving beyond human anatomy.",
+   "reality": "Development concept focused on teleoperating skilled work in dangerous environments; no verified consumer release.",
+   "reason": "Intended to keep people away from dangerous physical work, rather than share domestic life.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://www.satyress.com/"
+    }
+   ],
+   "confidence": "High",
+   "identification": "The drawing links directly to Satyress. The manufacturer names this design Threehalves.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "babyalpha",
+   "name": "BabyAlpha",
+   "maker": "WEILAN",
+   "images": [
+    2
+   ],
+   "form": "quadruped",
+   "style": "character",
+   "close": 4,
+   "status": "consumer",
+   "scope": "personal",
+   "role": "Pet & family companion",
+   "description": "A dog-shaped robot with an animated face, voice interaction and family-oriented play.",
+   "reality": "Manufacturer offers a purchase route. Availability, language support and shipping depend on region; the drawing also links to a Kickstarter campaign.",
+   "reason": "Designed around ongoing family interaction and pet-like attachment.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://www.weilan.com/en/en/babyAlpha.html"
+    }
+   ],
+   "confidence": "High",
+   "identification": "Matches WEILAN BabyAlpha; directly corroborated by the Kickstarter link in the drawing.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "moya",
+   "name": "Moya",
+   "maker": "DroidUp",
+   "images": [
+    3
+   ],
+   "form": "biped",
+   "style": "lifelike",
+   "close": 4,
+   "status": "prototype",
+   "scope": "personal",
+   "role": "Lifelike social companion",
+   "description": "A human-proportioned android with a realistic face and skin, aimed at social interaction.",
+   "reality": "Publicly demonstrated. Broad consumer delivery and unsupervised care capabilities are not established by the sources checked.",
+   "reason": "Its human appearance and proposed companionship role imply sustained social contact, not proven clinical care.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://www.droidup.com/product"
+    }
+   ],
+   "confidence": "High",
+   "identification": "The image itself names Moya and shows DroidUp branding. The maker catalog supports its biomimetic work; no retail availability verified.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "goat",
+   "name": "Goat-costumed quadruped",
+   "maker": "Davos demonstration",
+   "images": [
+    4
+   ],
+   "form": "quadruped",
+   "style": "character",
+   "close": 2,
+   "status": "unknown",
+   "scope": "context",
+   "role": "Public demonstration",
+   "description": "A quadruped wearing a realistic mountain-goat shell. The costume changes how people encounter an otherwise mechanical platform.",
+   "reality": "The exact base robot and costume supplier are unverified. It may use a Unitree Go2, but that is not a confirmed identification.",
+   "reason": "A public novelty and encounter; the picture alone cannot establish a home-companion role.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://www.davostechsummit.com/robot-city"
+    }
+   ],
+   "confidence": "Partial",
+   "identification": "A costumed robot dog at Davos is supported by event context. Unitree Go2 is only a possible base; retained as an unresolved variant, not a separate confirmed product.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "reachy2",
+   "name": "Reachy 2",
+   "maker": "Pollen Robotics",
+   "images": [
+    5
+   ],
+   "form": "wheeled",
+   "style": "character",
+   "close": 3,
+   "status": "developer",
+   "scope": "personal",
+   "role": "Embodied-AI research",
+   "description": "An expressive head, antennae and two arms on an omnidirectional base. An approachable platform for learning manipulation.",
+   "reality": "Developer and research platform with Python control and VR teleoperation. A lab platform does not arrive as a turnkey household helper.",
+   "reason": "Built to explore tasks in human spaces such as homes, offices and hospitals.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://pollen-robotics.com/reachy-2/"
+    }
+   ],
+   "confidence": "Probable",
+   "identification": "Reachy family is clear from the head and antennae. The mobile dual-arm configuration is consistent with Reachy 2; exact revision is not explicit in the image.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "reachymini",
+   "name": "Reachy Mini",
+   "maker": "Pollen Robotics / Hugging Face",
+   "images": [
+    6
+   ],
+   "form": "desktop",
+   "style": "character",
+   "close": 4,
+   "status": "consumer",
+   "scope": "personal",
+   "role": "Desk companion & creative coding",
+   "description": "A small expressive desktop robot with moving antennae and a camera.",
+   "reality": "Orderable maker kit in wireless and tethered versions. Experiences depend on installed apps; it cannot perform physical household chores.",
+   "reason": "A persistent conversational and playful presence at a desk.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://pollen-robotics.com/reachy-mini/"
+    }
+   ],
+   "confidence": "High",
+   "identification": "Identified by its distinctive head and antennae and the direct product link in the drawing.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "mirokai",
+   "name": "Mirokaï · Miroki",
+   "maker": "Enchanted Tools",
+   "images": [
+    7
+   ],
+   "form": "wheeled",
+   "style": "character",
+   "close": 4,
+   "status": "early",
+   "scope": "personal",
+   "role": "Care-setting social support",
+   "description": "A fictional character with an animated face, arms and a rolling-ball base. Designed for interaction and assistance in shared human spaces.",
+   "reality": "First commercial deployments are open. The maker reports a senior-living pilot; autonomy continues to develop. This is not a patient-lifting robot.",
+   "reason": "Repeated conversation and engagement with residents, patients and staff bring it closer than a delivery-only robot.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://enchanted.tools/"
+    }
+   ],
+   "confidence": "High",
+   "identification": "The orange character is Miroki, one of the Mirokaï family. The drawing directly links to Enchanted Tools.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "galbot",
+   "name": "Galbot G1",
+   "maker": "Galbot",
+   "images": [
+    8
+   ],
+   "form": "wheeled",
+   "style": "sleek",
+   "close": 2,
+   "status": "business",
+   "scope": "personal",
+   "role": "Retail & pharmacy handling",
+   "description": "A two-armed semi-humanoid with an articulated lifting body and mobile base, used for handling everyday goods.",
+   "reality": "The manufacturer describes retail and medical-service deployments. Pharmacy logistics should not be equated with personal nursing care.",
+   "reason": "Primarily supports the service a person receives; close physical caregiving is not evidenced.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://galbot.com/g1/"
+    },
+    {
+     "title": "Galbot · G1 developer documentation",
+     "url": "https://developer.galbot.com/docs/g1/2.2.4/en/g1/"
+    }
+   ],
+   "confidence": "Probable",
+   "identification": "The broad visor, elongated white chest and folding lower structure are consistent with Galbot G1. The cropped image hides the base, so the exact match remains provisional.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "sprout",
+   "name": "Sprout",
+   "maker": "Fauna Robotics",
+   "images": [
+    9,
+    38
+   ],
+   "form": "biped",
+   "style": "character",
+   "close": 4,
+   "status": "developer",
+   "scope": "personal",
+   "role": "Social robotics platform",
+   "description": "A small humanoid with a soft exterior, expressive eyebrows and a deliberately friendly, nonhuman face.",
+   "reality": "Creator Edition is offered as a developer platform. It is a foundation for building applications, not evidence of a finished domestic care service.",
+   "reason": "Designed to interact naturally in spaces occupied by people; social presence is central to the design.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://faunarobotics.com/product"
+    }
+   ],
+   "confidence": "High",
+   "identification": "Both the pasted yellow robot and the remotely embedded product image depict Sprout. Counted once, with both images preserved.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "neo",
+   "name": "NEO · early design",
+   "maker": "1X",
+   "images": [
+    10
+   ],
+   "form": "biped",
+   "style": "sleek",
+   "close": 3,
+   "status": "early",
+   "scope": "personal",
+   "role": "Home assistant",
+   "description": "A soft-suited humanoid designed to take on household chores and interact through voice.",
+   "reality": "Current NEO has an early-access order route and foundational autonomy. Unfamiliar chores can use scheduled remote expert assistance. The reference shows an earlier design.",
+   "reason": "Intended to live in a household and participate in everyday routines; social proximity is not proof of care competence.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://www.1x.tech/neo"
+    }
+   ],
+   "confidence": "Probable",
+   "identification": "The suit and face resemble the NEO Beta-era design. The status here refers to the current NEO program, not the pictured revision.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "apollo",
+   "name": "Apollo",
+   "maker": "Apptronik",
+   "images": [
+    11
+   ],
+   "form": "biped",
+   "style": "sleek",
+   "close": 1,
+   "status": "early",
+   "scope": "boundary",
+   "role": "Industrial labor",
+   "description": "A human-scale platform with a friendly minimal face, exposed mechanics and a chest display.",
+   "reality": "Its initial focus is manufacturing and logistics. Long-term general-purpose ambitions do not make it a current home robot.",
+   "reason": "Included as an industrial boundary reference from the drawing, not part of the personal-life core.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://apptronik.com/news-collection/apptronik-unveils-apollo"
+    }
+   ],
+   "confidence": "High",
+   "identification": "Visual match to the product or product family. Exact hardware revision may differ from the current catalog.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "optimus",
+   "name": "Optimus",
+   "maker": "Tesla",
+   "images": [
+    12
+   ],
+   "form": "biped",
+   "style": "sleek",
+   "close": 3,
+   "status": "prototype",
+   "scope": "personal",
+   "role": "General-purpose ambition",
+   "description": "A minimalist humanoid intended for repetitive physical tasks, with domestic usefulness part of its broader ambition.",
+   "reality": "Tesla describes a development program. A broadly available consumer home robot is not established by the checked source.",
+   "reason": "Placed at shared routines as an intended future role, not an observed household deployment.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://www.tesla.com/en_sa/AI"
+    }
+   ],
+   "confidence": "High",
+   "identification": "Tesla lettering and the characteristic black head identify Optimus. Generation is not treated as certain from this crop.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "promobot",
+   "name": "Promobot V.4",
+   "maker": "Promobot",
+   "images": [
+    13
+   ],
+   "form": "wheeled",
+   "style": "sleek",
+   "close": 2,
+   "status": "business",
+   "scope": "personal",
+   "role": "Reception & visitor interaction",
+   "description": "A screen-faced service robot with expressive arms, used for welcoming and informing visitors.",
+   "reality": "Established commercial service platform with manufacturer documentation. The manufacturer homepage also discusses a separate concluded humanoid-face project; that notice does not establish V.4 discontinuation.",
+   "reason": "Short exchanges in shared public spaces rather than ongoing household life.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://lp.promo-bot.ru/"
+    }
+   ],
+   "confidence": "High",
+   "identification": "Visual match to the product or product family. Exact hardware revision may differ from the current catalog.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "agibotg2",
+   "name": "G2",
+   "maker": "AGIBOT",
+   "images": [
+    14
+   ],
+   "form": "wheeled",
+   "style": "sleek",
+   "close": 1,
+   "status": "business",
+   "scope": "boundary",
+   "role": "Industrial manipulation",
+   "description": "A humanoid upper body on a wheeled chassis with dexterous hands.",
+   "reality": "An industrial embodied-AI platform; the source image matches the manufacturer G2 promotional scene.",
+   "reason": "Workplace collaboration is distinct from living alongside a household.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://www.agibot.com/products/G2"
+    }
+   ],
+   "confidence": "High",
+   "identification": "Matched the raised-hand pose and dark block backdrop to AGIBOT’s G2 product image.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "g1d",
+   "name": "G1-D",
+   "maker": "Unitree",
+   "images": [
+    15
+   ],
+   "form": "wheeled",
+   "style": "sleek",
+   "close": 3,
+   "status": "developer",
+   "scope": "context",
+   "role": "Manipulation & data collection",
+   "description": "A G1-derived upper body on an adjustable support and wheeled platform.",
+   "reality": "Marketed as an end-to-end development and data-collection platform. It should not be read as a finished home assistant.",
+   "reason": "Human-scale manipulation can support future household tasks; current use is mainly development.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://www.unitree.com/G1-D/"
+    }
+   ],
+   "confidence": "Probable",
+   "identification": "The Unitree upper body and folding support match the G1-D configuration; exact trim is unverified.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "aeon",
+   "name": "AEON",
+   "maker": "Hexagon",
+   "images": [
+    16
+   ],
+   "form": "wheeled",
+   "style": "sleek",
+   "close": 1,
+   "status": "early",
+   "scope": "boundary",
+   "role": "Factory work",
+   "description": "A humanoid with wheels at the ends of articulated legs, combining a human-like upper body with rolling mobility.",
+   "reality": "Industrial pilots and deployments are the stated focus. The automotive component in the image reinforces that setting.",
+   "reason": "An industrial coworker, with no verified personal-life product offering.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://robotics.hexagon.com/product/"
+    }
+   ],
+   "confidence": "High",
+   "identification": "AEON lettering is visible on the chest; the wheeled legs are distinctive.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "digit",
+   "name": "Digit",
+   "maker": "Agility Robotics",
+   "images": [
+    17
+   ],
+   "form": "biped",
+   "style": "functional",
+   "close": 1,
+   "status": "business",
+   "scope": "boundary",
+   "role": "Warehouse logistics",
+   "description": "A logistics biped with reverse-jointed legs and a deliberately practical body.",
+   "reality": "Commercial logistics platform. Human-size geometry enables warehouse work; it does not establish a consumer role.",
+   "reason": "Low personal-life proximity despite physically working near people.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://www.agilityrobotics.com/solutions"
+    }
+   ],
+   "confidence": "High",
+   "identification": "Visual match to the product or product family. Exact hardware revision may differ from the current catalog.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "amy",
+   "name": "Amy / Amy Plus",
+   "maker": "Alpha Robotics",
+   "images": [
+    18
+   ],
+   "form": "wheeled",
+   "style": "sleek",
+   "close": 2,
+   "status": "business",
+   "scope": "personal",
+   "role": "Reception & information",
+   "description": "A wheeled greeter with a face display and large torso touchscreen.",
+   "reality": "The Amy service family is marketed for public venues. The pictured trim may differ from the current Amy Plus.",
+   "reason": "Designed for brief guidance, information and reception encounters.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://www.alpharobotics.com.cn/amy-plus-product/"
+    }
+   ],
+   "confidence": "Probable",
+   "identification": "Alpha branding and the large angled torso display match the Amy service family; the exact model suffix is uncertain.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "star1",
+   "name": "STAR1",
+   "maker": "RobotEra",
+   "images": [
+    19
+   ],
+   "form": "biped",
+   "style": "sleek",
+   "close": 3,
+   "status": "developer",
+   "scope": "context",
+   "role": "General-purpose research",
+   "description": "A full-size humanoid platform with a dark visor, white shell and dexterous hands.",
+   "reality": "The manufacturer describes a research and robot-learning platform. Commercial hardware does not imply ready-made household skills.",
+   "reason": "Potential to operate in human spaces, but domestic cohabitation remains an application direction.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://www.robotera.com/upload/goods/20241208/f56791f6bd7fdd069e2c8552f4d3aeed.pdf"
+    }
+   ],
+   "confidence": "High",
+   "identification": "ROBOTERA branding is visible; the arms-crossed promotional pose matches the official STAR1 brochure.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "hmnd",
+   "name": "HMND 01",
+   "maker": "Humanoid",
+   "images": [
+    20
+   ],
+   "form": "biped",
+   "style": "sleek",
+   "close": 1,
+   "status": "prototype",
+   "scope": "boundary",
+   "role": "Industrial automation",
+   "description": "A fabric-covered humanoid shown attending an industrial machine.",
+   "reality": "Humanoid’s current commercial emphasis is the HMND 01 Alpha Wheeled platform; the drawing appears to show its legged design. Do not conflate the pictured revision with the current wheeled offer.",
+   "reason": "The demonstrated setting and current company focus are industrial.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://thehumanoid.ai/hmnd-01-alpha-bipedal/"
+    }
+   ],
+   "confidence": "Probable",
+   "identification": "Black-and-white soft exterior and blue-lit head are consistent with HMND 01. Image is cropped and does not show the feet.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "mipa",
+   "name": "MiPA",
+   "maker": "NEURA Robotics",
+   "images": [
+    21
+   ],
+   "form": "wheeled",
+   "style": "sleek",
+   "close": 3,
+   "status": "early",
+   "scope": "personal",
+   "role": "Household helper",
+   "description": "A compact wheeled assistant intended to handle objects and support home routines.",
+   "reality": "Reservation route is open; reservation terms describe the product as in development. Broad household delivery is not verified.",
+   "reason": "Designed for ongoing practical presence in the home, including chores such as dishwasher handling.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://neura-robotics.com/reservations/"
+    },
+    {
+     "title": "NEURA · reservation terms (product in development)",
+     "url": "https://neurarobotics.px.media/plk/Kf/MiPAReservationTermsENG_1.pdf"
+    }
+   ],
+   "confidence": "High",
+   "identification": "Visual match to the product or product family. Exact hardware revision may differ from the current catalog.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "4ne1",
+   "name": "4NE1",
+   "maker": "NEURA Robotics",
+   "images": [
+    22
+   ],
+   "form": "biped",
+   "style": "sleek",
+   "close": 3,
+   "status": "early",
+   "scope": "personal",
+   "role": "Work & home assistance",
+   "description": "A full-size humanoid with smooth white panels and a black head.",
+   "reality": "Reservations and industrial applications are prominent. Home assistance is a manufacturer-stated direction; widespread home deployment is not established.",
+   "reason": "Shared everyday tasks are the domestic intention, separate from its industrial uses.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://neura-robotics.com/products/4ne1/"
+    }
+   ],
+   "confidence": "High",
+   "identification": "NEURA branding is visible. The image is consistent with the third-generation design; current hardware may differ.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "gene",
+   "name": "GENE.01",
+   "maker": "Generative Bionics",
+   "images": [
+    23
+   ],
+   "form": "biped",
+   "style": "sleek",
+   "close": 1,
+   "status": "prototype",
+   "scope": "boundary",
+   "role": "Industrial humanoid design",
+   "description": "A red-and-silver humanoid with a black face and illuminated accents.",
+   "reality": "The 2026 design program defines the direction for future industrial humanoids; it is not evidence of a consumer launch.",
+   "reason": "Human-robot interaction is part of its industrial design, but personal cohabitation is not the stated deployment.",
+   "sources": [
+    {
+     "title": "Italdesign · design partner",
+     "url": "https://www.italdesign.it/en/project/gene-01-italian-humanoid-robot/"
+    },
+    {
+     "title": "Generative Bionics · official press kit",
+     "url": "https://gbionics.ai/downloads/italdesign/PressKit_EN_GB.pdf"
+    }
+   ],
+   "confidence": "High",
+   "identification": "Matched the red shell, cyan face accents and torso proportions to GENE.01.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "dr02",
+   "name": "DR02",
+   "maker": "DEEP Robotics",
+   "images": [
+    24
+   ],
+   "form": "biped",
+   "style": "functional",
+   "close": 1,
+   "status": "prototype",
+   "scope": "boundary",
+   "role": "All-weather industrial work",
+   "description": "A rugged humanoid shown in a rain-soaked promotional scene.",
+   "reality": "An industrial robot program. Promotional imagery alone is not independent evidence of operational weather capability or mass delivery.",
+   "reason": "Designed around demanding work environments rather than family life.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://www.deeprobotics.cn/en/"
+    }
+   ],
+   "confidence": "High",
+   "identification": "The distinctive head and kneeling-in-rain promotional image match the DR02 announcement.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "lynx",
+   "name": "LYNX M20 family",
+   "maker": "DEEP Robotics",
+   "images": [
+    25
+   ],
+   "form": "quadruped",
+   "style": "functional",
+   "close": 1,
+   "status": "business",
+   "scope": "boundary",
+   "role": "Inspection & field mobility",
+   "description": "A wheeled quadruped combining leg articulation with wheel-driven travel.",
+   "reality": "The M20 family is marketed for industrial inspection, logistics and field work. Specific configuration in the image is not certain.",
+   "reason": "Task-driven infrastructure work, with no evidenced domestic companionship role.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://www.deeprobotics.cn/en/"
+    }
+   ],
+   "confidence": "Probable",
+   "identification": "DEEP Robotics branding is clear; body and wheel layout are consistent with LYNX M20. Exact version is provisional.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "atlas",
+   "name": "Atlas · electric",
+   "maker": "Boston Dynamics",
+   "images": [
+    26
+   ],
+   "form": "biped",
+   "style": "functional",
+   "close": 1,
+   "status": "early",
+   "scope": "boundary",
+   "role": "Industrial manipulation",
+   "description": "A humanoid with a circular illuminated head and mechanical appearance.",
+   "reality": "Current Atlas is positioned as an enterprise robot for industrial material handling. The drawing shows an earlier electric-Atlas appearance.",
+   "reason": "Included to show the edge of the landscape: human-shaped does not mean intended to share private life.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://bostondynamics.com/products/"
+    }
+   ],
+   "confidence": "High",
+   "identification": "Visual match to the product or product family. Exact hardware revision may differ from the current catalog.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "spot",
+   "name": "Spot",
+   "maker": "Boston Dynamics",
+   "images": [
+    27
+   ],
+   "form": "quadruped",
+   "style": "functional",
+   "close": 1,
+   "status": "business",
+   "scope": "boundary",
+   "role": "Inspection & remote sensing",
+   "description": "A yellow quadruped platform, shown with an arm for manipulation.",
+   "reality": "An established commercial inspection robot. Public demonstrations do not make it a consumer robot pet.",
+   "reason": "Instrumental use with trained operators, generally distant from intimate personal routines.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://bostondynamics.com/products/"
+    }
+   ],
+   "confidence": "High",
+   "identification": "Visual match to the product or product family. Exact hardware revision may differ from the current catalog.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "memo",
+   "name": "Memo",
+   "maker": "Sunday Robotics",
+   "images": [
+    28
+   ],
+   "form": "wheeled",
+   "style": "character",
+   "close": 3,
+   "status": "early",
+   "scope": "personal",
+   "role": "Domestic chores",
+   "description": "A two-armed home robot with a soft exterior, compact mobile base and customizable hats.",
+   "reality": "Manufacturer targets a beta launch in late 2026. Demonstrations and a forthcoming beta do not establish broad retail availability.",
+   "reason": "Designed to share a household and take on repeated routines such as clearing tables and loading a dishwasher.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://www.sunday.ai/"
+    }
+   ],
+   "confidence": "High",
+   "identification": "The distinctive hats and paired vertical supports match Sunday’s Memo imagery.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "riba",
+   "name": "RIBA family",
+   "maker": "RIKEN / Tokai Rubber",
+   "images": [
+    29
+   ],
+   "form": "wheeled",
+   "style": "character",
+   "close": 5,
+   "status": "legacy",
+   "scope": "context",
+   "role": "Physical care & transfers",
+   "description": "A bear-faced research robot designed to lift and transfer a person between a bed and wheelchair.",
+   "reality": "Historical research, introduced in 2009 and followed by RIBA-II and ROBEAR. This picture should not be presented as a new 2026 product.",
+   "reason": "Direct body contact and a person’s physical reliance on the robot place it at the closest end.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://www.riken.jp/en/news_pubs/research_news/pr/2009/20090827/"
+    },
+    {
+     "title": "RIKEN · ROBEAR announcement and historical project note",
+     "url": "https://www.riken.jp/en/news_pubs/research_news/pr/2015/20150223_2/"
+    }
+   ],
+   "confidence": "Probable",
+   "identification": "Bear face and blue lower body identify the RIBA lineage. Exact RIBA/RIBA-II revision is uncertain; it is not the later all-white ROBEAR.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "pepper",
+   "name": "Pepper",
+   "maker": "SoftBank Robotics / Aldebaran",
+   "images": [
+    30
+   ],
+   "form": "wheeled",
+   "style": "sleek",
+   "close": 2,
+   "status": "legacy",
+   "scope": "context",
+   "role": "Social reception",
+   "description": "A familiar humanoid torso on a wheeled base with a chest-mounted tablet.",
+   "reality": "A long-established social robot; the checked Aldebaran product page states it is definitively out of stock. Existing deployments and resale are different from a new launch.",
+   "reason": "Usually short interactions in shops, schools and reception areas; closer relationships depend on the application.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://aldebaran.com/es/pepper"
+    }
+   ],
+   "confidence": "High",
+   "identification": "The Pepper name is printed on the tablet; identity is explicit.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "lucki",
+   "name": "LuckiBot",
+   "maker": "OrionStar",
+   "images": [
+    31
+   ],
+   "form": "special",
+   "style": "functional",
+   "close": 2,
+   "status": "business",
+   "scope": "personal",
+   "role": "Restaurant delivery",
+   "description": "A mobile tray tower with an expressive screen, designed to carry food and guide customers.",
+   "reality": "Commercial hospitality platform with manufacturer product information and deployment offering.",
+   "reason": "A brief service encounter with the diner; sustained companionship is not its core purpose.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://en.orionstar.com/lucki.html"
+    }
+   ],
+   "confidence": "High",
+   "identification": "LUCKI branding is visible on the body; screen and tray layout match OrionStar LuckiBot.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "bella",
+   "name": "BellaBot",
+   "maker": "PUDU Robotics",
+   "images": [
+    32
+   ],
+   "form": "special",
+   "style": "character",
+   "close": 2,
+   "status": "business",
+   "scope": "personal",
+   "role": "Restaurant delivery",
+   "description": "A cat-faced delivery robot with trays and playful expressions.",
+   "reality": "Established commercial restaurant robot. Its social interface makes delivery approachable, without turning it into a dedicated companion.",
+   "reason": "Frequent but brief restaurant encounters; character design is independent of relationship depth.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://www.pudurobotics.com/en/products/bellabot"
+    }
+   ],
+   "confidence": "High",
+   "identification": "Visual match to the product or product family. Exact hardware revision may differ from the current catalog.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "aibo",
+   "name": "aibo · ERS-1000",
+   "maker": "Sony",
+   "images": [
+    33
+   ],
+   "form": "quadruped",
+   "style": "character",
+   "close": 4,
+   "status": "consumer",
+   "scope": "personal",
+   "role": "Robotic pet",
+   "description": "A dog-shaped companion that moves, learns routines and responds to people.",
+   "reality": "Established consumer robot family with current manufacturer support. Regional sales and service availability vary.",
+   "reason": "Long-term pet-like presence and emotional attachment are central to the product.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://aibo.sony.jp/"
+    },
+    {
+     "title": "Sony · autonomous companion behavior, updated January 2026",
+     "url": "https://www.sony.com/electronics/support/other-products-entertainment-robots/ers-1000/articles/00200879"
+    }
+   ],
+   "confidence": "High",
+   "identification": "The round-jointed body and expressive face match the ERS-1000 generation.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "lovot",
+   "name": "LOVOT",
+   "maker": "GROOVE X",
+   "images": [
+    34
+   ],
+   "form": "special",
+   "style": "character",
+   "close": 4,
+   "status": "consumer",
+   "scope": "personal",
+   "role": "Affection & companionship",
+   "description": "A soft, warm, wheeled creature designed to invite attention and affection.",
+   "reality": "An established consumer product with a Japanese webstore and ongoing service plans; the photo does not determine its generation.",
+   "reason": "Designed around attachment, touch and a continuing bond rather than task productivity.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://store.lovot.life/buy"
+    }
+   ],
+   "confidence": "High",
+   "identification": "Identified as LOVOT. Two robots in one photograph represent one product family.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "somatic",
+   "name": "Bathroom Cleaning Robot",
+   "maker": "Somatic",
+   "images": [
+    36
+   ],
+   "form": "special",
+   "style": "functional",
+   "close": 1,
+   "status": "business",
+   "scope": "personal",
+   "role": "Toilets & restroom cleaning",
+   "description": "A mobile utility platform with a manipulator for cleaning restroom fixtures and floors.",
+   "reality": "Commercial service offering with deployment and onboarding. The drawing appears to show an earlier hardware revision.",
+   "reason": "Operates in personal-use spaces but performs background work; low relational closeness despite the bathroom setting.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://getsomatic.com/"
+    }
+   ],
+   "confidence": "High",
+   "identification": "The bathroom-cleaning setup and machine configuration match Somatic’s earlier demonstrations.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "codey",
+   "name": "Mindbot / Codey lineage",
+   "maker": "Mind Children",
+   "images": [
+    37
+   ],
+   "form": "wheeled",
+   "style": "lifelike",
+   "close": 4,
+   "status": "prototype",
+   "scope": "personal",
+   "role": "Social learning & companionship",
+   "description": "A child-scale robot with an expressive human-like face, exposed joints and wheels beneath articulated legs.",
+   "reality": "Prototype and commercialization program. Current company materials use Codey; exact naming of the older pictured unit is uncertain.",
+   "reason": "Designed for repeated social interaction with people in homes, education and care settings; care effectiveness is not established here.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://mindchildren.com/"
+    },
+    {
+     "title": "Mind Children · original Mindbot demonstration",
+     "url": "https://www.linkedin.com/posts/mind-children_our-ceo-chris-kudla-recently-presented-activity-7303359063369629696-El6g"
+    }
+   ],
+   "confidence": "Probable",
+   "identification": "Mind Children branding is visible. The photo appears to show the earlier Mindbot design; it should not be assumed identical to the current Codey.",
+   "origin": "Drawing",
+   "checked": "2026-10-01"
+  },
+  {
+   "id": "elliq",
+   "name": "ElliQ",
+   "maker": "Intuition Robotics",
+   "images": [],
+   "form": "desktop",
+   "style": "functional",
+   "close": 5,
+   "status": "consumer",
+   "scope": "personal",
+   "role": "Older-adult companionship",
+   "description": "An expressive tabletop device paired with a screen, designed around conversation and everyday support for older adults.",
+   "reality": "Offered through a consumer membership and funded programs. Availability is regional; this map makes no clinical efficacy claim.",
+   "reason": "Ongoing, personalized support in a person’s private daily life gives it high relational proximity despite having no human body.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://elliq.com/"
+    }
+   ],
+   "confidence": "High",
+   "identification": "Added reference to cover elder-support devices without a humanoid body.",
+   "origin": "Added",
+   "checked": "2026-10-01",
+   "photo": "added-elliq"
+  },
+  {
+   "id": "paro",
+   "name": "PARO",
+   "maker": "AIST / PARO Robots",
+   "images": [],
+   "form": "special",
+   "style": "character",
+   "close": 5,
+   "status": "business",
+   "scope": "personal",
+   "role": "Tactile care companion",
+   "description": "A soft seal-shaped interactive robot used in care environments.",
+   "reality": "Established specialist product; care use should not be confused with a new humanoid launch or a guarantee of treatment benefit.",
+   "reason": "Designed for touch and sustained interaction with people receiving care.",
+   "sources": [
+    {
+     "title": "Intelligent System · manufacturer",
+     "url": "https://www.intelligent-system.jp/"
+    },
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://www.parorobots.com/index.asp"
+    }
+   ],
+   "confidence": "High",
+   "identification": "Added reference to distinguish care companionship from physical patient lifting.",
+   "origin": "Added",
+   "checked": "2026-10-01",
+   "website": "https://www.intelligent-system.jp/",
+   "photo": "added-paro"
+  },
+  {
+   "id": "realbotix",
+   "name": "Aria / Realbotix platform",
+   "maker": "Realbotix",
+   "images": [],
+   "form": "wheeled",
+   "style": "lifelike",
+   "close": 4,
+   "status": "business",
+   "scope": "personal",
+   "role": "Humanlike conversation",
+   "description": "Customizable human-looking faces and bodies centered on conversation and expression.",
+   "reality": "Maker offers bust, stationary modular and full-body configurations. The full-body platform uses a wheeled base; it is not a walking general-purpose home worker.",
+   "reason": "A sustained conversational presence is the intention; relationship depth depends on the configured use.",
+   "sources": [
+    {
+     "title": "Realbotix · robot gallery",
+     "url": "https://www.realbotix.com/gallery"
+    },
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://www.realbotix.com/robots"
+    }
+   ],
+   "confidence": "High",
+   "identification": "Added reference for the realistic-human design direction. This map places the wheeled full-body configuration.",
+   "origin": "Added",
+   "checked": "2026-10-01",
+   "website": "https://www.realbotix.com/gallery",
+   "photo": "added-realbotix"
+  },
+  {
+   "id": "saros",
+   "name": "Saros Z70",
+   "maker": "Roborock",
+   "images": [],
+   "form": "special",
+   "style": "functional",
+   "close": 1,
+   "status": "consumer",
+   "scope": "personal",
+   "role": "Floor cleaning & small-object pickup",
+   "description": "A domestic vacuum-and-mop robot with a fold-out arm for moving selected small obstacles.",
+   "reality": "Commercial consumer product. Manipulation is narrow and object-dependent, not general household dexterity.",
+   "reason": "Lives inside the home but largely performs background tasks, showing why co-location and relational closeness differ.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://global.roborock.com/pages/roborock-saros-z70"
+    }
+   ],
+   "confidence": "High",
+   "identification": "Added reference for the mature household-cleaning market and emerging appliance manipulation.",
+   "origin": "Added",
+   "checked": "2026-10-01",
+   "photo": "added-saros"
+  },
+  {
+   "id": "automower",
+   "name": "Automower",
+   "maker": "Husqvarna",
+   "images": [],
+   "form": "special",
+   "style": "functional",
+   "close": 1,
+   "status": "consumer",
+   "scope": "personal",
+   "role": "Garden maintenance",
+   "description": "A family of robotic lawn mowers, with physical-wire and virtual-boundary configurations.",
+   "reality": "Established residential products; capabilities and availability depend on the specific model and region.",
+   "reason": "Part of private domestic life through garden maintenance, with little sustained social interaction.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://www.husqvarna.com/us/products-category/robotic-lawn-mowers/"
+    }
+   ],
+   "confidence": "High",
+   "identification": "Added product family, not a single model, to include outdoor domestic robots.",
+   "origin": "Added",
+   "checked": "2026-10-01",
+   "photo": "added-automower"
+  },
+  {
+   "id": "go2",
+   "name": "Go2",
+   "maker": "Unitree",
+   "images": [],
+   "form": "quadruped",
+   "style": "functional",
+   "close": 3,
+   "status": "consumer",
+   "scope": "personal",
+   "role": "Personal exploration & development",
+   "description": "A general quadruped platform offered in consumer and educational variants.",
+   "reality": "An official order route exists, including backorders. Purchasing a mobile platform does not establish reliable household-assistant skills.",
+   "reason": "Used for personal play, exploration and coding; less explicitly bond-oriented than aibo or BabyAlpha.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://shop.unitree.com/products/unitree-go2"
+    }
+   ],
+   "confidence": "High",
+   "identification": "Added confirmed base platform; distinct from the uncertain goat-costume identification.",
+   "origin": "Added",
+   "checked": "2026-10-01",
+   "photo": "added-go2"
+  },
+  {
+   "id": "figure03",
+   "name": "Figure 03",
+   "maker": "Figure",
+   "images": [],
+   "form": "biped",
+   "style": "sleek",
+   "close": 3,
+   "status": "prototype",
+   "scope": "personal",
+   "role": "General-purpose home work",
+   "description": "A soft-exterior humanoid explicitly developed for household tasks as well as commercial work.",
+   "reality": "Official product announcement and demonstrations exist. A general consumer delivery route is not established by the checked pages.",
+   "reason": "The stated home role places it among robots intended to share daily domestic routines.",
+   "sources": [
+    {
+     "title": "Manufacturer / project source",
+     "url": "https://www.figure.ai/news/introducing-figure-03?id=Figure03"
+    }
+   ],
+   "confidence": "High",
+   "identification": "Added reference for the minimalist home-humanoid direction; not substituted for an uncertain drawing image.",
+   "origin": "Added",
+   "checked": "2026-10-01",
+   "photo": "added-figure03"
+  },
+  {
+   "id": "loona",
+   "name": "Loona",
+   "maker": "KEYi Robot",
+   "form": "special",
+   "style": "character",
+   "close": 4,
+   "status": "consumer",
+   "role": "Mobile pet companion",
+   "sources": [
+    {
+     "title": "KEYi Robot · Loona",
+     "url": "https://keyirobot.com/products/petbot"
+    }
+   ],
+   "description": "A small wheeled pet with moving ears, a screen face and playful body movements.",
+   "reality": "Sold as a consumer companion; conversation and app features depend on connectivity. Wheels, not four walking legs, provide locomotion.",
+   "reason": "Play, recognition and repeated family interaction invite a pet-like bond.",
+   "images": [
+    "research-loona"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://cdn.shopify.com/s/files/1/0750/4170/2077/files/gallery-loona-petbot-premium-1-v2.webp"
+  },
+  {
+   "id": "emo",
+   "name": "EMO",
+   "maker": "LivingAI",
+   "form": "desktop",
+   "style": "character",
+   "close": 4,
+   "status": "consumer",
+   "role": "Desktop pet",
+   "sources": [
+    {
+     "title": "LivingAI · EMO",
+     "url": "https://living.ai/emo/"
+    }
+   ],
+   "description": "A tiny two-footed desk robot with an animated face, sound reactions and games.",
+   "reality": "A consumer desk pet with online features; its little feet do not make it a household helper.",
+   "reason": "Its main purpose is daily companionship at arm’s length.",
+   "images": [
+    "research-emo"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://living.ai/wp-content/uploads/2020/12/product2-1024x1024.jpg"
+  },
+  {
+   "id": "aibi",
+   "name": "AIBI Pocket",
+   "maker": "LivingAI",
+   "form": "desktop",
+   "style": "character",
+   "close": 4,
+   "status": "consumer",
+   "role": "Portable companion",
+   "sources": [
+    {
+     "title": "LivingAI · AIBI Pocket",
+     "url": "https://living.ai/"
+    },
+    {
+     "title": "LivingAI · AIBI product details",
+     "url": "https://living.ai/aibi/"
+    },
+    {
+     "title": "LivingAI · AIBI official store",
+     "url": "https://living.ai/product/aibi-pocket/"
+    }
+   ],
+   "description": "A pocket-sized expressive companion that moves its head and reacts to its owner.",
+   "reality": "The official store offers consumer orders. Connected conversation, accessories and delivery terms should be checked for the specific package and region.",
+   "reason": "Designed to accompany a person throughout the day, with social interaction as its main role.",
+   "images": [
+    "research-aibi"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://i0.wp.com/living.ai/wp-content/uploads/2023/12/2023121521.png?fit=2252%2C2252&quality=80&ssl=1"
+  },
+  {
+   "id": "eilik",
+   "name": "Eilik",
+   "maker": "Energize Lab",
+   "form": "desktop",
+   "style": "character",
+   "close": 4,
+   "status": "consumer",
+   "role": "Expressive desk companion",
+   "sources": [
+    {
+     "title": "Energize Lab · Eilik",
+     "url": "https://www.energizelab.com/eilik/"
+    }
+   ],
+   "description": "A small screen-faced robot that reacts to touch and vibration and interacts with other Eiliks.",
+   "reality": "Sold as a consumer product. The base robot’s animated routines should not be confused with capabilities of the separate AI Station accessory.",
+   "reason": "Tactile play and an expressive personality invite an ongoing creature-like relationship.",
+   "images": [
+    "research-eilik"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://file.energizelab.com.cn/web_file/xunruicms/webp/header/r-eilik.webp"
+  },
+  {
+   "id": "moflin",
+   "name": "Moflin",
+   "maker": "Casio",
+   "form": "special",
+   "style": "character",
+   "close": 4,
+   "status": "consumer",
+   "role": "Soft companion pet",
+   "sources": [
+    {
+     "title": "Casio · Moflin",
+     "url": "https://www.casio.com/us/moflin/"
+    }
+   ],
+   "description": "A palm-sized furry creature with moving head, sounds and responses that develop with interaction.",
+   "reality": "Casio provides retail purchase routes in selected markets. Emotional language describes programmed behaviour, not established feelings or clinical treatment.",
+   "reason": "Holding, petting and repeated interaction are the central experience.",
+   "images": [
+    "research-moflin"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://www.casio.com/content/dam/casio/product-info/locales/us/en/moflin/product/P/PE/PEM/PE-M10SR/assets/pe-m10sr_001.png.transform/main-visual-sp/image.png"
+  },
+  {
+   "id": "qoobo",
+   "name": "Qoobo / Petit Qoobo",
+   "maker": "Yukai Engineering",
+   "form": "special",
+   "style": "character",
+   "close": 4,
+   "status": "consumer",
+   "role": "Tactile companion",
+   "sources": [
+    {
+     "title": "Yukai Engineering · Qoobo / Petit Qoobo",
+     "url": "https://qoobo.info/index-en/"
+    }
+   ],
+   "description": "A furry cushion whose tail moves in response to touch; Petit Qoobo also responds to sound.",
+   "reality": "Both sizes have consumer purchase routes. The maker explicitly says they do not understand words; the family is counted once.",
+   "reason": "A bond can be built through touch and movement without a face or speech.",
+   "images": [
+    "research-qoobo"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://qoobo.info/wp-content/themes/qoobo2018/resources/assets/images/en_spec_image.png"
+  },
+  {
+   "id": "bocco",
+   "name": "BOCCO emo",
+   "maker": "Yukai Engineering",
+   "form": "desktop",
+   "style": "character",
+   "close": 4,
+   "status": "consumer",
+   "role": "Family communication",
+   "sources": [
+    {
+     "title": "Yukai Engineering · BOCCO emo",
+     "url": "https://www.bocco.me/en/"
+    }
+   ],
+   "description": "A rounded tabletop robot that moves, exchanges family messages and connects to household sensors.",
+   "reality": "Offered as a family communication product. Connected sensors and service features depend on the package and market.",
+   "reason": "Lives within family communication and daily check-ins, rather than performing physical chores.",
+   "images": [
+    "research-bocco"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://www.bocco.me/wp-content/themes/bocco/assets/img/ogp.jpg"
+  },
+  {
+   "id": "nicobo",
+   "name": "NICOBO",
+   "maker": "Panasonic",
+   "form": "special",
+   "style": "character",
+   "close": 4,
+   "status": "consumer",
+   "role": "Soft social companion",
+   "sources": [
+    {
+     "title": "Panasonic · NICOBO",
+     "url": "https://nicobo.jp/"
+    },
+    {
+     "title": "Panasonic · general purchase announcement",
+     "url": "https://news.panasonic.com/jp/press/jn230307-2"
+    }
+   ],
+   "description": "A round, fabric-covered companion with moving eyes and tail and deliberately imperfect speech.",
+   "reality": "Panasonic opened general sales in Japan; purchase and ongoing service are market-specific. It is a companion, not a care worker.",
+   "reason": "Its vulnerable character asks for affection and attention.",
+   "images": [
+    "research-nicobo"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://ec-plus.panasonic.jp/store/page/NICOBO/assets/common/images/ogp_image.png"
+  },
+  {
+   "id": "marscat",
+   "name": "MarsCat",
+   "maker": "Elephant Robotics",
+   "form": "quadruped",
+   "style": "character",
+   "close": 4,
+   "status": "consumer",
+   "role": "Robotic cat",
+   "sources": [
+    {
+     "title": "Elephant Robotics · MarsCat",
+     "url": "https://www.elephantrobotics.com/en/mars-en/"
+    }
+   ],
+   "description": "A walking robotic cat with articulated legs and pet-like responses to touch, voice and objects.",
+   "reality": "The manufacturer offers a product and software support route. Availability should be checked with the maker; programmable behaviour is not animal cognition.",
+   "reason": "Its body and behaviour explicitly invite cat-like companionship.",
+   "images": [
+    "research-marscat"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://static.elephantrobotics.com/wp-content/uploads/2022/08/MarsCat.png"
+  },
+  {
+   "id": "miko3",
+   "name": "Miko 3",
+   "maker": "Miko",
+   "form": "special",
+   "style": "character",
+   "close": 4,
+   "status": "consumer",
+   "role": "Children’s learning companion",
+   "sources": [
+    {
+     "title": "Miko · Miko 3",
+     "url": "https://miko.ai/products/miko-3"
+    }
+   ],
+   "description": "A small wheeled screen-faced robot for conversation, games and educational activities.",
+   "reality": "Sold to families; content and premium features vary with subscriptions, connectivity and region. It is not an autonomous teacher or therapist.",
+   "reason": "Repeated play and learning make social engagement central to its use.",
+   "images": [
+    "research-miko3"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://miko.ai/cdn/shop/files/miko-red_1_88c13e0f-d894-4ab1-a7a9-d85d83f6ddad.png?v=1763631213&width=1946"
+  },
+  {
+   "id": "qtrobot",
+   "name": "QTrobot",
+   "maker": "LuxAI",
+   "form": "biped",
+   "style": "character",
+   "close": 5,
+   "status": "business",
+   "role": "Supported learning & research",
+   "sources": [
+    {
+     "title": "LuxAI · QTrobot",
+     "url": "https://luxai.com/humanoid-social-robot-for-research-and-teaching/"
+    },
+    {
+     "title": "LuxAI · home program",
+     "url": "https://luxai.com/press-release-april-2021-qtrobot-for-home-launch/"
+    }
+   ],
+   "description": "A small humanoid with a screen face, gesturing arms and a fixed standing body, used in structured learning and interaction research.",
+   "reality": "LuxAI offers education, home-learning and research configurations. Activities are configured and supervised by adults; the robot does not replace professional care.",
+   "reason": "Used as a sustained support tool in learning and social-communication routines.",
+   "images": [
+    "research-qtrobot"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://luxai.com/wp-content/uploads/website-refactor/qt-robots/QT_big_hero.png"
+  },
+  {
+   "id": "milo",
+   "name": "Milo",
+   "maker": "RoboKind",
+   "form": "biped",
+   "style": "lifelike",
+   "close": 5,
+   "status": "business",
+   "role": "Supported social learning",
+   "sources": [
+    {
+     "title": "RoboKind · Milo",
+     "url": "https://www.robokind.com/who/educators"
+    }
+   ],
+   "description": "A small humanoid with an expressive human-like face, used alongside structured social and behavioural lessons.",
+   "reality": "Provided as part of an educator-led program. Evidence for a particular intervention should not be generalized into autonomous therapy.",
+   "reason": "A repeated, supported learning relationship puts reliance ahead of a casual encounter.",
+   "images": [
+    "research-milo"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://www.robokind.com/hubfs/Robots4autism_June2018/Images/IMG_9709.jpg"
+  },
+  {
+   "id": "kaspar",
+   "name": "Kaspar",
+   "maker": "University of Hertfordshire",
+   "form": "biped",
+   "style": "lifelike",
+   "close": 5,
+   "status": "prototype",
+   "role": "Social interaction research",
+   "sources": [
+    {
+     "title": "University of Hertfordshire · Kaspar",
+     "url": "https://www.herts.ac.uk/kaspar/research-and-development"
+    },
+    {
+     "title": "IEEE ROBOTS · manufacturer-credited photograph",
+     "url": "https://robotsguide.com/robots/kaspar"
+    }
+   ],
+   "description": "A child-sized, deliberately simplified humanoid used to explore social interaction with autistic children.",
+   "reality": "A university research platform used in supervised studies and educational settings; broad consumer availability is not established.",
+   "reason": "Designed for repeated supported interaction with children, not general public entertainment.",
+   "images": [
+    "research-kaspar"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://assets.robotsguide.com/images/7p2whiua/production/ec5d240f895ab23b00b04d34ab74bf0270c1c4df-2048x1536.jpg?w=640",
+   "photoCredit": "Adaptive Systems Research Group / University of Hertfordshire, via IEEE ROBOTS"
+  },
+  {
+   "id": "icub",
+   "name": "iCub",
+   "maker": "Istituto Italiano di Tecnologia",
+   "form": "biped",
+   "style": "character",
+   "close": 3,
+   "status": "developer",
+   "role": "Embodied cognition research",
+   "sources": [
+    {
+     "title": "Istituto Italiano di Tecnologia · iCub",
+     "url": "https://icub.iit.it/it-IT/"
+    }
+   ],
+   "description": "A child-sized humanoid with articulated hands, eyes and a sensor-rich body for embodied-AI research.",
+   "reality": "Research-grade laboratory platform. A child-like appearance does not mean it is a child’s toy or a finished domestic companion.",
+   "reason": "Studies perception, learning and manipulation in shared human environments.",
+   "images": [
+    "research-icub"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://icub.iit.it/documents/175012/176269/iCub+RED.png/b4341b08-4910-d95a-2530-fb841010b83d?t=1611560830817"
+  },
+  {
+   "id": "ameca",
+   "name": "Ameca",
+   "maker": "Engineered Arts",
+   "form": "biped",
+   "style": "lifelike",
+   "close": 2,
+   "status": "business",
+   "role": "Expressive public interaction",
+   "sources": [
+    {
+     "title": "Engineered Arts · Ameca",
+     "url": "https://engineeredarts.com/robots/ameca"
+    }
+   ],
+   "description": "A humanoid with a grey human-like face and finely controlled facial expressions and gestures.",
+   "reality": "Commercial purchase and event options exist. Conversation can combine software services and remote operation; expressive realism is not evidence of human understanding.",
+   "reason": "Its evidenced role centres on public demonstrations, visitor engagement and interaction research.",
+   "images": [
+    "research-ameca"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://media.engineeredarts.com/wp-content/uploads/2025/07/Ameca-Gen-2-6-Fullfigure-Humanoid-Robot-Engineered-Arts.webp"
+  },
+  {
+   "id": "sophia",
+   "name": "Sophia",
+   "maker": "Hanson Robotics",
+   "form": "hybrid",
+   "style": "lifelike",
+   "close": 2,
+   "status": "early",
+   "role": "Public interaction & research",
+   "sources": [
+    {
+     "title": "Hanson Robotics · Sophia",
+     "url": "https://www.hansonrobotics.com/sophia-utility"
+    }
+   ],
+   "description": "A human-faced android platform used in events, education and human–robot interaction research.",
+   "reality": "Hanson describes the Utility platform as an early product for R&D and events. Configurations and operation vary; staged conversations do not establish autonomous general intelligence.",
+   "reason": "Predominantly encountered in public and research settings, despite its person-like appearance.",
+   "images": [
+    "research-sophia"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://www.hansonrobotics.com/assets/hero-umbrella-BoPh2s0N.jpg"
+  },
+  {
+   "id": "furhat",
+   "name": "Furhat",
+   "maker": "Furhat Robotics",
+   "form": "desktop",
+   "style": "lifelike",
+   "close": 2,
+   "status": "developer",
+   "role": "Social interaction platform",
+   "sources": [
+    {
+     "title": "Furhat Robotics · Furhat",
+     "url": "https://www.furhatrobotics.com/get-furhat"
+    }
+   ],
+   "description": "A robotic head with a projected, customizable face and a movable neck for spoken interaction.",
+   "reality": "Available as research and development packages. Its dialogue and application behaviour must be designed for the intended setting.",
+   "reason": "A person-like interface for interviews, reception and experiments rather than an established household relationship.",
+   "images": [
+    "research-furhat"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://cdn.prod.website-files.com/66b323f041094f01cd836ea9/68ed5ed1d12a8700b598087b_Standard.png"
+  },
+  {
+   "id": "unitreeg1",
+   "name": "G1",
+   "maker": "Unitree",
+   "form": "biped",
+   "style": "sleek",
+   "close": 3,
+   "status": "developer",
+   "role": "Humanoid development platform",
+   "sources": [
+    {
+     "title": "Unitree · G1",
+     "url": "https://www.unitree.com/g1/"
+    },
+    {
+     "title": "Unitree · humanoid store",
+     "url": "https://shop.unitree.com/collections/humanoid-robot"
+    }
+   ],
+   "description": "A compact biped with articulated arms for locomotion and manipulation development.",
+   "reality": "Retail and EDU configurations are offered. Buying hardware does not provide general autonomous household skills; SDK access varies by edition.",
+   "reason": "A platform for learning tasks in human spaces; the routine ring represents intended application, not turnkey domestic competence.",
+   "images": [
+    "research-unitreeg1"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://www.unitree.com/images/39d02ea5ef314413855ae4790812e9ff_1920x1080.jpg"
+  },
+  {
+   "id": "unitreer1",
+   "name": "R1",
+   "maker": "Unitree",
+   "form": "biped",
+   "style": "sleek",
+   "close": 3,
+   "status": "developer",
+   "role": "Compact humanoid platform",
+   "sources": [
+    {
+     "title": "Unitree · R1",
+     "url": "https://shop.unitree.com/products/unitree-r1"
+    },
+    {
+     "title": "Unitree · humanoid store",
+     "url": "https://shop.unitree.com/collections/humanoid-robot"
+    }
+   ],
+   "description": "A lightweight humanoid platform with expressive movement and developer-oriented variants.",
+   "reality": "Listed in Unitree’s humanoid store. Check the specific variant for development access and capabilities.",
+   "reason": "Intended for embodied-AI experiments in human environments, not yet evidence of reliable home assistance.",
+   "images": [
+    "research-unitreer1"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://shop.unitree.com/cdn/shop/files/5_eb271a12-e794-439d-ade5-d60ec009e81a_720x.jpg?v=1773039138"
+  },
+  {
+   "id": "boostert1",
+   "name": "T1",
+   "maker": "Booster Robotics",
+   "form": "biped",
+   "style": "character",
+   "close": 3,
+   "status": "developer",
+   "role": "Humanoid learning & robot sport",
+   "sources": [
+    {
+     "title": "Booster Robotics · T1",
+     "url": "https://www.booster.tech/booster-t1/"
+    },
+    {
+     "title": "Booster · platform documentation",
+     "url": "https://docs.booster.tech/docs/product-manual/t1/getting-started/overview/"
+    }
+   ],
+   "description": "A small humanoid with a distinctive face, built for motion development and robot-sport research.",
+   "reality": "The maker documents it as a developer platform, including control, deployment and safety procedures.",
+   "reason": "Shares experimental activities with developers and teams rather than promising personal care.",
+   "images": [
+    "research-boostert1"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://www.booster.tech/_astro/specification-t1.CmWYO9Pz_zox76.webp"
+  },
+  {
+   "id": "walkers2",
+   "name": "Walker S2",
+   "maker": "UBTECH",
+   "form": "biped",
+   "style": "sleek",
+   "close": 1,
+   "status": "business",
+   "role": "Industrial humanoid",
+   "sources": [
+    {
+     "title": "UBTECH · Walker S2",
+     "url": "https://www.ubtrobot.com/cn/humanoid/products/walker-s2"
+    }
+   ],
+   "description": "A full-sized industrial humanoid for material handling and other factory tasks.",
+   "reality": "Industrial product with developer and data-collection documentation. Application-specific deployment is different from unsupervised household use.",
+   "reason": "Included as a boundary comparison: designed for work processes, not a personal relationship.",
+   "images": [
+    "research-walkers2"
+   ],
+   "scope": "boundary",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://owebsite-cdn.ubtrobot.com/resources/image/2025/07/23/700947759669317.png"
+  },
+  {
+   "id": "gr3",
+   "name": "GR-3",
+   "maker": "Fourier",
+   "form": "biped",
+   "style": "character",
+   "close": 4,
+   "status": "developer",
+   "role": "Social humanoid platform",
+   "sources": [
+    {
+     "title": "Fourier · GR-3",
+     "url": "https://support.fftai.com/en/getting-started/general-information"
+    }
+   ],
+   "description": "A soft-surfaced humanoid with an expressive face and touch, hearing and vision interfaces.",
+   "reality": "Fourier documents a companionship-focused Care-bot platform. That positioning does not establish independent nursing or clinical care capability.",
+   "reason": "Its stated purpose emphasizes interactive companionship and emotional engagement.",
+   "images": [
+    "research-gr3"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://support.fftai.com/en/homepageGR3.jpg"
+  },
+  {
+   "id": "agibota2",
+   "name": "A2",
+   "maker": "AGIBOT",
+   "form": "biped",
+   "style": "sleek",
+   "close": 2,
+   "status": "business",
+   "role": "Commercial interaction humanoid",
+   "sources": [
+    {
+     "title": "AGIBOT · A2",
+     "url": "https://agibot.com/products/A2"
+    },
+    {
+     "title": "AGIBOT · A2 Lite retail listing",
+     "url": "https://store.agibot.com/products/a2-lite"
+    }
+   ],
+   "description": "A full-sized humanoid offered for commercial interaction and performance, with multiple configurations.",
+   "reality": "The maker lists A2 variants and developer documentation. Capabilities vary across Lite and Ultra editions; one family is counted here.",
+   "reason": "Commercial presentations and visitor-facing interaction are clearer uses than personal companionship.",
+   "images": [
+    "research-agibota2"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://agibot.com/public/uploads/images/20250922/7528a0359f8f7e09788972bdb5c35c2a.png"
+  },
+  {
+   "id": "iron",
+   "name": "IRON",
+   "maker": "XPENG",
+   "form": "biped",
+   "style": "sleek",
+   "close": 2,
+   "status": "early",
+   "role": "Commercial humanoid",
+   "sources": [
+    {
+     "title": "XPENG · IRON",
+     "url": "https://www.xpeng.com/technology/AI_Robot_Iron"
+    },
+    {
+     "title": "XPENG · production-line announcement",
+     "url": "https://www.xpeng.com/au/news/01a0c826ab12a0c365408a028229001e"
+    }
+   ],
+   "description": "A humanoid with a highly human-proportioned silhouette and articulated hands, aimed at real-world service tasks.",
+   "reality": "XPENG reported a new production line on 8 September 2026, with market launch and delivery planned for 2027. Manufacturing progress is not evidence of broad customer availability.",
+   "reason": "Commercial service ambitions place it among public encounters; lifelike proportions alone do not create a personal bond.",
+   "images": [
+    "research-iron"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://s-cdn.xpeng.com/commoncms/prod/2026-09-15/d18058c961aa45ac9e9f4c64ec392c70.jpeg?name=AI+Robot&x-oss-process=image%2Fresize%2Cw_1920%2Fformat%2Cwebp%2Fquality%2CQ_80"
+  },
+  {
+   "id": "phoenix",
+   "name": "Phoenix",
+   "maker": "Sanctuary AI",
+   "form": "biped",
+   "style": "functional",
+   "close": 1,
+   "status": "early",
+   "role": "General-purpose work research",
+   "sources": [
+    {
+     "title": "Sanctuary AI · Phoenix",
+     "url": "https://sanctuary.ai/news/sanctuary-ai-unveils-phoenix-a-humanoid-general-purpose-robot-designed-for-work/"
+    }
+   ],
+   "description": "A humanoid work platform emphasizing dexterous hands and learning manipulation tasks.",
+   "reality": "An evolving industrial-development program; the cited full-body sixth-generation design is a reference, not a current retail specification.",
+   "reason": "Workplace task automation is its stated purpose, not domestic or social care.",
+   "images": [
+    "research-phoenix"
+   ],
+   "scope": "boundary",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://sanctuary.ai/wp-content/uploads/2023/05/main-image-phoenix-annoucement.webp"
+  },
+  {
+   "id": "moxi",
+   "name": "Moxi",
+   "maker": "Diligent Robotics",
+   "form": "wheeled",
+   "style": "character",
+   "close": 2,
+   "status": "business",
+   "role": "Hospital logistics",
+   "sources": [
+    {
+     "title": "Diligent Robotics · Moxi",
+     "url": "https://www.diligentrobots.com/"
+    }
+   ],
+   "description": "A mobile robot with an arm and expressive eyes that carries supplies, medications and laboratory items.",
+   "reality": "Deployed in hospitals for logistics. Its friendly appearance should not be confused with direct nursing or patient-handling competence.",
+   "reason": "People meet it in corridors and during deliveries; it supports care teams indirectly.",
+   "images": [
+    "research-moxi"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://static1.squarespace.com/static/606f1bb0f7e05e3329035ff8/t/6079b1b2212c1504000f6d88/1618588082450/moxi-hospital-robot-diligent.jpeg?format=1500w"
+  },
+  {
+   "id": "tiago",
+   "name": "TIAGo",
+   "maker": "PAL Robotics",
+   "form": "wheeled",
+   "style": "sleek",
+   "close": 3,
+   "status": "developer",
+   "role": "Mobile manipulation research",
+   "sources": [
+    {
+     "title": "PAL Robotics · TIAGo",
+     "url": "https://pal-robotics.com/robot/tiago/"
+    }
+   ],
+   "description": "A modular mobile manipulator combining an articulated arm, perception head and wheeled base.",
+   "reality": "A configurable research platform with navigation and manipulation tools. Application development is required for useful household tasks.",
+   "reason": "Explores everyday assistance and manipulation in spaces shared with people.",
+   "images": [
+    "research-tiago"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://pal-robotics.com/wp-content/uploads/2024/04/TIAGo-Robot.webp"
+  },
+  {
+   "id": "ari",
+   "name": "ARI",
+   "maker": "PAL Robotics",
+   "form": "wheeled",
+   "style": "character",
+   "close": 4,
+   "status": "developer",
+   "role": "Social & assistive research",
+   "sources": [
+    {
+     "title": "PAL Robotics · ARI",
+     "url": "https://pal-robotics.com/robot/ari/"
+    }
+   ],
+   "description": "A mobile humanoid with expressive eyes, arms and a torso display for human–robot interaction.",
+   "reality": "Offered as a social robotics platform; assistive-living projects are research applications, not proof of an autonomous care service.",
+   "reason": "Ongoing social engagement and assistive interaction motivate its placement in the bonds ring.",
+   "images": [
+    "research-ari"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://pal-robotics.com/wp-content/uploads/2024/04/ARI-Robot.webp"
+  },
+  {
+   "id": "stretch",
+   "name": "Stretch",
+   "maker": "Hello Robot",
+   "form": "wheeled",
+   "style": "functional",
+   "close": 3,
+   "status": "developer",
+   "role": "Accessible mobile manipulation",
+   "sources": [
+    {
+     "title": "Hello Robot · Stretch",
+     "url": "https://hello-robot.com/stretch-4/"
+    },
+    {
+     "title": "Hello Robot · Stretch 4 datasheet",
+     "url": "https://hello-robot.com/wp-content/uploads/2026/05/HelloRobot-DataSheet-Stretch-4-Rev5_AsLaunched.pdf"
+    },
+    {
+     "title": "Hello Robot · pictured Stretch 3",
+     "url": "https://hello-stretch3.com/"
+    }
+   ],
+   "description": "A compact wheeled robot with a telescoping arm and gripper, designed to reach everyday objects.",
+   "reality": "Commercial research hardware; this photo shows Stretch 3, while the maker now also offers Stretch 4. Autonomous skills and assistive deployments require integration.",
+   "reason": "Physical assistance with everyday objects can share routines without a humanoid body.",
+   "images": [
+    "research-stretch"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://images.squarespace-cdn.com/content/v1/65789f5bc31b3c64091939a3/31563aa0-c09d-46a1-a2d1-b0193528775e/STRETCH+3+KEYSHOT+2024+FULL+02+%281%29.png"
+  },
+  {
+   "id": "temi",
+   "name": "temi",
+   "maker": "temi",
+   "form": "special",
+   "style": "sleek",
+   "close": 3,
+   "status": "business",
+   "role": "Mobile telepresence & assistance",
+   "sources": [
+    {
+     "title": "temi · temi",
+     "url": "https://www.robotemi.com/product/temi/"
+    }
+   ],
+   "description": "A screen on a mobile base that follows users, travels between saved places and supports video calls.",
+   "reality": "Sold for personal and business applications. A remote caller supplies the human presence in telepresence mode; autonomy mainly concerns movement.",
+   "reason": "Supports recurring communication and navigation in homes, offices and care settings.",
+   "images": [
+    "research-temi"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://robotemi.wpenginepowered.com/wp-content/uploads/2018/09/temi3_White_45Degree-320x430.jpg"
+  },
+  {
+   "id": "double3",
+   "name": "Double 3",
+   "maker": "Double Robotics",
+   "form": "special",
+   "style": "sleek",
+   "close": 3,
+   "status": "unknown",
+   "role": "Mobile telepresence",
+   "sources": [
+    {
+     "title": "Double Robotics · Double 3",
+     "url": "https://www.doublerobotics.com/"
+    }
+   ],
+   "description": "A self-balancing video-call robot that lets a remote person move around an office or classroom.",
+   "reality": "The official site currently says Sold Out. Existing product documentation remains available; new-unit availability and ongoing service must be checked.",
+   "reason": "Shares meetings and classes as a remote person’s presence, rather than simulating its own personality.",
+   "images": [
+    "research-double3"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://www.doublerobotics.com/img2/_2x/d3-hero-hd.png"
+  },
+  {
+   "id": "orihime",
+   "name": "OriHime",
+   "maker": "OryLab",
+   "form": "desktop",
+   "style": "character",
+   "close": 3,
+   "status": "business",
+   "role": "Social participation & telepresence",
+   "sources": [
+    {
+     "title": "OryLab · OriHime",
+     "url": "https://orihime.orylab.com/features.html"
+    }
+   ],
+   "description": "A small avatar robot with movable head and arms, operated remotely to let a person participate from elsewhere.",
+   "reality": "A telepresence system. The voice, intentions and gestures belong to a human operator; this entry covers the small OriHime, not the larger OriHime-D.",
+   "reason": "Enables shared daily activities and relationships with a distant human, rather than attachment to an autonomous character.",
+   "images": [
+    "research-orihime"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://orihime.orylab.com/orihime/img/top/orihime8img.png"
+  },
+  {
+   "id": "obi",
+   "name": "Obi",
+   "maker": "DESĪN",
+   "form": "special",
+   "style": "sleek",
+   "close": 5,
+   "status": "business",
+   "role": "Assistive eating",
+   "sources": [
+    {
+     "title": "DESĪN · Obi",
+     "url": "https://meetobi.com/"
+    }
+   ],
+   "description": "A tabletop robotic arm and divided food dish that bring selected bites to a user’s mouth.",
+   "reality": "An assistive device controlled through accessible switches, with setup and suitability requirements. The maker now presents Obi 3; the product family is counted once.",
+   "reason": "Supports a basic activity of daily living through close physical assistance, without asking to be treated as a creature.",
+   "images": [
+    "research-obi"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://meetobi.com/wp-content/uploads/2025/08/GEN-3-42-1024x1024.png"
+  },
+  {
+   "id": "labrador",
+   "name": "Labrador Retriever",
+   "maker": "Labrador Systems",
+   "form": "special",
+   "style": "functional",
+   "close": 5,
+   "status": "early",
+   "role": "Assistive carrying & fetching",
+   "sources": [
+    {
+     "title": "Labrador Systems · Labrador Retriever",
+     "url": "https://labradorsystems.com/products/"
+    },
+    {
+     "title": "Labrador · current availability",
+     "url": "https://labradorsystems.com/availability/"
+    }
+   ],
+   "description": "A mobile, height-adjustable platform that carries loads and retrieves compatible trays in the home.",
+   "reality": "The maker’s availability page prioritizes Retriever Pro for care providers but still cites a Q2 2024 production target. Current fulfilment is unverified; the chart conservatively retains pilot status.",
+   "reason": "Designed to reduce everyday physical effort for people with mobility limitations; reliance is functional rather than social.",
+   "images": [
+    "research-labrador"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://labradorsystems.com/wp-content/uploads/2022/12/01_b-min-scaled-1.jpg"
+  },
+  {
+   "id": "hsr",
+   "name": "Human Support Robot",
+   "maker": "Toyota",
+   "form": "wheeled",
+   "style": "sleek",
+   "close": 5,
+   "status": "developer",
+   "role": "Assistive robotics research",
+   "sources": [
+    {
+     "title": "Toyota · Human Support Robot",
+     "url": "https://global.toyota/en/mobility/frontier-research/42394425.html"
+    },
+    {
+     "title": "Toyota · assistive purpose and developer community",
+     "url": "https://global.toyota/en/detail/8709541"
+    }
+   ],
+   "description": "A compact mobile manipulator with a lifting body and arm for reaching and retrieving household objects.",
+   "reality": "Toyota’s research platform and developer-community work explore assistive tasks. It is not a generally available home-care appliance.",
+   "reason": "The intended use supports independent living, so the inner ring records an assistive goal rather than proven care autonomy.",
+   "images": [
+    "research-hsr"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://global.toyota/pages/global_toyota/mobility/frontier-research/2025/03/27/1000/001.jpg"
+  },
+  {
+   "id": "starship",
+   "name": "Starship delivery robot",
+   "maker": "Starship Technologies",
+   "form": "special",
+   "style": "functional",
+   "close": 2,
+   "status": "business",
+   "role": "Outdoor delivery",
+   "sources": [
+    {
+     "title": "Starship Technologies · Starship delivery robot",
+     "url": "https://www.starship.xyz/"
+    }
+   ],
+   "description": "A compact six-wheeled cargo robot that delivers food and goods on pedestrian routes.",
+   "reality": "Operates as a delivery service in selected areas; availability depends on local partners and operating zones.",
+   "reason": "Shares sidewalks and brief collection moments with people, not domestic life.",
+   "images": [
+    "research-starship"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://www.starship.xyz/wp-content/uploads/2024/11/Milton-Keynes-robot-3-scaled.jpg"
+  },
+  {
+   "id": "serve",
+   "name": "Serve delivery robot",
+   "maker": "Serve Robotics",
+   "form": "special",
+   "style": "character",
+   "close": 2,
+   "status": "business",
+   "role": "Sidewalk delivery",
+   "sources": [
+    {
+     "title": "Serve Robotics · Serve delivery robot",
+     "url": "https://serverobotics.com/"
+    }
+   ],
+   "description": "A wheeled delivery container with an eye-like front and a friendly public-facing design.",
+   "reality": "A commercially deployed delivery fleet in selected markets, with remote assistance available when needed.",
+   "reason": "A character-like appearance softens encounters with pedestrians while the relationship remains transactional.",
+   "images": [
+    "research-serve"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://cdn.sanity.io/images/dh33lj7y/production/ba522acc2978502c9d69447015fb70bd295bc95b-1200x630.jpg?w=1200&h=630&max-h=3840&max-w=3840&q=85&fit=crop&auto=format"
+  },
+  {
+   "id": "relay",
+   "name": "Relay",
+   "maker": "Relay Robotics",
+   "form": "special",
+   "style": "functional",
+   "close": 2,
+   "status": "business",
+   "role": "Indoor delivery",
+   "sources": [
+    {
+     "title": "Relay Robotics · Relay",
+     "url": "https://relayrobotics.com/"
+    }
+   ],
+   "description": "A mobile compartment robot for transporting items through hotels and hospitals.",
+   "reality": "Commercial deployments require site integration, including doors and elevators. The family is counted once across revisions.",
+   "reason": "People encounter it briefly for deliveries; hospital logistics are not direct caregiving.",
+   "images": [
+    "research-relay"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://cdn.prod.website-files.com/67ebfad72d13422bff5c9dd5/6a1dab03817aca17982eaef4_relay_medical%209.avif"
+  },
+  {
+   "id": "k5",
+   "name": "K5",
+   "maker": "Knightscope",
+   "form": "special",
+   "style": "functional",
+   "close": 2,
+   "status": "business",
+   "role": "Security patrol",
+   "sources": [
+    {
+     "title": "Knightscope · K5",
+     "url": "https://knightscope.com/the-force"
+    }
+   ],
+   "description": "A tall mobile security robot that patrols sites and provides observations to security staff.",
+   "reality": "Offered as an autonomous security service with human operational oversight. It should not be read as an autonomous police officer.",
+   "reason": "Its primary human relationship is visible surveillance in shared spaces.",
+   "images": [
+    "research-k5"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://knightscope.com/hubfs/raw_assets/public/knightscope/assets/force/k5_night.jpg"
+  },
+  {
+   "id": "whiz",
+   "name": "Whiz",
+   "maker": "SoftBank Robotics",
+   "form": "special",
+   "style": "functional",
+   "close": 1,
+   "status": "business",
+   "role": "Commercial floor cleaning",
+   "sources": [
+    {
+     "title": "SoftBank Robotics · Whiz",
+     "url": "https://us.softbankrobotics.com/whiz"
+    }
+   ],
+   "description": "An autonomous commercial vacuum that follows configured cleaning routes in occupied buildings.",
+   "reality": "A commercial cleaning product used with human cleaners and fleet management.",
+   "reason": "Performs background maintenance even when it is physically near people.",
+   "images": [
+    "research-whiz"
+   ],
+   "scope": "boundary",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://us.softbankrobotics.com/hubfs/sb-whiz-header.png"
+  },
+  {
+   "id": "anymal",
+   "name": "ANYmal",
+   "maker": "ANYbotics",
+   "form": "quadruped",
+   "style": "functional",
+   "close": 1,
+   "status": "business",
+   "role": "Industrial inspection",
+   "sources": [
+    {
+     "title": "ANYbotics · ANYmal",
+     "url": "https://www.anybotics.com/robotics/anymal/"
+    },
+    {
+     "title": "IEEE ROBOTS · manufacturer-credited photograph",
+     "url": "https://robotsguide.com/robots/anymal"
+    }
+   ],
+   "description": "A four-legged inspection robot with visual, thermal and acoustic sensing for industrial facilities.",
+   "reality": "Commercial industrial inspection platform. Dog-like locomotion does not make it a robotic pet.",
+   "reason": "A boundary example that substitutes for hazardous or repetitive inspection work.",
+   "images": [
+    "research-anymal"
+   ],
+   "scope": "boundary",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://assets.robotsguide.com/images/7p2whiua/production/4d250a582d6db20a1f5838e5839f3a8b9059c43b-2048x1536.jpg?w=640",
+   "photoCredit": "ANYbotics, via IEEE ROBOTS"
+  },
+  {
+   "id": "cyberdog2",
+   "name": "CyberDog 2",
+   "maker": "Xiaomi",
+   "form": "quadruped",
+   "style": "character",
+   "close": 3,
+   "status": "developer",
+   "role": "Biomimetic quadruped platform",
+   "sources": [
+    {
+     "title": "Xiaomi · CyberDog 2",
+     "url": "https://www.mi.com/cyberdog2"
+    },
+    {
+     "title": "Xiaomi · user manual",
+     "url": "https://agreement.cyberdog.xiaomi.com/guide.html"
+    },
+    {
+     "title": "IEEE ROBOTS · manufacturer-credited photograph",
+     "url": "https://robotsguide.com/robots/cyberdog2"
+    }
+   ],
+   "description": "A compact dog-shaped quadruped combining locomotion, sensors and interactive behaviour.",
+   "reality": "Xiaomi publishes a product page and user manual. Market availability is regional; demonstrations do not establish a dependable autonomous pet.",
+   "reason": "Blends pet-like presentation with developer experimentation and shared activities.",
+   "images": [
+    "research-cyberdog2"
+   ],
+   "scope": "personal",
+   "confidence": "High",
+   "identification": "Named and described by the manufacturer or originating research institution.",
+   "origin": "Research expansion",
+   "checked": "2026-10-05",
+   "photoSource": "https://assets.robotsguide.com/images/7p2whiua/production/cab0e526daf1ad8ffcb4883eb886dc289c51b932-2048x1536.jpg?w=640",
+   "photoCredit": "Xiaomi Robotics Lab, via IEEE ROBOTS"
+  }
+ ],
+ "images": {
+  "1": {
+   "src": "/images/robots-among-us/1.jpg"
+  },
+  "2": {
+   "src": "/images/robots-among-us/2.jpg"
+  },
+  "3": {
+   "src": "/images/robots-among-us/3.jpg"
+  },
+  "4": {
+   "src": "/images/robots-among-us/4.jpg"
+  },
+  "5": {
+   "src": "/images/robots-among-us/5.jpg"
+  },
+  "6": {
+   "src": "/images/robots-among-us/6.jpg"
+  },
+  "7": {
+   "src": "/images/robots-among-us/7.jpg"
+  },
+  "8": {
+   "src": "/images/robots-among-us/8.jpg"
+  },
+  "9": {
+   "src": "/images/robots-among-us/9.jpg"
+  },
+  "10": {
+   "src": "/images/robots-among-us/10.jpg"
+  },
+  "11": {
+   "src": "/images/robots-among-us/11.jpg"
+  },
+  "12": {
+   "src": "/images/robots-among-us/12.jpg"
+  },
+  "13": {
+   "src": "/images/robots-among-us/13.jpg"
+  },
+  "14": {
+   "src": "/images/robots-among-us/14.jpg"
+  },
+  "15": {
+   "src": "/images/robots-among-us/15.jpg"
+  },
+  "16": {
+   "src": "/images/robots-among-us/16.jpg"
+  },
+  "17": {
+   "src": "/images/robots-among-us/17.jpg"
+  },
+  "18": {
+   "src": "/images/robots-among-us/18.jpg"
+  },
+  "19": {
+   "src": "/images/robots-among-us/19.jpg"
+  },
+  "20": {
+   "src": "/images/robots-among-us/20.jpg"
+  },
+  "21": {
+   "src": "/images/robots-among-us/21.jpg"
+  },
+  "22": {
+   "src": "/images/robots-among-us/22.jpg"
+  },
+  "23": {
+   "src": "/images/robots-among-us/23.jpg"
+  },
+  "24": {
+   "src": "/images/robots-among-us/24.jpg"
+  },
+  "25": {
+   "src": "/images/robots-among-us/25.jpg"
+  },
+  "26": {
+   "src": "/images/robots-among-us/26.jpg"
+  },
+  "27": {
+   "src": "/images/robots-among-us/27.jpg"
+  },
+  "28": {
+   "src": "/images/robots-among-us/28.jpg"
+  },
+  "29": {
+   "src": "/images/robots-among-us/29.jpg"
+  },
+  "30": {
+   "src": "/images/robots-among-us/30.jpg"
+  },
+  "31": {
+   "src": "/images/robots-among-us/31.jpg"
+  },
+  "32": {
+   "src": "/images/robots-among-us/32.jpg"
+  },
+  "33": {
+   "src": "/images/robots-among-us/33.jpg"
+  },
+  "34": {
+   "src": "/images/robots-among-us/34.jpg"
+  },
+  "36": {
+   "src": "/images/robots-among-us/36.jpg"
+  },
+  "37": {
+   "src": "/images/robots-among-us/37.jpg"
+  },
+  "added-elliq": {
+   "src": "/images/robots-among-us/added-elliq.jpg"
+  },
+  "added-paro": {
+   "src": "/images/robots-among-us/added-paro.jpg"
+  },
+  "added-realbotix": {
+   "src": "/images/robots-among-us/added-realbotix.jpg"
+  },
+  "added-saros": {
+   "src": "/images/robots-among-us/added-saros.jpg"
+  },
+  "added-automower": {
+   "src": "/images/robots-among-us/added-automower.jpg"
+  },
+  "added-go2": {
+   "src": "/images/robots-among-us/added-go2.jpg"
+  },
+  "added-figure03": {
+   "src": "/images/robots-among-us/added-figure03.jpg"
+  },
+  "research-loona": {
+   "src": "/images/robots-among-us/research-loona.jpg",
+   "source": "https://cdn.shopify.com/s/files/1/0750/4170/2077/files/gallery-loona-petbot-premium-1-v2.webp",
+   "credit": "KEYi Robot"
+  },
+  "research-emo": {
+   "src": "/images/robots-among-us/research-emo.jpg",
+   "source": "https://living.ai/wp-content/uploads/2020/12/product2-1024x1024.jpg",
+   "credit": "LivingAI"
+  },
+  "research-aibi": {
+   "src": "/images/robots-among-us/research-aibi.jpg",
+   "source": "https://i0.wp.com/living.ai/wp-content/uploads/2023/12/2023121521.png?fit=2252%2C2252&quality=80&ssl=1",
+   "credit": "LivingAI"
+  },
+  "research-eilik": {
+   "src": "/images/robots-among-us/research-eilik.jpg",
+   "source": "https://file.energizelab.com.cn/web_file/xunruicms/webp/header/r-eilik.webp",
+   "credit": "Energize Lab"
+  },
+  "research-moflin": {
+   "src": "/images/robots-among-us/research-moflin.jpg",
+   "source": "https://www.casio.com/content/dam/casio/product-info/locales/us/en/moflin/product/P/PE/PEM/PE-M10SR/assets/pe-m10sr_001.png.transform/main-visual-sp/image.png",
+   "credit": "Casio"
+  },
+  "research-qoobo": {
+   "src": "/images/robots-among-us/research-qoobo.jpg",
+   "source": "https://qoobo.info/wp-content/themes/qoobo2018/resources/assets/images/en_spec_image.png",
+   "credit": "Yukai Engineering"
+  },
+  "research-bocco": {
+   "src": "/images/robots-among-us/research-bocco.jpg",
+   "source": "https://www.bocco.me/wp-content/themes/bocco/assets/img/ogp.jpg",
+   "credit": "Yukai Engineering"
+  },
+  "research-nicobo": {
+   "src": "/images/robots-among-us/research-nicobo.jpg",
+   "source": "https://ec-plus.panasonic.jp/store/page/NICOBO/assets/common/images/ogp_image.png",
+   "credit": "Panasonic"
+  },
+  "research-marscat": {
+   "src": "/images/robots-among-us/research-marscat.jpg",
+   "source": "https://static.elephantrobotics.com/wp-content/uploads/2022/08/MarsCat.png",
+   "credit": "Elephant Robotics"
+  },
+  "research-miko3": {
+   "src": "/images/robots-among-us/research-miko3.jpg",
+   "source": "https://miko.ai/cdn/shop/files/miko-red_1_88c13e0f-d894-4ab1-a7a9-d85d83f6ddad.png?v=1763631213&width=1946",
+   "credit": "Miko"
+  },
+  "research-qtrobot": {
+   "src": "/images/robots-among-us/research-qtrobot.jpg",
+   "source": "https://luxai.com/wp-content/uploads/website-refactor/qt-robots/QT_big_hero.png",
+   "credit": "LuxAI"
+  },
+  "research-milo": {
+   "src": "/images/robots-among-us/research-milo.jpg",
+   "source": "https://www.robokind.com/hubfs/Robots4autism_June2018/Images/IMG_9709.jpg",
+   "credit": "RoboKind"
+  },
+  "research-kaspar": {
+   "src": "/images/robots-among-us/research-kaspar.jpg",
+   "source": "https://assets.robotsguide.com/images/7p2whiua/production/ec5d240f895ab23b00b04d34ab74bf0270c1c4df-2048x1536.jpg?w=640",
+   "credit": "University of Hertfordshire"
+  },
+  "research-icub": {
+   "src": "/images/robots-among-us/research-icub.jpg",
+   "source": "https://icub.iit.it/documents/175012/176269/iCub+RED.png/b4341b08-4910-d95a-2530-fb841010b83d?t=1611560830817",
+   "credit": "Istituto Italiano di Tecnologia"
+  },
+  "research-ameca": {
+   "src": "/images/robots-among-us/research-ameca.jpg",
+   "source": "https://media.engineeredarts.com/wp-content/uploads/2025/07/Ameca-Gen-2-6-Fullfigure-Humanoid-Robot-Engineered-Arts.webp",
+   "credit": "Engineered Arts"
+  },
+  "research-sophia": {
+   "src": "/images/robots-among-us/research-sophia.jpg",
+   "source": "https://www.hansonrobotics.com/assets/hero-umbrella-BoPh2s0N.jpg",
+   "credit": "Hanson Robotics"
+  },
+  "research-furhat": {
+   "src": "/images/robots-among-us/research-furhat.jpg",
+   "source": "https://cdn.prod.website-files.com/66b323f041094f01cd836ea9/68ed5ed1d12a8700b598087b_Standard.png",
+   "credit": "Furhat Robotics"
+  },
+  "research-unitreeg1": {
+   "src": "/images/robots-among-us/research-unitreeg1.jpg",
+   "source": "https://www.unitree.com/images/39d02ea5ef314413855ae4790812e9ff_1920x1080.jpg",
+   "credit": "Unitree"
+  },
+  "research-unitreer1": {
+   "src": "/images/robots-among-us/research-unitreer1.jpg",
+   "source": "https://shop.unitree.com/cdn/shop/files/5_eb271a12-e794-439d-ade5-d60ec009e81a_720x.jpg?v=1773039138",
+   "credit": "Unitree"
+  },
+  "research-boostert1": {
+   "src": "/images/robots-among-us/research-boostert1.jpg",
+   "source": "https://www.booster.tech/_astro/specification-t1.CmWYO9Pz_zox76.webp",
+   "credit": "Booster Robotics"
+  },
+  "research-walkers2": {
+   "src": "/images/robots-among-us/research-walkers2.jpg",
+   "source": "https://owebsite-cdn.ubtrobot.com/resources/image/2025/07/23/700947759669317.png",
+   "credit": "UBTECH"
+  },
+  "research-gr3": {
+   "src": "/images/robots-among-us/research-gr3.jpg",
+   "source": "https://support.fftai.com/en/homepageGR3.jpg",
+   "credit": "Fourier"
+  },
+  "research-agibota2": {
+   "src": "/images/robots-among-us/research-agibota2.jpg",
+   "source": "https://agibot.com/public/uploads/images/20250922/7528a0359f8f7e09788972bdb5c35c2a.png",
+   "credit": "AGIBOT"
+  },
+  "research-iron": {
+   "src": "/images/robots-among-us/research-iron.jpg",
+   "source": "https://s-cdn.xpeng.com/commoncms/prod/2026-09-15/d18058c961aa45ac9e9f4c64ec392c70.jpeg?name=AI+Robot&x-oss-process=image%2Fresize%2Cw_1920%2Fformat%2Cwebp%2Fquality%2CQ_80",
+   "credit": "XPENG"
+  },
+  "research-phoenix": {
+   "src": "/images/robots-among-us/research-phoenix.jpg",
+   "source": "https://sanctuary.ai/wp-content/uploads/2023/05/main-image-phoenix-annoucement.webp",
+   "credit": "Sanctuary AI"
+  },
+  "research-moxi": {
+   "src": "/images/robots-among-us/research-moxi.jpg",
+   "source": "https://static1.squarespace.com/static/606f1bb0f7e05e3329035ff8/t/6079b1b2212c1504000f6d88/1618588082450/moxi-hospital-robot-diligent.jpeg?format=1500w",
+   "credit": "Diligent Robotics"
+  },
+  "research-tiago": {
+   "src": "/images/robots-among-us/research-tiago.jpg",
+   "source": "https://pal-robotics.com/wp-content/uploads/2024/04/TIAGo-Robot.webp",
+   "credit": "PAL Robotics"
+  },
+  "research-ari": {
+   "src": "/images/robots-among-us/research-ari.jpg",
+   "source": "https://pal-robotics.com/wp-content/uploads/2024/04/ARI-Robot.webp",
+   "credit": "PAL Robotics"
+  },
+  "research-stretch": {
+   "src": "/images/robots-among-us/research-stretch.jpg",
+   "source": "https://images.squarespace-cdn.com/content/v1/65789f5bc31b3c64091939a3/31563aa0-c09d-46a1-a2d1-b0193528775e/STRETCH+3+KEYSHOT+2024+FULL+02+%281%29.png",
+   "credit": "Hello Robot"
+  },
+  "research-temi": {
+   "src": "/images/robots-among-us/research-temi.jpg",
+   "source": "https://robotemi.wpenginepowered.com/wp-content/uploads/2018/09/temi3_White_45Degree-320x430.jpg",
+   "credit": "temi"
+  },
+  "research-double3": {
+   "src": "/images/robots-among-us/research-double3.jpg",
+   "source": "https://www.doublerobotics.com/img2/_2x/d3-hero-hd.png",
+   "credit": "Double Robotics"
+  },
+  "research-orihime": {
+   "src": "/images/robots-among-us/research-orihime.jpg",
+   "source": "https://orihime.orylab.com/orihime/img/top/orihime8img.png",
+   "credit": "OryLab"
+  },
+  "research-obi": {
+   "src": "/images/robots-among-us/research-obi.jpg",
+   "source": "https://meetobi.com/wp-content/uploads/2025/08/GEN-3-42-1024x1024.png",
+   "credit": "DESĪN"
+  },
+  "research-labrador": {
+   "src": "/images/robots-among-us/research-labrador.jpg",
+   "source": "https://labradorsystems.com/wp-content/uploads/2022/12/01_b-min-scaled-1.jpg",
+   "credit": "Labrador Systems"
+  },
+  "research-hsr": {
+   "src": "/images/robots-among-us/research-hsr.jpg",
+   "source": "https://global.toyota/pages/global_toyota/mobility/frontier-research/2025/03/27/1000/001.jpg",
+   "credit": "Toyota"
+  },
+  "research-starship": {
+   "src": "/images/robots-among-us/research-starship.jpg",
+   "source": "https://www.starship.xyz/wp-content/uploads/2024/11/Milton-Keynes-robot-3-scaled.jpg",
+   "credit": "Starship Technologies"
+  },
+  "research-serve": {
+   "src": "/images/robots-among-us/research-serve.jpg",
+   "source": "https://cdn.sanity.io/images/dh33lj7y/production/ba522acc2978502c9d69447015fb70bd295bc95b-1200x630.jpg?w=1200&h=630&max-h=3840&max-w=3840&q=85&fit=crop&auto=format",
+   "credit": "Serve Robotics"
+  },
+  "research-relay": {
+   "src": "/images/robots-among-us/research-relay.jpg",
+   "source": "https://cdn.prod.website-files.com/67ebfad72d13422bff5c9dd5/6a1dab03817aca17982eaef4_relay_medical%209.avif",
+   "credit": "Relay Robotics"
+  },
+  "research-k5": {
+   "src": "/images/robots-among-us/research-k5.jpg",
+   "source": "https://knightscope.com/hubfs/raw_assets/public/knightscope/assets/force/k5_night.jpg",
+   "credit": "Knightscope"
+  },
+  "research-whiz": {
+   "src": "/images/robots-among-us/research-whiz.jpg",
+   "source": "https://us.softbankrobotics.com/hubfs/sb-whiz-header.png",
+   "credit": "SoftBank Robotics"
+  },
+  "research-anymal": {
+   "src": "/images/robots-among-us/research-anymal.jpg",
+   "source": "https://assets.robotsguide.com/images/7p2whiua/production/4d250a582d6db20a1f5838e5839f3a8b9059c43b-2048x1536.jpg?w=640",
+   "credit": "ANYbotics"
+  },
+  "research-cyberdog2": {
+   "src": "/images/robots-among-us/research-cyberdog2.jpg",
+   "source": "https://assets.robotsguide.com/images/7p2whiua/production/cab0e526daf1ad8ffcb4883eb886dc289c51b932-2048x1536.jpg?w=640",
+   "credit": "Xiaomi"
+  }
+ }
+}

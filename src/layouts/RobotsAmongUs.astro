@@ -1,0 +1,257 @@
+---
+import Base from './Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import GlitchText from '../components/GlitchText.astro';
+import Dossier from '../components/Dossier.astro';
+import { navHref } from '../lib/site';
+
+// Both /knowledge/robots-among-us and its /de/ twin render this file. The map
+// itself (labels, profiles) is English research; only the frame is translated.
+const lang = Astro.currentLocale === 'de' ? 'de' : 'en';
+const t = {
+  en: {
+    title: 'Robots Among Us — Knowledge Bits — Homunculus Robotics',
+    description: 'An interactive map of the robots leaving the factory: their bodies, the relationship they ask of you, and how close they are meant to get.',
+    back: 'Knowledge Bits',
+    lede: 'The robots leaving the factory: what body they have, what relationship they ask of you, and how close they are meant to get.',
+    ledeEm: 'The centre is you.',
+    note: '',
+  },
+  de: {
+    title: 'Robots Among Us — Wissensbits — Homunculus Robotics',
+    description: 'Eine interaktive Karte der Roboter, die die Fabrik verlassen: ihre Körper, die Beziehung, die sie verlangen, und wie nah sie uns kommen sollen.',
+    back: 'Wissensbits',
+    lede: 'Die Roboter, die die Fabrik verlassen: welchen Körper sie haben, welche Beziehung sie von dir verlangen und wie nah sie dir kommen sollen.',
+    ledeEm: 'Im Zentrum stehst du.',
+    note: 'Die Karte und die Profile sind auf Englisch.',
+  },
+}[lang];
+---
+<Base title={t.title} description={t.description}>
+  <Nav />
+
+  <main class="rau">
+    <section id="top" class="hero">
+      <div class="inner">
+        <Dossier num="03"><a href={navHref('/knowledge', lang)}>{t.back}</a> · 01</Dossier>
+        <div class="top">
+          <div>
+            <GlitchText as="h1" class="hero-h1 hmc-jitter">Robots <span class="accent">Among Us</span></GlitchText>
+            <p class="lede">{t.lede} <em>{t.ledeEm}</em></p>
+            {t.note && <p class="note">{t.note}</p>}
+          </div>
+          <div class="stats" id="stats"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="map" lang="en">
+      <div class="inner layout">
+        <div>
+          <div class="modes"><span class="k">Arrange wedges by</span><div class="seg" role="group" aria-label="Arrange wedges by"><button data-mode="body" aria-pressed="true">Body plan</button><button data-mode="rel" aria-pressed="false">Relationship contract</button></div></div>
+          <div class="chart-tools"><button id="zoom" aria-pressed="false">Enlarge chart</button><span>85 robots · both arrangements</span></div>
+          <div class="chart-tools" id="sectors" role="group" aria-label="Zoom to one sector"></div>
+          <div class="orbit-viewport" id="viewport" tabindex="0" role="region" aria-label="Robot chart; scroll when enlarged"><div class="orbit" id="orbit"><svg id="bg" viewBox="0 0 1440 1440" aria-hidden="true"></svg></div></div>
+          <p class="hint">Tap any robot for its profile. Tap a wedge to zoom in, tap again to zoom out. Use the legend to filter by contract or by market status. Expanded research · 05 Oct 2026</p>
+        </div>
+        <aside class="panel">
+          <div class="card finder"><label class="k" for="search">Find a robot</label><input id="search" type="search" placeholder="Name, maker or purpose…" autocomplete="off" /><p id="search-count" role="status"></p><div id="search-results"></div></div>
+          <div class="card" id="legend">
+            <div class="legend-grp"><p class="k">Shape &amp; colour · the relationship it asks for</p><div class="chips contracts" id="f-style"></div></div>
+            <div class="legend-grp"><p class="k">Outline · market reality</p><div class="chips" id="f-stage"></div></div>
+            <div class="legend-grp"><p class="k">Rings · intended closeness, centre outwards</p><div class="rings" id="ringkey"></div></div>
+          </div>
+          <div class="card" id="side"></div>
+          <details class="card methodology"><summary>About this map &amp; research</summary><p>43 original entries + 42 additions researched on 5 October 2026. Each profile links to its sources and shows its own check date; original entries retain their earlier dates.</p><p>Closeness and relationship contracts are editorial interpretations of intended use, not measurements of autonomy, feelings or proven care outcomes. Sector width follows the number of examples, not market share.</p><p>Consumer products, commercial deployments, developer platforms and pilots have different availability. Product families count once unless the body or purpose is substantially different. Industrial robots provide boundary comparisons.</p><p>Photos identify the sourced design and may show an earlier revision. Image rights remain with their respective owners.</p></details>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>
+
+<script>
+  import '../components/RobotsAmongUs.js';
+</script>
+
+<style>
+  .inner { max-width: var(--maxw-wide); margin: 0 auto; padding: var(--sp-8) var(--sp-6); }
+  .hero { background: var(--field-glow), var(--void); }
+  .hero .inner { padding-bottom: var(--sp-6); }
+  .hero-h1 { font-size: var(--fs-h1); line-height: 0.9; margin: 0; }
+  .accent { color: var(--accent); }
+  .lede {
+    font-family: var(--font-serif);
+    border-left: 1px solid var(--line-accent);
+    padding-left: 10px;
+    font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+    line-height: 1.35;
+    color: var(--text-mid);
+    max-width: 52ch;
+    margin: var(--sp-5) 0 0;
+  }
+  .lede em { font-style: italic; color: var(--violet-200); }
+  .note { margin: var(--sp-3) 0 0; color: var(--text-low); font-size: var(--fs-sm); }
+  .map .inner { padding-top: var(--sp-6); }
+  @media (max-width: 760px) { .inner { padding-left: var(--sp-4); padding-right: var(--sp-4); } }
+</style>
+
+<style is:global>
+  /* The map's markup is built by RobotsAmongUs.js, so scoped styles cannot reach
+     it. Everything is nested under .rau; the original's palette is remapped onto
+     the design-system tokens, so the three site themes carry through. */
+  .rau {
+    --bg: var(--void);
+    --surface: var(--surface-1);
+    --ink: var(--text-hi);
+    --muted: var(--text-mid);
+    --line: var(--line-mid);
+    --soft: var(--surface-3);
+    /* rings darken outwards; the centre carries the theme's accent */
+    --r5: color-mix(in oklab, var(--accent) 22%, var(--surface-1));
+    --r4: var(--surface-4);
+    --r3: var(--surface-3);
+    --r2: var(--surface-2);
+    --r1: var(--surface-1);
+    /* four contracts, four brand poles */
+    --lifelike: var(--chroma-magenta);
+    --character: var(--gold-400);
+    --sleek: var(--chroma-cyan);
+    --functional: var(--green-300);
+    --playful: var(--character);
+    --bubble: var(--paper);
+    --shadow: var(--shadow-1);
+
+    button { font: inherit; color: inherit; cursor: pointer; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    a { color: var(--accent); text-underline-offset: 3px; }
+    a:hover { color: var(--chroma-cyan); }
+    .dossier a { color: inherit; text-decoration: none; }
+    .dossier a:hover { color: var(--chroma-cyan); }
+
+    .top { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: var(--sp-5) var(--sp-7); }
+    .stats { display: flex; gap: 28px; font: 500 10px/1.3 var(--font-mono); text-transform: uppercase; letter-spacing: var(--tracking-label); color: var(--text-low); }
+    .stats b { display: block; font: 400 44px/1 var(--font-display); color: var(--accent); letter-spacing: 0; text-transform: none; margin-bottom: 4px; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 370px; gap: var(--sp-5); align-items: start; }
+    @media (max-width: 1050px) { .layout { grid-template-columns: 1fr; } }
+    .layout > div { min-width: 0; }
+
+    /* ---- arrange toggle ---- */
+    .k { font: 500 10px/1.3 var(--font-mono); text-transform: uppercase; letter-spacing: var(--tracking-label); color: var(--chroma-cyan); margin: 0 0 10px; }
+    .modes { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin: 0 auto 6px; }
+    .modes .k { margin: 0; }
+    .seg { display: inline-flex; border: 1px solid var(--line-mid); padding: 3px; gap: 3px; }
+    .seg button { border: 1px solid transparent; background: none; padding: 7px 14px; font: 500 11px var(--font-mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-mid); }
+    .seg button:hover { color: var(--chroma-cyan); }
+    .seg button[aria-pressed='true'] { color: var(--text-hi); border-color: var(--line-accent); background: color-mix(in oklab, var(--accent) 10%, transparent); }
+
+    /* ---- orbit ---- */
+    .orbit-viewport { overflow: hidden; scrollbar-width: thin; padding: 6px; }
+    .orbit-viewport.zoomed { max-height: 80vh; overflow: auto; border: 1px solid var(--line-soft); }
+    .orbit-viewport.zoomed .orbit { width: 1400px; max-width: none; }
+    .orbit { position: relative; width: 100%; max-width: min(1060px, calc(100vh + 40px)); aspect-ratio: 1; margin: 0 auto; container-type: inline-size; transform-origin: 0 0; transition: transform 0.6s var(--ease-snap); }
+    .orbit svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; transition: opacity 0.3s; cursor: zoom-in; }
+    .orbit-viewport.sector svg { cursor: zoom-out; }
+    .band { stroke: var(--line-soft); stroke-width: 1.5; }
+    .divider { stroke: var(--bg); stroke-width: 3; }
+    .ringlbl { font: 500 11px var(--font-mono); fill: var(--text-low); letter-spacing: 0.22em; text-transform: uppercase; }
+    .seclbl { font: 400 22px var(--font-display); fill: var(--text-hi); letter-spacing: 0.08em; text-transform: uppercase; }
+    .secsub { font: 400 13px var(--font-body); fill: var(--text-low); }
+    .fam { font: 500 12px var(--font-mono); fill: var(--chroma-cyan); letter-spacing: 0.32em; }
+    .famarc { stroke: color-mix(in oklab, var(--chroma-cyan) 50%, transparent); stroke-width: 1.5; fill: none; }
+    .you { fill: var(--accent); }
+
+    .bot { position: absolute; width: var(--bot-size, 5cqw); padding: 0; border: 0; background: none; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; transition: opacity 0.25s, transform 0.2s; z-index: 1; }
+    .orbit.ready .bot { transition: opacity 0.25s, transform 0.2s, left 0.9s cubic-bezier(0.65, 0, 0.35, 1) var(--d), top 0.9s cubic-bezier(0.65, 0, 0.35, 1) var(--d); }
+    .bot .ph { width: var(--bot-size, 5cqw); aspect-ratio: 1; border-radius: 50%; background: var(--bubble); border: calc(var(--bot-size, 5cqw) * 0.072) solid var(--c); box-shadow: var(--shadow); overflow: hidden; display: block; }
+    .bot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    /* shape = the relationship contract: portrait oval, organic blob, app icon, hazard diamond */
+    .c-lifelike .ph { width: calc(var(--bot-size, 5cqw) * 0.88); aspect-ratio: 0.78; border-radius: 50%; }
+    .c-character .ph { border-radius: 62% 38% 55% 45% / 46% 58% 42% 54%; }
+    .c-sleek .ph { border-radius: 27%; }
+    .c-functional .ph { width: calc(var(--bot-size, 5cqw) * 0.82); border-radius: 9%; transform: rotate(45deg); margin-block: calc(var(--bot-size, 5cqw) * 0.17) calc(var(--bot-size, 5cqw) * 0.12); }
+    .c-functional img { transform: rotate(-45deg) scale(1.42); }
+    .bot.early .ph { border-style: dashed; }
+    .bot.proto .ph { border-style: dotted; border-width: calc(var(--bot-size, 5cqw) * 0.084); }
+    .bot.legacy .ph { border-color: var(--text-low); border-style: solid; }
+    .bot.legacy img { filter: grayscale(1); opacity: 0.75; }
+    .bot.unknown .ph { border-style: dashed; border-color: var(--text-low); }
+    .bot.unknown::after { content: '?'; position: absolute; right: -0.3cqw; top: 0; background: var(--surface); color: var(--text-hi); border-radius: 50%; padding: 0 0.25cqw; font: 600 1cqw var(--font-mono); }
+    .bot .nm { margin-top: 0.25cqw; font: 500 calc(var(--bot-size, 5cqw) * 0.19) / 1.1 var(--font-body); color: var(--text-hi); white-space: nowrap; padding: 0.1cqw 0.4cqw; background: color-mix(in oklab, var(--bg) 75%, transparent); max-width: 8cqw; overflow: hidden; text-overflow: ellipsis; }
+    .bot:hover, .bot.on { transform: translate(-50%, -50%) scale(1.22); z-index: 3; }
+    .bot:focus-visible { z-index: 4; }
+    .bot:focus-visible .nm, .bot:hover .nm, .bot.on .nm { max-width: none; }
+    .bot.on .ph { box-shadow: 0 0 0 0.35cqw var(--bg), 0 0 0 0.6cqw var(--c), 0 0 24px var(--c); }
+    .bot.dim, .bot.out { opacity: 0.13; }
+    .bot.out { pointer-events: none; }
+    .ph .initial { display: grid; place-items: center; height: 100%; font: 400 1.4cqw var(--font-display); color: var(--void); }
+    @container (max-width: 620px) { .bot .nm { display: none; } .ringlbl { font-size: 16px; } .secsub { display: none; } .seclbl { font-size: 30px; } }
+
+    .chart-tools { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px; font: 500 10px var(--font-mono); letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-low); margin: 12px 0; }
+    .chart-tools button { background: none; border: 1px solid var(--line-mid); padding: 6px 12px; font: inherit; text-transform: inherit; color: var(--text-mid); }
+    .chart-tools button:hover { color: var(--chroma-cyan); border-color: color-mix(in oklab, var(--chroma-cyan) 50%, transparent); }
+    .chart-tools button[aria-pressed='true'] { color: var(--text-on-accent); background: var(--accent); border-color: var(--accent); }
+    .hint { font-size: var(--fs-xs); color: var(--text-low); text-align: center; margin: 10px 0 0; }
+
+    /* ---- side panel ---- */
+    .panel { position: sticky; top: 76px; display: grid; gap: 14px; }
+    .panel:has(.detail) #side { grid-row: 2; }
+    .card { position: relative; background: var(--surface); border: 1px solid var(--line-mid); border-radius: var(--radius-sm); padding: 18px 20px; box-shadow: var(--shadow-1); }
+    .card h2 { font: 400 28px/1 var(--font-display); color: var(--text-hi); margin: 0 0 6px; letter-spacing: 0.01em; text-wrap: balance; }
+    .finder label { display: block; }
+    .finder input { width: 100%; font: inherit; color: var(--text-hi); background: var(--void); border: 1px solid var(--line-mid); border-radius: var(--radius-xs); padding: 9px 11px; }
+    .finder input:focus { border-color: var(--line-accent); outline: none; box-shadow: var(--glow-accent); }
+    #search-count { font-size: var(--fs-xs); color: var(--text-low); margin: 7px 0 0; }
+    #search-results { max-height: 230px; overflow: auto; display: grid; gap: 2px; }
+    .result { background: none; border: 0; border-bottom: 1px solid var(--line-soft); padding: 8px 2px; text-align: left; font-size: var(--fs-xs); }
+    .result:hover b { color: var(--chroma-cyan); }
+    .result small { display: block; color: var(--text-low); }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .chip { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line-mid); background: none; border-radius: var(--radius-xs); padding: 4px 10px 4px 6px; font-size: 12.5px; text-align: left; color: var(--text-mid); }
+    .chip b { color: var(--text-hi); font-weight: 500; }
+    button.chip:hover { border-color: var(--line-strong); }
+    .chip[aria-pressed='false'] { opacity: 0.4; }
+    .chip i { width: 14px; height: 14px; border-radius: 50%; border: 3px solid var(--c, var(--text-low)); display: inline-block; background: var(--surface); flex-shrink: 0; }
+    .chip i.early { border-style: dashed; }
+    .chip i.proto { border-style: dotted; }
+    .chip i.legacy { --c: var(--text-low); background: var(--soft); }
+    .chip i.c-lifelike { width: 12px; height: 16px; }
+    .chip i.c-character { border-radius: 62% 38% 55% 45% / 46% 58% 42% 54%; }
+    .chip i.c-sleek { border-radius: 30%; }
+    .chip i.c-functional { width: 12px; height: 12px; border-radius: 2px; transform: rotate(45deg); margin: 0 1px; }
+    .contracts { display: grid; gap: 6px; }
+    .contracts .chip { padding: 7px 10px; }
+    .contracts .chip i { width: 18px; height: 18px; }
+    .contracts .chip i.c-lifelike { width: 15px; height: 20px; }
+    .contracts .chip i.c-functional { width: 14px; height: 14px; margin: 0 2px; }
+    .contracts small { display: block; color: var(--text-low); font-size: 12px; }
+    .legend-grp + .legend-grp { margin-top: 16px; }
+    .rings { display: grid; grid-template-columns: auto 1fr; gap: 5px 10px; font-size: 12.5px; color: var(--text-mid); align-items: center; }
+    .rings b { color: var(--text-hi); font-weight: 500; }
+    .rings span:nth-child(odd) { width: 22px; height: 12px; border-radius: var(--radius-xs); }
+
+    .take { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+    .take li { font-size: var(--fs-sm); color: var(--text-mid); }
+    .take b { color: var(--text-hi); display: block; font: 500 15px/1.3 var(--font-body); margin-bottom: 2px; }
+    .detail img { width: 100%; height: 240px; object-fit: contain; background: var(--paper); border-radius: var(--radius-xs); display: block; margin-bottom: 14px; }
+    .detail .maker { color: var(--text-low); margin: 0 0 10px; font-size: var(--fs-sm); }
+    .detail p { margin: 0 0 10px; font-size: var(--fs-sm); color: var(--text-mid); }
+    .detail h3 { font: 500 10px var(--font-mono); text-transform: uppercase; letter-spacing: var(--tracking-label); color: var(--chroma-cyan); margin: 16px 0 6px; }
+    .deal { border-left: 2px solid var(--c); padding: 2px 0 2px 12px; margin: 12px 0; color: var(--text-mid); font-size: var(--fs-sm); }
+    .deal b { font: italic 400 17px/1.3 var(--font-serif); color: var(--text-hi); display: block; }
+    .pips { display: flex; gap: 4px; margin: 4px 0 2px; }
+    .pips i { flex: 1; height: 6px; background: var(--soft); }
+    .pips i.on { background: var(--c); box-shadow: 0 0 8px color-mix(in oklab, var(--c) 60%, transparent); }
+    .close { float: right; border: 1px solid var(--line-mid); background: none; padding: 2px 10px; font: 500 10px var(--font-mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-mid); }
+    .close:hover { color: var(--chroma-cyan); }
+    .links a { display: block; font-size: var(--fs-xs); overflow-wrap: anywhere; margin-bottom: 4px; }
+    .checked, .detail .checked { font-size: 12px; color: var(--text-low); }
+    .methodology { font-size: 12.5px; color: var(--text-mid); }
+    .methodology summary { cursor: pointer; color: var(--text-hi); font: 500 11px var(--font-mono); letter-spacing: 0.18em; text-transform: uppercase; }
+    .methodology summary:hover { color: var(--chroma-cyan); }
+  }
+  @media (prefers-reduced-motion: reduce) { .rau * { transition: none !important; } }
+</style>

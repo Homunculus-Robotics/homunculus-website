@@ -1,0 +1,127 @@
+---
+import Base from './Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import GlitchText from '../components/GlitchText.astro';
+import Dossier from '../components/Dossier.astro';
+import Backdrop from '../components/Backdrop.astro';
+import { navHref } from '../lib/site';
+
+// ponytail: one bit so far, so the list is inline. Move it to a content
+// collection (Roadmap 4.2: Markdown-driven index + RSS) once there are a few.
+const lang = Astro.currentLocale === 'de' ? 'de' : 'en';
+const t = {
+  en: {
+    title: 'Knowledge Bits — Homunculus Robotics',
+    description: 'Short, sourced looks at the robots and ideas shaping physical AI.',
+    headline: 'Knowledge',
+    accent: 'Bits',
+    lede: 'Short, sourced looks at the robots and ideas shaping physical AI.',
+    open: 'Open',
+    bits: [
+      {
+        href: '/knowledge/robots-among-us',
+        kicker: 'Interactive map · 85 robots',
+        title: 'Robots Among Us',
+        body: 'The robots leaving the factory: what body they have, what relationship they ask of you, and how close they are meant to get.',
+      },
+    ],
+  },
+  de: {
+    title: 'Wissensbits — Homunculus Robotics',
+    description: 'Kurze, belegte Einblicke in die Roboter und Ideen hinter Physical AI.',
+    headline: 'Wissens',
+    accent: 'bits',
+    lede: 'Kurze, belegte Einblicke in die Roboter und Ideen hinter Physical AI.',
+    open: 'Öffnen',
+    bits: [
+      {
+        href: '/knowledge/robots-among-us',
+        kicker: 'Interaktive Karte · 85 Roboter',
+        title: 'Robots Among Us',
+        body: 'Die Roboter, die die Fabrik verlassen: welchen Körper sie haben, welche Beziehung sie verlangen und wie nah sie dir kommen sollen.',
+      },
+    ],
+  },
+}[lang];
+---
+<Base title={t.title} description={t.description}>
+  <Nav />
+
+  <main>
+    <section id="top" class="hero">
+      <Backdrop variant="center" />
+      <div class="inner">
+        <Dossier num="03">{t.title.split(' — ')[0]}</Dossier>
+        <GlitchText as="h1" class="hero-h1 hmc-jitter">{t.headline}<span class="accent">{t.accent}</span></GlitchText>
+        <p class="lede">{t.lede}</p>
+
+        <ul class="bits">
+          {t.bits.map((b, i) => (
+            <li>
+              <a href={navHref(b.href, lang)}>
+                <span class="num">{String(i + 1).padStart(2, '0')}</span>
+                <div>
+                  <div class="kicker">{b.kicker}</div>
+                  <h2>{b.title}</h2>
+                  <p>{b.body}</p>
+                </div>
+                <span class="open">{t.open} →</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  .hero { position: relative; overflow: hidden; background: var(--field-glow), var(--void); min-height: 70vh; }
+  .inner { position: relative; z-index: 2; max-width: var(--maxw-wide); margin: 0 auto; padding: var(--sp-9) var(--sp-6); }
+  .hero-h1 { font-size: var(--fs-hero); line-height: 0.86; margin: 0; }
+  .accent { color: var(--accent); }
+  .lede {
+    font-family: var(--font-serif);
+    border-left: 1px solid var(--line-accent);
+    padding-left: 10px;
+    font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+    line-height: 1.3;
+    color: var(--text-mid);
+    max-width: 44ch;
+    margin: var(--sp-6) 0 0;
+  }
+
+  .bits { list-style: none; margin: var(--sp-8) 0 0; padding: 0; display: grid; gap: var(--sp-4); max-width: 900px; }
+  .bits a {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: var(--sp-5);
+    align-items: center;
+    padding: var(--sp-5) var(--sp-6);
+    background: color-mix(in oklab, var(--surface-1) 85%, transparent);
+    border: 1px solid var(--line-mid);
+    border-radius: var(--radius-sm);
+    color: inherit;
+    text-decoration: none;
+    transition: border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out), transform var(--dur) var(--ease-out);
+  }
+  .bits a:hover {
+    border-color: color-mix(in oklab, var(--chroma-cyan) 50%, transparent);
+    box-shadow: 0 0 30px -10px color-mix(in oklab, var(--chroma-cyan) 60%, transparent);
+    transform: translateY(-3px);
+  }
+  .num { font: 400 48px/1 var(--font-display); color: var(--accent); }
+  .kicker { font: 500 10px var(--font-mono); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--chroma-cyan); }
+  h2 { font: 400 var(--fs-h3) / 1.1 var(--font-display); color: var(--text-hi); margin: 6px 0; }
+  p { margin: 0; color: var(--text-mid); }
+  .open { font: 500 11px var(--font-mono); letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-low); white-space: nowrap; }
+  .bits a:hover .open { color: var(--chroma-cyan); }
+
+  @media (max-width: 760px) {
+    .inner { padding: var(--sp-8) var(--sp-4); }
+    .bits a { grid-template-columns: 1fr; gap: var(--sp-3); }
+  }
+</style>
