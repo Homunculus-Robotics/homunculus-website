@@ -63,7 +63,7 @@ contact:
   eyebrow: 04 — Zugang
   heading: Noch nicht öffentlich. Ein Wort, und du erfährst es zuerst.
   body: Baukasten, Gate und Trainer sind in aktiver Entwicklung in einem privaten Repository. Wer früh testen will, es mit dem eigenen Arm ausprobieren möchte oder daran arbeiten will — eine Adresse, gelesen von einem Menschen.
-  email: hello@homunculusrobotics.com
+  email: info@homunculusrobotics.com
 ---
 
 Tiefe vor Breite. Die eine Invariante, auf der alles andere steht, ist:

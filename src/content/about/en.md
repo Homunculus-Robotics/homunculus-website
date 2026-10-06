@@ -27,6 +27,6 @@ contact:
   heading: Come say hello.
   locationLabel: Location
   location: Cologne / Bonn, Germany
-  email: hello@homunculusrobotics.com
+  email: info@homunculusrobotics.com
   linkedin: https://www.linkedin.com/in/marcus-roeper/
 ---

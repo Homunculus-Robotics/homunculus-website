@@ -49,6 +49,31 @@ feature without asking a question first.
 - Every implemented feature gets a spec folder:
   `specs/<date>_feature_<X.Y>_<name>/{requirements,plan,FINDINGS}.md`.
 
+## Legal triggers — when Datenschutz and the cookie notice must change
+
+Impressum, Datenschutz and the cookie notice live **in this repo** and cover the
+whole domain, including `/designchallenge` from the private repo:
+`src/pages/{,de/}{impressum,datenschutz}.md` and
+`src/components/CookieNotice.astro`. Today the site is static on GitHub Pages,
+sets **no cookies**, loads **nothing third-party**, and keeps only `hmc-theme` and
+`hmc-notice` in localStorage. The notice says exactly that and asks no consent.
+Every row below breaks one of those facts. **The legal text ships in the same
+release as the change, never after it.** Each Datenschutz edit goes into DE and EN.
+
+| When this happens | Datenschutz | Cookie notice |
+|---|---|---|
+| **Cloudflare proxy goes in front of the apex** (first private-repo deploy) | add Cloudflare (CDN/proxy, access data, USA transfer). The builderlayer.com text has it. | `__cf_bm` etc. are strictly necessary: mention them, still no consent |
+| **The Design Challenge goes live behind the domain** (Fly.io) | add Fly.io hosting. Private-repo pages must link `/impressum` + `/datenschutz` in their footer. | — |
+| **Design Challenge login / accounts** (Feature 1.2: magic link, Supabase, Turnstile, session cookie) | add: registration/account, Supabase (auth + DB, EU region), Cloudflare Turnstile, transactional email provider (Resend), retention and delete-my-account | text "sets no cookies" becomes false: name the session cookie (necessary, no consent) |
+| **Uploads** (Feature 1.3) | add: user-submitted content, Supabase Storage, what is public on a design page, how to have it removed | — |
+| **Voting + newsletter** (Feature 2.2) | add: newsletter (consent, double opt-in, unsubscribe), voting email stored as HMAC only | — |
+| **Analytics** (Feature 3.4, Plausible cookieless) | add Plausible: what it counts, no cookies, EU hosting | none while it stays cookieless |
+| **Error tracking** (Feature 3.5, Sentry) | add Sentry as processor and its PII scrubbing | — |
+| **Anything that sets a non-essential cookie or loads a third party in the browser**: YouTube/Vimeo embed, map, external font/CDN script, cookie-based analytics, a client-side GitHub call | add the service | **the notice must become a real consent manager**: accept/reject, the service blocked until accept, withdrawal possible later |
+| **Homunculus Robotics becomes its own entity** (GmbH/UG) | new controller name and address. The Impressum changes too: entity, register number, VAT ID. | — |
+
+GitHub Pages hosting stays in the Datenschutz for as long as Pages serves this repo.
+
 ---
 
 ## PHASE 0 — Foundation (Weeks 1–2)
@@ -275,7 +300,8 @@ This is the Mission's Phase 1 focus. Nothing in Phase 2 starts until it holds.
 
 ### Feature 3.4 — DSGVO surface (owner: Marcus) — 8h
 
-- **Deliverables:** DE+EN Impressum, Datenschutzerklärung, AGB / challenge rules
+- **Deliverables:** Impressum + Datenschutz **exist since 2026-10-05**; this feature
+  audits them against the [Legal triggers](#legal-triggers--when-datenschutz-and-the-cookie-notice-must-change) table. AGB / challenge rules
   (versioned — `agb_version` in the DB points at a file in `src/content/legal/`);
   cookieless Plausible; **data export** and **delete-my-account** endpoints
   (delete = cascade designs + purge media + tombstone the vault row); DPAs filed

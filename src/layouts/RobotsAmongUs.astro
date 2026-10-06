@@ -156,7 +156,8 @@ const t = {
     .orbit-viewport.sector svg { cursor: zoom-out; }
     .band { stroke: var(--line-soft); stroke-width: 1.5; }
     .divider { stroke: var(--bg); stroke-width: 3; }
-    .ringlbl { font: 500 11px var(--font-mono); fill: var(--text-low); letter-spacing: 0.22em; text-transform: uppercase; }
+    /* at least ~10 screen px; capped at 24 units so the staggered names still fit their rings */
+    .ringlbl { font: 500 clamp(11px, calc(10px * var(--u, 1)), 24px) var(--font-mono); fill: var(--text-mid); letter-spacing: 0.1em; text-transform: uppercase; }
     .seclbl { font: 400 22px var(--font-display); fill: var(--text-hi); letter-spacing: 0.08em; text-transform: uppercase; }
     .secsub { font: 400 13px var(--font-body); fill: var(--text-low); }
     .fam { font: 500 12px var(--font-mono); fill: var(--chroma-cyan); letter-spacing: 0.32em; }
@@ -187,7 +188,7 @@ const t = {
     .bot.dim, .bot.out { opacity: 0.13; }
     .bot.out { pointer-events: none; }
     .ph .initial { display: grid; place-items: center; height: 100%; font: 400 1.4cqw var(--font-display); color: var(--void); }
-    @container (max-width: 620px) { .bot .nm { display: none; } .ringlbl { font-size: 16px; } .secsub { display: none; } .seclbl { font-size: 30px; } }
+    @container (max-width: 620px) { .bot .nm { display: none; } .secsub { display: none; } .seclbl { font-size: 30px; } }
 
     .chart-tools { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px; font: 500 10px var(--font-mono); letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-low); margin: 12px 0; }
     .chart-tools button { background: none; border: 1px solid var(--line-mid); padding: 6px 12px; font: inherit; text-transform: inherit; color: var(--text-mid); }
@@ -254,4 +255,6 @@ const t = {
     .methodology summary:hover { color: var(--chroma-cyan); }
   }
   @media (prefers-reduced-motion: reduce) { .rau * { transition: none !important; } }
+  /* The HUD's scanlines sit over the robot photos and thumbnails; off on this page only. */
+  .hud .interlace { display: none; }
 </style>

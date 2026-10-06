@@ -27,6 +27,6 @@ contact:
   heading: Sag Hallo.
   locationLabel: Standort
   location: Köln / Bonn
-  email: hello@homunculusrobotics.com
+  email: info@homunculusrobotics.com
   linkedin: https://www.linkedin.com/in/marcus-roeper/
 ---

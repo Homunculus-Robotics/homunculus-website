@@ -1,0 +1,56 @@
+---
+import Base from './Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import GlitchText from '../components/GlitchText.astro';
+import Backdrop from '../components/Backdrop.astro';
+import Dossier from '../components/Dossier.astro';
+
+// Impressum + Datenschutz: Markdown pages in src/pages/ with `layout:` pointing here.
+interface Props {
+  frontmatter: { title: string; description: string; eyebrow: string; heading: string };
+}
+const { title, description, eyebrow, heading } = Astro.props.frontmatter;
+---
+<Base title={title} description={description}>
+  <Nav />
+  <main>
+    <section class="hero">
+      <Backdrop />
+      <div class="inner">
+        <Dossier num="§">{eyebrow}</Dossier>
+        <GlitchText as="h1" class="h1 hmc-jitter">{heading}</GlitchText>
+      </div>
+    </section>
+    <section>
+      <article class="inner prose"><slot /></article>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .inner { max-width: var(--maxw-content); margin: 0 auto; padding: var(--sp-9) var(--sp-6); }
+  .hero { position: relative; overflow: hidden; background: var(--field-glow), var(--void); }
+  .hero .inner { position: relative; z-index: 2; padding-bottom: var(--sp-7); }
+  .h1 { font-size: var(--fs-h1); line-height: 0.95; margin: 0; }
+
+  .prose { max-width: var(--maxw-prose); padding-top: var(--sp-7); color: var(--text-mid); overflow-wrap: anywhere; }
+  .prose :global(h2) {
+    font: 10px var(--font-mono); letter-spacing: 0.28em; text-transform: uppercase; color: var(--chroma-cyan);
+    margin: var(--sp-8) 0 var(--sp-4); padding-top: var(--sp-5); border-top: 1px solid var(--line-mid);
+  }
+  .prose :global(h2:first-child) { margin-top: 0; border-top: 0; padding-top: 0; }
+  .prose :global(h3) { font-family: var(--font-body); font-weight: 600; font-size: var(--fs-h4); color: var(--text-hi); margin: var(--sp-6) 0 var(--sp-3); }
+  .prose :global(p), .prose :global(ul) { margin: 0 0 var(--sp-4); }
+  .prose :global(ul) { padding-left: 1.2em; }
+  .prose :global(li) { margin-bottom: var(--sp-2); }
+  .prose :global(li::marker) { color: var(--accent); }
+  .prose :global(strong) { color: var(--text-hi); font-weight: 500; }
+  .prose :global(a) { text-decoration: none; border-bottom: 1px solid var(--line-accent); }
+  .prose :global(.source) { margin-top: var(--sp-8); font-size: var(--fs-xs); color: var(--text-low); }
+
+  @media (max-width: 760px) {
+    .inner { padding-left: var(--sp-4); padding-right: var(--sp-4); }
+  }
+</style>

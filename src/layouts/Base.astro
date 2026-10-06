@@ -3,6 +3,7 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
 import '../styles/global.css';
 import { localePath } from '../lib/site';
 import Hud from '../components/Hud.astro';
+import CookieNotice from '../components/CookieNotice.astro';
 // The two faces the hero paints with. Without the preload the browser only
 // discovers them after the CSS parses, swaps mid-paint, and reflows the hero
 // (measured: CLS 0.26 → see the 0.3 FINDINGS).
@@ -68,6 +69,7 @@ const path = localePath(Astro.url.pathname);
   <body>
     <Hud />
     <slot />
+    <CookieNotice />
   </body>
 </html>
 

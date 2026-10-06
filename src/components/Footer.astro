@@ -13,6 +13,8 @@ const year = new Date().getFullYear();
     </div>
     <nav aria-label="Footer">
       {NAV_LINKS.map((l) => <a href={navHref(l.href, lang)}>{l.label[lang]}</a>)}
+      <a href={navHref('/impressum', lang)}>{lang === 'de' ? 'Impressum' : 'Legal notice'}</a>
+      <a href={navHref('/datenschutz', lang)}>{lang === 'de' ? 'Datenschutz' : 'Privacy'}</a>
     </nav>
     {/* Hud.astro ticks the timecode. */}
     <span class="tc" aria-hidden="true">LINK STABIL · <span data-hud-tc>00:00:00:00</span></span>

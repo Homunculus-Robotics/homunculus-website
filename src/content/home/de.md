@@ -50,7 +50,7 @@ contact:
   eyebrow: 04 — Kontakt
   heading: Industrie, Forschung, oder einfach Lust, die Körper zu bauen.
   body: Partnerschaften, Pilotprojekte, Presse, oder eine Rolle im Gründungsteam — eine Adresse, gelesen von einem Menschen.
-  email: hello@homunculusrobotics.com
+  email: info@homunculusrobotics.com
 ---
 
 Die meisten Robotersysteme beginnen mit einem Körper, der bereits feststeht.

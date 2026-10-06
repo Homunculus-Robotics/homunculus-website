@@ -59,6 +59,8 @@ const arc=(r,a0,a1)=>{const[x0,y0]=P(r,a0),[x1,y1]=P(r,a1);return `M${x0} ${y0}A
 const arcRev=(r,a0,a1)=>{const[x0,y0]=P(r,a0),[x1,y1]=P(r,a1);return `M${x1} ${y1}A${r} ${r} 0 ${a1-a0>Math.PI?1:0} 0 ${x0} ${y0}`};
 
 const svg=document.getElementById('bg'), orbit=document.getElementById('orbit');
+// --u = viewBox units per screen px, so chart text can hold a readable on-screen size
+new ResizeObserver(()=>orbit.style.setProperty('--u',1440/orbit.clientWidth)).observe(orbit);
 orbit.insertAdjacentHTML('beforeend',bots.map((b,i)=>{const im=imgOf(b);const pos=['biped','wheeled','hybrid'].includes(b.form)?'50% 14%':'50% 50%';
   return `<button class="bot ${b.stage} c-${b.style}" data-id="${b.id}" style="--c:var(--${b.style});--d:${(i%9)*35}ms" aria-label="${esc(b.name)}, ${esc(b.maker)}: asks to be treated as a ${CONTRACTS[b.style].name.toLowerCase()}, ${RINGS[b.close]}, ${STATUS[b.status]}"><span class="ph">${im?`<img src="${im.src}" alt="" loading="lazy" decoding="async" style="object-position:${pos}">`:`<span class="initial">${esc(label(b).slice(0,2))}</span>`}</span><span class="nm">${esc(label(b))}</span></button>`}).join(''));
 
@@ -94,8 +96,10 @@ function layout(mode){
   // gutter: wipe the wedge, write ring names along the east axis
   const R=BAND[1][1]+2;
   g+=`<path d="M${C} ${C}L${P(R,-GUT/2).join(' ')}A${R} ${R} 0 0 1 ${P(R,GUT/2).join(' ')}Z" fill="var(--bg)"/>`;
-  [1,2,3,4,5].forEach(k=>g+=`<text class="ringlbl" x="${C+mid(k)}" y="${C+4}" text-anchor="middle">${RINGSHORT[k]}</text>`);
-  g+=`<text class="ringlbl" x="${C+R+12}" y="${C+4}">→ far</text>`;
+  // neighbouring rings alternate above/below the axis so long names never collide
+  const above=`y="${C-3}" dominant-baseline="text-after-edge"`, below=`y="${C+3}" dominant-baseline="text-before-edge"`;
+  [1,2,3,4,5].forEach(k=>g+=`<text class="ringlbl" x="${C+mid(k)}" ${k%2?above:below} text-anchor="middle">${RINGSHORT[k]}</text>`);
+  g+=`<text class="ringlbl" x="${C+R+12}" ${below}>→ far</text>`;
   g+=`<g class="you" transform="translate(${C} ${C-6})"><circle cy="-22" r="14"/><path d="M-26 28c0-26 10-36 26-36s26 10 26 36z"/></g><text class="ringlbl" x="${C}" y="${C+50}" text-anchor="middle" style="fill:var(--ink)">you</text>`;
   // sector names on the rim; bottom half reversed so text stays upright
   S.forEach((s,i)=>{

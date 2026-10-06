@@ -50,7 +50,7 @@ contact:
   eyebrow: 04 — Talk to us
   heading: Industry, research, or you just want to build the bodies.
   body: Partnerships, pilots, press, or a role on the founding team — one address, read by a human.
-  email: hello@homunculusrobotics.com
+  email: info@homunculusrobotics.com
 ---
 
 Most robot software starts with a body that has already been chosen. That makes

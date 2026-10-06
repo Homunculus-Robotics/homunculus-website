@@ -63,7 +63,7 @@ contact:
   eyebrow: 04 — Access
   heading: Not public yet. Say the word and you hear first.
   body: The builder, the gate and the trainer are in active development in a private repository. If you want early access, want to test it with your own arm, or want to work on it — one address, read by a human.
-  email: hello@homunculusrobotics.com
+  email: info@homunculusrobotics.com
 ---
 
 Depth before breadth. The one invariant everything else sits on is that **the

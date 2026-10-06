@@ -1,0 +1,67 @@
+---
+import Button from './Button.astro';
+import { navHref } from '../lib/site';
+
+// ponytail: a notice, not a consent manager. The site sets no cookies and loads
+// nothing third-party, so there is nothing to opt in to. The day analytics or
+// an embed lands, this needs real accept/reject buttons that gate it.
+const lang = Astro.currentLocale === 'de' ? 'de' : 'en';
+const t = {
+  de: {
+    label: 'Cookies · 0',
+    body: 'Diese Seite setzt keine Cookies und kein Tracking. Nur Ihre Theme-Wahl bleibt lokal in Ihrem Browser.',
+    more: 'Datenschutz',
+    ok: 'Verstanden',
+  },
+  en: {
+    label: 'Cookies · 0',
+    body: 'This site sets no cookies and no tracking. Only your theme choice stays local in your browser.',
+    more: 'Privacy policy',
+    ok: 'Got it',
+  },
+}[lang];
+---
+<aside class="notice" id="hmc-notice" aria-label="Cookies" hidden>
+  <span class="tick" aria-hidden="true"></span>
+  <div class="hmc-label">{t.label}</div>
+  <p>{t.body} <a href={navHref('/datenschutz', lang)}>{t.more}</a></p>
+  <Button size="sm" mono glow={false} data-notice-ok>{t.ok}</Button>
+</aside>
+
+<script is:inline>
+  (function () {
+    var el = document.getElementById('hmc-notice');
+    try { if (localStorage.getItem('hmc-notice')) return; } catch (e) {}
+    el.hidden = false;
+    el.querySelector('[data-notice-ok]').addEventListener('click', function () {
+      el.hidden = true;
+      try { localStorage.setItem('hmc-notice', '1'); } catch (e) {}
+    });
+  })();
+</script>
+
+<style>
+  .notice {
+    position: fixed;
+    z-index: 50;
+    /* clears Hud.astro's frame rails */
+    right: var(--sp-8);
+    bottom: var(--sp-6);
+    max-width: 380px;
+    box-sizing: border-box;
+    padding: var(--sp-5);
+    background: color-mix(in oklab, var(--surface-1) 94%, transparent);
+    backdrop-filter: blur(14px);
+    border: 1px solid var(--border);
+    box-shadow: 0 0 40px -14px color-mix(in oklab, var(--chroma-cyan) 50%, transparent);
+  }
+  .notice[hidden] { display: none; }
+  .tick { position: absolute; left: -1px; top: -1px; width: 12px; height: 12px; border-top: 1px solid var(--chroma-cyan); border-left: 1px solid var(--chroma-cyan); }
+  .hmc-label { font-size: 10px; letter-spacing: 0.28em; color: var(--chroma-cyan); margin-bottom: 10px; }
+  p { margin: 0 0 var(--sp-4); color: var(--text-mid); font-size: var(--fs-sm); }
+  a { text-decoration: none; border-bottom: 1px solid var(--line-accent); }
+
+  @media (max-width: 760px) {
+    .notice { left: var(--sp-4); right: var(--sp-4); bottom: var(--sp-4); max-width: none; }
+  }
+</style>

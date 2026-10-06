@@ -27,6 +27,8 @@ async function settle(page: Page) {
       // would hide the hero on both pages and quietly exclude it from the diff.
       // Both the prototype's tiles and MosaicLoader's carry an inline clip-path.
       'span[style*="clip-path"]{display:none!important}',
+      // The cookie notice is site chrome the prototype does not have.
+      '#hmc-notice{display:none!important}',
     ].join(''),
   });
   await page.evaluate(() => document.fonts.ready);
