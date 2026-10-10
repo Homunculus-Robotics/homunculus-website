@@ -55,16 +55,6 @@ const path = localePath(Astro.url.pathname);
     {image && <meta property="og:image" content={new URL(image, canonical)} />}
     <meta property="og:locale" content={lang === 'de' ? 'de_DE' : 'en_US'} />
     <meta name="twitter:card" content="summary_large_image" />
-    {/* D3: blocking + inline. Any deferred script paints the default theme first. */}
-    <script is:inline>
-      try {
-        var t = localStorage.getItem('hmc-theme');
-        document.documentElement.dataset.hmcTheme =
-          t === 'ultraviolet' || t === 'verdant' ? t : 'phosphor';
-      } catch (e) {
-        document.documentElement.dataset.hmcTheme = 'phosphor';
-      }
-    </script>
   </head>
   <body>
     <Hud />

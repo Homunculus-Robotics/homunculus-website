@@ -51,9 +51,9 @@ GitHub’s privacy statement can be found at [https://docs.github.com/en/site-po
 
 This website sets no cookies and uses no analytics, tracking, or advertising services. Fonts are served from our own server; no connection to Google or any other third party is made.
 
-Your browser’s local storage (localStorage) holds exactly two settings: the colour theme you picked (`hmc-theme`) and that you closed the cookie notice (`hmc-notice`). These values never leave your device and are not sent to us. Storing them is strictly necessary for a function you explicitly requested (§ 25 (2) No. 2 TDDDG).
+Your browser’s local storage (localStorage) holds exactly one setting: that you closed the cookie notice (`hmc-notice`). This value never leaves your device and is not sent to us. Storing it is strictly necessary for a function you explicitly requested (§ 25 (2) No. 2 TDDDG).
 
-You can delete these entries at any time in your browser settings.
+You can delete this entry at any time in your browser settings.
 
 ### Contact
 

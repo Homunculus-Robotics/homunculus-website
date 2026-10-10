@@ -1,6 +1,5 @@
 ---
 import logo from '../../design-system/assets/logo-mark-light.png';
-import ThemeSwitcher from './ThemeSwitcher.astro';
 import LangSwitch from './LangSwitch.astro';
 import { NAV_LINKS, localePath, navHref } from '../lib/site';
 
@@ -23,7 +22,6 @@ const isCurrent = (href: string) => (href === '/' ? path === '/' : path.startsWi
       ))}
     </nav>
     <div class="tools">
-      <ThemeSwitcher />
       <LangSwitch />
     </div>
   </div>

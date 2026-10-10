@@ -34,9 +34,12 @@ is how the landing-page copy drifted in September 2026. Nothing that needs a
 login, a database or a secret belongs here; this repo builds to static files and
 has no server to keep one.
 
-The `Design Challenge` link in the header points at `/designchallenge`, which
-404s until the private app is deployed behind this domain (a Cloudflare proxy in
-front of the apex: `/designchallenge/*` → Fly, everything else → Pages).
+The `Design Challenge` link in the header points at `/designchallenge`. Until the
+private app is deployed behind this domain (a Cloudflare proxy in front of the
+apex: `/designchallenge/*` → Fly, everything else → Pages), that landing — for
+now only the partner pitch — is a static page here
+(`src/layouts/DesignChallenge.astro`). It moves to the private repo with Roadmap
+2.1, so the route never exists in both.
 
 `design-system/` is mirrored in both repos on purpose — it is the brand
 authority both sides import tokens from. **This repo is the copy to change**;

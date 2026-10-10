@@ -159,4 +159,54 @@ const about = defineCollection({
   }),
 });
 
-export const collections = { home, sandbox, about };
+// The Design Challenge landing, for now only its partner pitch (the PDF flyer,
+// ported). `support`'s intro is the Markdown body. The gallery, voting and
+// submit flow are the private repo's (Roadmap 2.1).
+const designchallenge = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/designchallenge' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    hero: z.object({
+      eyebrow: z.string(),
+      headline: z.string(),
+      headlineAccent: z.string(),
+      lede: z.string(),
+      ledeEm: z.string(),
+      status: z.string(),
+      cta,
+      /** Captions of the four faces the hero mark cycles through, in order. */
+      roles: z.string().array().length(4),
+    }),
+    support: z.object({
+      ...heading,
+      glance: z.object({
+        eyebrow: z.string(),
+        items: z.object({ label: z.string(), body: z.string() }).array().min(1),
+      }),
+      why: z.object({
+        eyebrow: z.string(),
+        items: z.object({ num: z.string(), title: z.string(), body: z.string() }).array().length(3),
+      }),
+      packages: z.object({
+        ...heading,
+        contributeLabel: z.string(),
+        getLabel: z.string(),
+        items: z
+          .object({ num: z.string(), name: z.string(), contribute: z.string(), get: z.string() })
+          .array()
+          .min(1),
+        note: z.string(),
+        noteEm: z.string(),
+      }),
+      team: z.object({
+        eyebrow: z.string(),
+        label: z.string(),
+        people: z.object({ name: z.string(), role: z.string() }).array().min(1),
+      }),
+    }),
+    contact: z.object({ ...heading, name: z.string(), email: z.email() }),
+  }),
+});
+
+export const collections = { home, sandbox, about, designchallenge };

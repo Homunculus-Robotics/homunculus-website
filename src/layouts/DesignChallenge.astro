@@ -1,0 +1,289 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from './Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Button from '../components/Button.astro';
+import Badge from '../components/Badge.astro';
+import GlitchText from '../components/GlitchText.astro';
+import Backdrop from '../components/Backdrop.astro';
+import Dossier from '../components/Dossier.astro';
+import DiveStrip from '../components/DiveStrip.astro';
+
+// Both /designchallenge and /de/designchallenge render this file; only the entry
+// differs. The partner flyer, ported into the site's tokens; the gallery and
+// submit flow land later (private repo, Roadmap 2.1).
+const lang = Astro.currentLocale === 'de' ? 'de' : 'en';
+const entry = await getEntry('designchallenge', lang);
+if (!entry) throw new Error(`Missing src/content/designchallenge/${lang}.md`);
+const { hero, support, contact } = entry.data;
+const { glance, why, packages, team } = support;
+const { Content } = await render(entry);
+---
+<Base title={entry.data.title} description={entry.data.description} image="/assets/og-cover.png">
+  <Nav />
+
+  <main>
+  <section id="top" class="hero">
+    <Backdrop />
+    <div class="inner">
+      <Dossier num="02">{hero.eyebrow}</Dossier>
+      <div class="hero-grid">
+        <div>
+          <GlitchText as="h1" class="hero-h1 hmc-jitter">
+            {hero.headline}{' '}<span class="accent">{hero.headlineAccent}</span>
+          </GlitchText>
+          <p class="lede">{hero.lede} <em>{hero.ledeEm}</em></p>
+          <Badge tone="gold" live>{hero.status}</Badge>
+          <div class="actions">
+            <Button href={hero.cta.href} size="lg">{hero.cta.label}</Button>
+          </div>
+        </div>
+
+        {/* The flyer's mark: one face morphing through the four roles a robot
+            could take. CSS only; hover holds the current face. */}
+        <figure class="mark">
+          <div class="face" aria-hidden="true">
+            <span class="head"></span><span class="el"></span><span class="er"></span><span class="m"></span>
+          </div>
+          <ul class="roles">
+            {hero.roles.map((r, i) => <li style={`--i:${i}`}>{r}</li>)}
+          </ul>
+          <span class="corner c1" aria-hidden="true"></span>
+          <span class="corner c2" aria-hidden="true"></span>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <DiveStrip text="SEG.01 // PARTNER · HARDWARE · FUNDING · EXPERTISE · EIN ECHTER PROTOTYP" />
+
+  <section id="support" class="support">
+    <div class="inner">
+      <div class="hmc-label">{support.eyebrow}</div>
+      <GlitchText as="h2" class="h2">{support.heading}</GlitchText>
+      <div class="intro"><Content /></div>
+
+      <div class="seg">
+        <div class="hmc-label">{glance.eyebrow}</div>
+        <dl class="glance">
+          {glance.items.map((g) => (
+            <div><dt>{g.label}</dt><dd>{g.body}</dd></div>
+          ))}
+        </dl>
+      </div>
+
+      <div class="seg">
+        <div class="hmc-label">{why.eyebrow}</div>
+        <ol class="why">
+          {why.items.map((w) => (
+            <li>
+              <span class="num">{w.num}</span>
+              <h3>{w.title}</h3>
+              <p>{w.body}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <div id="packages" class="seg">
+        <div class="hmc-label">{packages.eyebrow}</div>
+        <GlitchText as="h3" class="h3">{packages.heading}</GlitchText>
+        <ol class="packages">
+          {packages.items.map((p) => (
+            <li>
+              <span class="num">{p.num}</span>
+              <h4>{p.name}</h4>
+              <div><span class="k">{packages.contributeLabel}</span><p>{p.contribute}</p></div>
+              <div><span class="k">{packages.getLabel}</span><p>{p.get}</p></div>
+            </li>
+          ))}
+        </ol>
+        <p class="note">{packages.note} <em>{packages.noteEm}</em></p>
+      </div>
+
+      <div class="seg">
+        <div class="hmc-label">{team.eyebrow}</div>
+        <div class="k">{team.label}</div>
+        <ul class="team">
+          {team.people.map((t) => (
+            <li><strong>{t.name}</strong><span>{t.role}</span></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <Backdrop variant="center" />
+    <div class="inner">
+      <div class="hmc-label">{contact.eyebrow}</div>
+      <GlitchText as="h2" class="h2">{contact.heading}</GlitchText>
+      <p class="body">{contact.name}</p>
+      <a class="mail" href={`mailto:${contact.email}`}>{contact.email}</a>
+    </div>
+  </section>
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  .inner { max-width: var(--maxw-wide); margin: 0 auto; padding: var(--sp-9) var(--sp-6); }
+  .hmc-label { margin-bottom: 14px; }
+  .h2 { font-size: var(--fs-h2); line-height: 1; max-width: 22ch; margin: 0; }
+  .accent { color: var(--accent); }
+  ol, ul, dl, dd { margin: 0; padding: 0; }
+  ol, ul { list-style: none; }
+  .num { font-family: var(--font-display); font-size: 2rem; line-height: 1; color: var(--signal); }
+  .k {
+    display: block; margin-bottom: 8px;
+    font: 10px var(--font-mono); letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-low);
+  }
+
+  /* ── hero ───────────────────────────────────────────────── */
+  .hero { position: relative; overflow: hidden; background: var(--field-glow), var(--void); }
+  .hero .inner { position: relative; z-index: 2; padding-bottom: var(--sp-8); }
+  .hero-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: var(--sp-7); align-items: end; }
+  .hero-h1 { font-size: var(--fs-hero); line-height: 0.88; letter-spacing: -0.01em; max-width: 14ch; }
+  .lede {
+    font-family: var(--font-serif);
+    border-left: 1px solid var(--line-accent);
+    padding-left: 10px;
+    font-size: clamp(1.3rem, 2vw, 1.8rem);
+    line-height: 1.3;
+    color: var(--text-mid);
+    max-width: 40ch;
+    margin: var(--sp-6) 0 var(--sp-5);
+  }
+  .lede em { font-style: italic; color: var(--violet-200); }
+  .actions { display: flex; gap: 14px; margin-top: var(--sp-6); flex-wrap: wrap; }
+
+  .mark { position: relative; margin: 0; justify-self: end; width: 100%; max-width: 380px; }
+  .face { position: relative; aspect-ratio: 1; }
+  .face span { position: absolute; animation-duration: 9.6s; animation-timing-function: cubic-bezier(0.7, 0, 0.2, 1); animation-iteration-count: infinite; }
+  /* Base geometry = the Companion face, which is also what reduced motion shows. */
+  .head {
+    left: 10%; top: 10%; width: 80%; height: 80%; border-radius: 50%;
+    background: var(--blueprint-grid), var(--surface-1);
+    border: 1px solid var(--line-accent);
+    box-shadow: var(--glow-accent);
+    animation-name: dc-head;
+  }
+  .el, .er, .m { background: var(--accent); box-shadow: 0 0 18px color-mix(in oklab, var(--accent) 60%, transparent); }
+  .el { left: 27%; top: 36%; width: 18%; height: 18%; border-radius: 50%; animation-name: dc-el; }
+  .er { left: 55%; top: 36%; width: 18%; height: 18%; border-radius: 50%; animation-name: dc-er; }
+  .m  { left: 38%; top: 63%; width: 24%; height: 10%; border-radius: 0 0 999px 999px; animation-name: dc-m; }
+
+  .roles { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; border-top: 1px solid var(--line-mid); padding-top: 12px; margin-top: var(--sp-4); }
+  .roles li {
+    font: 11px var(--font-mono); letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-low); border-bottom: 1px solid transparent; padding-bottom: 4px;
+    animation: dc-role 9.6s infinite;
+    animation-delay: calc(var(--i) * 2.4s - 9.6s);
+  }
+  .roles li:first-child { color: var(--accent); border-color: var(--accent); }
+  .mark:hover :is(.face span, .roles li) { animation-play-state: paused; }
+
+  .corner { position: absolute; width: 16px; height: 16px; border: 0 solid var(--chroma-cyan); }
+  .c1 { top: -8px; left: -8px; border-top-width: 1px; border-left-width: 1px; }
+  .c2 { bottom: -8px; right: -8px; border-bottom-width: 1px; border-right-width: 1px; }
+
+  /* Companion → Tool → Colleague → Caregiver, 2.4 s each: hold, then morph. */
+  @keyframes dc-head {
+    0%, 17%, 100% { left: 10%; top: 10%; width: 80%; height: 80%; border-radius: 50%; }
+    25%, 42% { left: 6%; top: 24%; width: 88%; height: 54%; border-radius: 6%; }
+    50%, 67% { left: 17%; top: 8%; width: 66%; height: 84%; border-radius: 18%; }
+    75%, 92% { left: 5%; top: 15%; width: 90%; height: 74%; border-radius: 50% 50% 42% 42% / 58% 58% 42% 42%; }
+  }
+  @keyframes dc-el {
+    0%, 17%, 100% { left: 27%; top: 36%; width: 18%; height: 18%; border-radius: 50%; }
+    25%, 42% { left: 18%; top: 43%; width: 64%; height: 9%; border-radius: 2px; }
+    50%, 67% { left: 32%; top: 34%; width: 12%; height: 18%; border-radius: 4px; }
+    75%, 92% { left: 25%; top: 42%; width: 18%; height: 8%; border-radius: 999px 999px 0 0; }
+  }
+  @keyframes dc-er {
+    0%, 17%, 100% { left: 55%; top: 36%; width: 18%; height: 18%; border-radius: 50%; }
+    25%, 42% { left: 18%; top: 43%; width: 64%; height: 9%; border-radius: 2px; }
+    50%, 67% { left: 56%; top: 34%; width: 12%; height: 18%; border-radius: 4px; }
+    75%, 92% { left: 57%; top: 42%; width: 18%; height: 8%; border-radius: 999px 999px 0 0; }
+  }
+  @keyframes dc-m {
+    0%, 17%, 100% { left: 38%; top: 63%; width: 24%; height: 10%; border-radius: 0 0 999px 999px; }
+    25%, 42% { left: 34%; top: 63%; width: 32%; height: 3%; border-radius: 0; }
+    50%, 67% { left: 38%; top: 68%; width: 24%; height: 4%; border-radius: 2px; }
+    75%, 92% { left: 42%; top: 63%; width: 16%; height: 8%; border-radius: 0 0 999px 999px; }
+  }
+  @keyframes dc-role {
+    0%, 22% { color: var(--accent); border-color: var(--accent); }
+    25%, 100% { color: var(--text-low); border-color: transparent; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .face span, .roles li { animation: none; }
+  }
+
+  /* ── support ────────────────────────────────────────────── */
+  .support { background: var(--surface-0); }
+  .intro :global(p) { margin: var(--sp-5) 0 0; color: var(--text-mid); font-size: var(--fs-body-lg); max-width: 60ch; }
+  .intro :global(strong) { color: var(--text-hi); font-weight: 500; }
+  .seg { margin-top: var(--sp-9); }
+
+  .glance { border-top: 1px solid var(--line-strong); max-width: 980px; }
+  .glance div { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: var(--sp-5); padding: 14px 0; border-bottom: 1px solid var(--line-soft); }
+  .glance div:last-child { border-bottom-color: var(--line-strong); }
+  .glance dt { font: 11px var(--font-mono); letter-spacing: 0.2em; text-transform: uppercase; color: var(--signal); padding-top: 5px; }
+  .glance dd { color: var(--text-hi); font-size: var(--fs-body-lg); text-wrap: pretty; }
+
+  .why { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-6); }
+  .why li { border-top: 1px solid var(--line-accent); padding-top: var(--sp-4); }
+  .why h3 { font-family: var(--font-serif); font-size: clamp(1.4rem, 2vw, 1.75rem); line-height: 1.12; color: var(--text-hi); margin: 12px 0 0; text-wrap: balance; }
+  .why p { color: var(--text-mid); font-size: var(--fs-sm); margin: 12px 0 0; text-wrap: pretty; }
+
+  .h3 { font-size: var(--fs-h2); line-height: 1; margin: 0 0 var(--sp-6); }
+  .packages { display: flex; flex-direction: column; gap: var(--sp-3); }
+  .packages li {
+    display: grid; grid-template-columns: 3rem 15rem minmax(0, 1fr) minmax(0, 1fr); gap: var(--sp-6); align-items: start;
+    padding: var(--sp-5) var(--sp-6); background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--radius-md);
+  }
+  /* Package Ⅰ builds the winner — the one the flyer fills in. */
+  .packages li:first-child { background: var(--blueprint-grid), var(--surface-1); border-color: var(--line-accent); box-shadow: var(--glow-accent); }
+  .packages li:first-child .num { color: var(--accent); }
+  .packages h4 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.5rem, 2.2vw, 2rem); line-height: 1; text-transform: uppercase; color: var(--text-hi); margin: 0; }
+  .packages p { margin: 0; color: var(--text-mid); font-size: var(--fs-sm); text-wrap: pretty; }
+  .note { margin: var(--sp-5) 0 0; color: var(--text-mid); font-size: var(--fs-sm); }
+  .note em { font-family: var(--font-serif); font-style: italic; font-size: var(--fs-body-lg); color: var(--violet-200); }
+
+  .team { border-top: 1px solid var(--line-strong); max-width: 980px; }
+  .team li { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: var(--sp-5); padding: 14px 0; border-bottom: 1px solid var(--line-soft); }
+  .team strong { color: var(--text-hi); font-weight: 600; }
+  .team span { color: var(--text-mid); }
+
+  /* ── contact ────────────────────────────────────────────── */
+  .contact { position: relative; overflow: hidden; border-top: 1px solid var(--line-mid); background: var(--field-glow), var(--void); }
+  .contact .inner { position: relative; z-index: 2; }
+  .contact .h2 { max-width: 24ch; }
+  .contact .body { margin: var(--sp-5) 0 var(--sp-4); color: var(--text-mid); font-size: var(--fs-body-lg); }
+  .mail {
+    font-family: var(--font-mono);
+    font-size: clamp(1.05rem, 2vw, 1.4rem);
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-accent);
+    overflow-wrap: anywhere;
+  }
+  .mail:hover { color: var(--signal); border-color: var(--line-signal); }
+
+  /* ── small viewports ────────────────────────────────────── */
+  @media (max-width: 1000px) {
+    .packages li { grid-template-columns: 3rem minmax(0, 1fr); }
+    .packages li > div { grid-column: 2; }
+  }
+  @media (max-width: 760px) {
+    .inner { padding-left: var(--sp-4); padding-right: var(--sp-4); }
+    .mark { justify-self: center; max-width: 300px; }
+    .why { grid-template-columns: 1fr; }
+    .glance div, .team li { grid-template-columns: 1fr; gap: 4px; }
+    .packages li { padding: var(--sp-5) var(--sp-4); gap: var(--sp-4); }
+  }
+</style>

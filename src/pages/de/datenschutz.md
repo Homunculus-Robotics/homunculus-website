@@ -51,9 +51,9 @@ Die Datenschutzhinweise von GitHub finden Sie unter [https://docs.github.com/de/
 
 Diese Website setzt keine Cookies und verwendet keine Analyse-, Tracking- oder Werbedienste. Schriftarten werden lokal von unserem Server geladen; eine Verbindung zu Google oder anderen Drittanbietern findet dabei nicht statt.
 
-Im lokalen Speicher Ihres Browsers (localStorage) werden ausschließlich zwei Einstellungen abgelegt: das von Ihnen gewählte Farbschema (`hmc-theme`) und, dass Sie den Hinweis zu Cookies geschlossen haben (`hmc-notice`). Diese Werte verlassen Ihr Endgerät nicht und werden nicht an uns übermittelt. Die Speicherung ist für die von Ihnen ausdrücklich gewünschte Funktion unbedingt erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG).
+Im lokalen Speicher Ihres Browsers (localStorage) wird ausschließlich eine Einstellung abgelegt: dass Sie den Hinweis zu Cookies geschlossen haben (`hmc-notice`). Dieser Wert verlässt Ihr Endgerät nicht und wird nicht an uns übermittelt. Die Speicherung ist für die von Ihnen ausdrücklich gewünschte Funktion unbedingt erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG).
 
-Sie können diese Einträge jederzeit über die Einstellungen Ihres Internet-Browsers löschen.
+Sie können diesen Eintrag jederzeit über die Einstellungen Ihres Internet-Browsers löschen.
 
 ### Kontaktanfragen / Kontaktmöglichkeit
 

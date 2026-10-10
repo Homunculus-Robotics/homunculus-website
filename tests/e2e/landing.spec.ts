@@ -69,16 +69,9 @@ test('canonical, alternates and og:image are absolute and locale-correct', async
   await expect(page.locator('meta[property="og:locale"]')).toHaveAttribute('content', 'de_DE');
 });
 
-test('the theme switcher persists across a reload on /de/', async ({ page }) => {
-  await page.goto('/de/');
-  await page.getByRole('button', { name: /verdant/i }).click();
-  await page.reload();
-  await expect(page.locator('html')).toHaveAttribute('data-hmc-theme', 'verdant');
-});
-
 test('no horizontal overflow at 390 px, either locale', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  for (const path of ['/', '/de/', '/sandbox/', '/de/sandbox/']) {
+  for (const path of ['/', '/de/', '/sandbox/', '/de/sandbox/', '/designchallenge/', '/de/designchallenge/']) {
     await page.goto(path);
     const overflow = await page.evaluate(
       () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
@@ -97,6 +90,21 @@ test('the About page is the company page, in both locales', async ({ page }) => 
     await expect(page.locator('#top h1')).toHaveText(headline);
     await expect(page.locator('#top img[alt="Marcus Röper"]')).toBeVisible();
     await expect(page.locator('#partners a[href="https://roboticscollective.org/"] img')).toHaveCount(1);
+    await expect(page.locator('#contact a[href^="mailto:"]')).toHaveCount(1);
+  }
+});
+
+test('the Design Challenge page carries the partner pitch, in both locales', async ({ page }) => {
+  for (const [path, lang, heading] of [
+    ['/designchallenge', 'en', 'Interested in supporting the challenge?'],
+    ['/de/designchallenge', 'de', 'Interesse, die Challenge zu unterstützen?'],
+  ]) {
+    await page.goto(path);
+    await expect(page.locator('html')).toHaveAttribute('lang', lang);
+    await expect(page.locator('#support h2')).toHaveText(heading);
+    // A comma inside a YAML flow map silently cuts the row short; RoBonn is its last word.
+    await expect(page.locator('#support dl')).toContainText('RoBonn');
+    await expect(page.locator('#packages li')).toHaveCount(3);
     await expect(page.locator('#contact a[href^="mailto:"]')).toHaveCount(1);
   }
 });

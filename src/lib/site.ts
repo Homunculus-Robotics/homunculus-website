@@ -1,9 +1,9 @@
 import { getRelativeLocaleUrl } from 'astro:i18n';
 
 // ponytail: /knowledge (Knowledge Bits) and /about belong to this repo.
-// /designchallenge is the *other* repo (private, `Website.git`) and only
-// answers once that app is deployed behind this domain — the path is the real
-// one either way, so nothing has to be re-pathed when it lands.
+// /designchallenge/* is the *other* repo (private, `Website.git`) once that app
+// is deployed behind this domain. Until then the bare /designchallenge landing
+// (the partner pitch) is static and lives here; it moves over with Roadmap 2.1.
 export const NAV_LINKS = [
   { href: '/sandbox', label: { en: 'Sandbox', de: 'Sandkasten' } },
   { href: '/designchallenge', label: { en: 'Design Challenge', de: 'Design Challenge' } },

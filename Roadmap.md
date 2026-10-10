@@ -55,8 +55,8 @@ Impressum, Datenschutz and the cookie notice live **in this repo** and cover the
 whole domain, including `/designchallenge` from the private repo:
 `src/pages/{,de/}{impressum,datenschutz}.md` and
 `src/components/CookieNotice.astro`. Today the site is static on GitHub Pages,
-sets **no cookies**, loads **nothing third-party**, and keeps only `hmc-theme` and
-`hmc-notice` in localStorage. The notice says exactly that and asks no consent.
+sets **no cookies**, loads **nothing third-party**, and keeps only `hmc-notice` in
+localStorage. The notice says exactly that and asks no consent.
 Every row below breaks one of those facts. **The legal text ships in the same
 release as the change, never after it.** Each Datenschutz edit goes into DE and EN.
 
